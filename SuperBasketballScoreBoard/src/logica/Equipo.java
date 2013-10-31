@@ -13,16 +13,19 @@ public class Equipo {
 	private int numJugadores;
 	private String color;
 	private String lugar;
+	private Jugador[] jugador;
 	
 	/**
 	 * Constructor de la clase
 	 */
-	public Equipo(String nombre, int numJugadores, String color, String lugar) {
+	public Equipo(String nombre, int numJugadores, String color, String lugar, Jugador[] jugador) {
 		super();
 		this.nombre = nombre;
 		this.numJugadores = numJugadores;
 		this.color = color;
 		this.lugar = lugar;
+		this.jugador=jugador;
+		jugador=new Jugador[8];
 	}
 
 	/**
@@ -79,6 +82,20 @@ public class Equipo {
 	 */
 	public void setLugar(String lugar) {
 		this.lugar = lugar;
+	}
+
+	/**
+	 * @return the jugador
+	 */
+	public Jugador[] getJugador() {
+		return jugador;
+	}
+
+	/**
+	 * @param jugador the jugador to set
+	 */
+	public void setJugador(Jugador[] jugador) {
+		this.jugador = jugador;
 	}
 	
 	
