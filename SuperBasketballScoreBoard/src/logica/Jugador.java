@@ -11,17 +11,18 @@ public class Jugador {
 	
 	private int id;
 	private int number;
-	private Falta[] foul;
+	private Falta[] falta;
 	
 	
 	/**
 	 * Constructor de la clase
 	 */
-	public Jugador(int id, int number, Falta[] foul) {
+	public Jugador(int id, int number, Falta[] falta) {
 		super();
 		this.id = id;
 		this.number = number;
-		this.foul = foul;
+		this.falta = falta;
+		falta=new Falta[5];
 	}
 
 
@@ -58,20 +59,21 @@ public class Jugador {
 
 
 	/**
-	 * @return the foul
+	 * @return the falta
 	 */
-	public Falta[] getFoul() {
-		return foul;
+	public Falta[] getFalta() {
+		return falta;
 	}
 
 
 	/**
-	 * @param foul the foul to set
+	 * @param falta the falta to set
 	 */
-	public void setFoul(Falta[] foul) {
-		this.foul = foul;
+	public void setFalta(Falta[] falta) {
+		this.falta = falta;
 	}
-	
+
+
 	
 	
 	
