@@ -23,8 +23,7 @@ public class Jugador {
 		super();
 		this.id = id;
 		this.number = number;
-		this.falta = falta;
-		falta=new Falta[5];
+		this.falta=new Falta[5];
 	}
 
 	/**
@@ -34,7 +33,7 @@ public class Jugador {
 		int secuencia=0;
 		for(int i=0;i<falta.length;i++){
 			if(falta[i]==null){
-				falta[i].setId(f.getId());
+				falta[i]=f;
 				secuencia=i;
 				i=5;	
 			}

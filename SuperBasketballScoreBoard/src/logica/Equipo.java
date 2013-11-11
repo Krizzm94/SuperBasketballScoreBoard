@@ -26,8 +26,7 @@ public class Equipo {
 		this.numJugadores = numJugadores;
 		this.color = color;
 		this.lugar = lugar;
-		this.jugador=jugador;
-		jugador=new Jugador[8];
+		this.jugador=new Jugador[8];
 	}
 
 	
@@ -38,10 +37,9 @@ public class Equipo {
 		int secuencia=0;
 		for(int i=0;i<jugador.length;i++){
 			if(jugador[i]==null){
-				jugador[i].setId(j.getId());
-				jugador[i].setNumber(j.getNumber());
+				jugador[i]=j;
 				secuencia=i;
-				i=5;	
+				i=8;	
 			}
 		}
 		return secuencia;

@@ -90,6 +90,17 @@ public class Partido {
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Partido [equipoLocal=" + equipoLocal + ", equipoVisitante="
+				+ equipoVisitante + ", fecha=" + fecha + ", hora=" + hora + "]";
+	}
+	
 	
 	
 	

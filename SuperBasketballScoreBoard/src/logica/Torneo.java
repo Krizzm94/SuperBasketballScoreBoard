@@ -4,6 +4,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author Wolfran Pinzon
@@ -25,9 +26,8 @@ public class Torneo {
 		super();
 		this.nombre = nombre;
 		this.numEquipos = numEquipos;
-		this.equipos = equipos;
 		this.partidos = new ArrayList();
-		equipos=new Equipo[12];
+		this.equipos=new Equipo[12];
 	}
 
 	
@@ -38,12 +38,9 @@ public class Torneo {
 		int secuencia=0;
 		for(int i=0;i<equipos.length;i++){
 			if(equipos[i]==null){
-				equipos[i].setNombre(equi.getNombre());
-				equipos[i].setNumJugadores(equi.getNumJugadores());
-				equipos[i].setColor(equi.getColor());
-				equipos[i].setLugar(equi.getLugar());
+				equipos[i]=equi;
 				secuencia=i;
-				i=5;	
+				i=12;	
 			}
 		}
 		return secuencia;
@@ -154,6 +151,18 @@ public class Torneo {
 	 */
 	public void setPartidos(ArrayList<Partido> partidos) {
 		this.partidos = partidos;
+	}
+
+
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Torneo [nombre=" + nombre + ", numEquipos=" + numEquipos
+				+ ", equipos=" + Arrays.toString(equipos) + ", partidos="
+				+ partidos + "]";
 	}
 
 
