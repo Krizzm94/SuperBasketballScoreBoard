@@ -3,6 +3,8 @@
  */
 package logica;
 
+import java.util.ArrayList;
+
 /**
  * @author Wolfran Pinzon
  * 
@@ -12,21 +14,50 @@ public class Torneo {
 	private String nombre;
 	private int numEquipos;
 	private Equipo[] equipos;
-	private Partido partido;
+	private ArrayList<Partido> partidos;
 	
 
 	/**
 	 * Constructor de la clase
 	 */
-	public Torneo(String nombre, int numEquipos, Equipo[] equipos, Partido partido) {
+	public Torneo(String nombre, int numEquipos, Equipo[] equipos,
+			ArrayList<Partido> partidos) {
 		super();
 		this.nombre = nombre;
 		this.numEquipos = numEquipos;
 		this.equipos = equipos;
-		this.equipos= new Equipo[12];
-		this.partido=partido;
+		this.partidos = new ArrayList();
 	}
 
+	
+	/**
+	 * metodo para agregar partidos a torneos
+	 */
+	public void agregarPartido(Partido partido) {
+		this.partidos.add(partido);
+	}
+
+	
+	
+	/**
+	 * metodo para buscar un partido determinado
+	 */
+	public Partido buscarNumero(String local, String vist) {
+		for (Partido par : this.partidos) {
+			if (par.getEquipoLocal().equals(local) && par.getEquipoVisitante().equals(vist)) {
+				return par;
+			}
+		}
+		return null;
+	}
+
+	
+	/**
+	 * metodo para eliminar partido
+	 */
+	public boolean eliminarPartido(Partido par) {
+		return this.partidos.remove(par);
+	}
 
 	/**
 	 * @return the nombre
@@ -77,19 +108,22 @@ public class Torneo {
 
 
 	/**
-	 * @return the partido
+	 * @return the partidos
 	 */
-	public Partido getPartido() {
-		return partido;
+	public ArrayList<Partido> getPartidos() {
+		return partidos;
 	}
 
 
 	/**
-	 * @param partido the partido to set
+	 * @param partidos the partidos to set
 	 */
-	public void setPartido(Partido partido) {
-		this.partido = partido;
+	public void setPartidos(ArrayList<Partido> partidos) {
+		this.partidos = partidos;
 	}
+
+
+	
 	
 	
 	
