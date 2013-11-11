@@ -27,8 +27,42 @@ public class Torneo {
 		this.numEquipos = numEquipos;
 		this.equipos = equipos;
 		this.partidos = new ArrayList();
+		equipos=new Equipo[12];
 	}
 
+	
+	/**
+	 * metodo agrega equipos al torneo
+	 */
+	public int agregarEquipo(Equipo equi){
+		int secuencia=0;
+		for(int i=0;i<equipos.length;i++){
+			if(equipos[i]==null){
+				equipos[i].setNombre(equi.getNombre());
+				equipos[i].setNumJugadores(equi.getNumJugadores());
+				equipos[i].setColor(equi.getColor());
+				equipos[i].setLugar(equi.getLugar());
+				secuencia=i;
+				i=5;	
+			}
+		}
+		return secuencia;
+	}
+	
+	
+	/**
+	 * metodo busca equipos
+	 */
+	public Equipo buscarEquipos(String nombre){
+		for (Equipo equi : this.equipos) {
+			if (equi.getNombre().equals(nombre)) {
+				return equi;
+			}
+		}
+		return null;
+		
+	}
+	
 	
 	/**
 	 * metodo para agregar partidos a torneos
