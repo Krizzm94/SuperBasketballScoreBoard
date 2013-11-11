@@ -1,3 +1,4 @@
+package gui;
 import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
@@ -23,8 +24,8 @@ public class VentanaPrincipal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					jugador window = new jugador();
-					window.jugador.setVisible(true);
+					VentanaPrincipal window = new VentanaPrincipal();
+					window.VentanaPrincipal.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -35,7 +36,7 @@ public class VentanaPrincipal {
 	/**
 	 * constructor
 	 */
-	public jugador() {
+	public VentanaPrincipal() {
 		inicializar();
 	}
 
@@ -43,12 +44,12 @@ public class VentanaPrincipal {
 	 * Iicializamos los componentes
 	 */
 	private void inicializar() {
-		jugador = new JFrame();
-		jugador.getContentPane().setBackground(new Color(0, 0, 0));
-		jugador.setBounds(100, 100, 580, 376);
-		jugador.setResizable(false);
-		jugador.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jugador.getContentPane().setLayout(null);
+		VentanaPrincipal = new JFrame();
+		VentanaPrincipal.getContentPane().setBackground(new Color(0, 0, 0));
+		VentanaPrincipal.setBounds(100, 100, 580, 376);
+		VentanaPrincipal.setResizable(false);
+		VentanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		VentanaPrincipal.getContentPane().setLayout(null);
 		
 		JButton btnTorneo = new JButton();
 		btnTorneo.addActionListener(new ActionListener() {
@@ -59,19 +60,19 @@ public class VentanaPrincipal {
 		ImageIcon icnTorneo = new ImageIcon("torneo.png");
 		btnTorneo.setIcon(icnTorneo);
 		btnTorneo.setBounds(10, 71, 273, 127);
-		jugador.getContentPane().add(btnTorneo);
+		VentanaPrincipal.getContentPane().add(btnTorneo);
 		
 		
-		JButton btnJugador = new JButton();
-		btnJugador.addActionListener(new ActionListener() {
+		JButton btnVentanaPrincipal = new JButton();
+		btnVentanaPrincipal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Boton Jugador");
+				JOptionPane.showMessageDialog(null, "Boton VentanaPrincipal");
 			}
 		});
-		ImageIcon icnJugador = new ImageIcon("jugador.png");
-		btnJugador.setIcon(icnJugador);
-		btnJugador.setBounds(10, 209, 273, 127);
-		jugador.getContentPane().add(btnJugador);
+		ImageIcon icnVentanaPrincipal = new ImageIcon("jugador.png");
+		btnVentanaPrincipal.setIcon(icnVentanaPrincipal);
+		btnVentanaPrincipal.setBounds(10, 209, 273, 127);
+		VentanaPrincipal.getContentPane().add(btnVentanaPrincipal);
 		
 		JButton btnInfo = new JButton();
 		btnInfo.addActionListener(new ActionListener() {
@@ -82,7 +83,7 @@ public class VentanaPrincipal {
 		ImageIcon icnInfo = new ImageIcon("info.png");
 		btnInfo.setIcon(icnInfo);
 		btnInfo.setBounds(295, 209, 273, 127);
-		jugador.getContentPane().add(btnInfo);
+		VentanaPrincipal.getContentPane().add(btnInfo);
 		
 		JButton btnEquipo = new JButton();
 		btnEquipo.addActionListener(new ActionListener() {
@@ -93,13 +94,13 @@ public class VentanaPrincipal {
 		ImageIcon icnEquipo = new ImageIcon("equipo.png");
 		btnEquipo.setIcon(icnEquipo);
 		btnEquipo.setBounds(295, 71, 273, 127);
-		jugador.getContentPane().add(btnEquipo);
+		VentanaPrincipal.getContentPane().add(btnEquipo);
 		
 		JLabel lblSuperBasketballScoreboard = new JLabel("Super BasketBall ScoreBoard");
 		lblSuperBasketballScoreboard.setFont(new Font("LMS I Love This Game", Font.PLAIN, 17));
 		lblSuperBasketballScoreboard.setForeground(Color.WHITE);
 		lblSuperBasketballScoreboard.setBounds(77, 29, 460, 19);
-		jugador.getContentPane().add(lblSuperBasketballScoreboard);
+		VentanaPrincipal.getContentPane().add(lblSuperBasketballScoreboard);
 		
 	}
 }
