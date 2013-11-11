@@ -3,6 +3,8 @@
  */
 package logica;
 
+import java.util.Arrays;
+
 /**
  * @author Wolfran Pinzon
  * 
@@ -28,6 +30,37 @@ public class Equipo {
 		jugador=new Jugador[8];
 	}
 
+	
+	/**
+	 * metodo agrega jugadores a los equipos
+	 */
+	public int agregarJugador(Jugador j){
+		int secuencia=0;
+		for(int i=0;i<jugador.length;i++){
+			if(jugador[i]==null){
+				jugador[i].setId(j.getId());
+				jugador[i].setNumber(j.getNumber());
+				secuencia=i;
+				i=5;	
+			}
+		}
+		return secuencia;
+	}
+	
+	
+	/**
+	 * metodo busca jugadores
+	 */
+	public Jugador buscarJugador(int numero){
+		for (Jugador jug : this.jugador) {
+			if (jug.getNumber()==numero) {
+				return jug;
+			}
+		}
+		return null;
+		
+	}
+	
 	/**
 	 * @return the nombre
 	 */
@@ -96,6 +129,17 @@ public class Equipo {
 	 */
 	public void setJugador(Jugador[] jugador) {
 		this.jugador = jugador;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Equipo [nombre=" + nombre + ", numJugadores=" + numJugadores
+				+ ", color=" + color + ", lugar=" + lugar + ", jugador="
+				+ Arrays.toString(jugador) + "]";
 	}
 	
 	

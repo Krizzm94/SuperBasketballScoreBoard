@@ -3,6 +3,8 @@
  */
 package logica;
 
+import java.util.Arrays;
+
 /**
  * @author Wolfran Pinzon
  * 
@@ -25,7 +27,23 @@ public class Jugador {
 		falta=new Falta[5];
 	}
 
+	/**
+	 * metodo agrega faltas a los jugadores
+	 */
+	public int agregarFalta(Falta f){
+		int secuencia=0;
+		for(int i=0;i<falta.length;i++){
+			if(falta[i]==null){
+				falta[i].setId(f.getId());
+				secuencia=i;
+				i=5;	
+			}
+		}
+		return secuencia;
+	}
 
+	
+	
 	/**
 	 * @return the id
 	 */
@@ -71,6 +89,15 @@ public class Jugador {
 	 */
 	public void setFalta(Falta[] falta) {
 		this.falta = falta;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Jugador [id=" + id + ", number=" + number + ", falta="
+				+ Arrays.toString(falta) + "]";
 	}
 
 
