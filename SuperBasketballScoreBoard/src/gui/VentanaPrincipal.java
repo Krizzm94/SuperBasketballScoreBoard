@@ -69,7 +69,7 @@ public class VentanaPrincipal {
 				JOptionPane.showMessageDialog(null, "Boton VentanaPrincipal");
 			}
 		});
-		ImageIcon icnVentanaPrincipal = new ImageIcon("VentanaPrincipal.png");
+		ImageIcon icnVentanaPrincipal = new ImageIcon("jugador.png");
 		btnVentanaPrincipal.setIcon(icnVentanaPrincipal);
 		btnVentanaPrincipal.setBounds(10, 209, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnVentanaPrincipal);
