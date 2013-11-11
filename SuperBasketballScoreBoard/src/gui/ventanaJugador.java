@@ -4,10 +4,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 
@@ -15,6 +18,7 @@ public class ventanaJugador {
 
 	private JFrame frame;
 	private JTextField textField;
+	private VentanaPrincipal ventanaPrincipal;
 
 	/**
 	 * Launch the application.
@@ -93,9 +97,27 @@ public class ventanaJugador {
 		textField.setColumns(10);
 		
 		JButton btnRegresar = new JButton();
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.setVisible(false);
+				ventanaPrincipal = new VentanaPrincipal();
+				ventanaPrincipal.getVentanaPrincipal().setVisible(true);
+				
+			}
+		});
 		ImageIcon icnReg = new ImageIcon("back1.png");
 		btnRegresar.setIcon(icnReg);
 		btnRegresar.setBounds(10, 11, 45, 45);
 		frame.getContentPane().add(btnRegresar);
 	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+	
+	
 }

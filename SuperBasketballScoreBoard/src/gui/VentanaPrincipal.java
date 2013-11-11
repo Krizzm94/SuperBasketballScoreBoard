@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Window;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -16,6 +17,7 @@ import java.awt.event.ActionEvent;
 public class VentanaPrincipal {
 
 	private JFrame VentanaPrincipal;
+	private ventanaJugador ventanaJugador;
 
 	/**
 	 * Launch the application.
@@ -63,16 +65,19 @@ public class VentanaPrincipal {
 		VentanaPrincipal.getContentPane().add(btnTorneo);
 		
 		
-		JButton btnVentanaPrincipal = new JButton();
-		btnVentanaPrincipal.addActionListener(new ActionListener() {
+		JButton btnJugador = new JButton();
+		btnJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Boton VentanaPrincipal");
+				VentanaPrincipal.setVisible(false);
+				ventanaJugador = new ventanaJugador();
+				ventanaJugador.getFrame().setVisible(true);
+
 			}
 		});
 		ImageIcon icnVentanaPrincipal = new ImageIcon("jugador.png");
-		btnVentanaPrincipal.setIcon(icnVentanaPrincipal);
-		btnVentanaPrincipal.setBounds(10, 209, 273, 127);
-		VentanaPrincipal.getContentPane().add(btnVentanaPrincipal);
+		btnJugador.setIcon(icnVentanaPrincipal);
+		btnJugador.setBounds(10, 209, 273, 127);
+		VentanaPrincipal.getContentPane().add(btnJugador);
 		
 		JButton btnInfo = new JButton();
 		btnInfo.addActionListener(new ActionListener() {
@@ -103,4 +108,13 @@ public class VentanaPrincipal {
 		VentanaPrincipal.getContentPane().add(lblSuperBasketballScoreboard);
 		
 	}
+
+	public JFrame getVentanaPrincipal() {
+		return VentanaPrincipal;
+	}
+
+	public void setVentanaPrincipal(JFrame ventanaPrincipal) {
+		VentanaPrincipal = ventanaPrincipal;
+	}
+	
 }
