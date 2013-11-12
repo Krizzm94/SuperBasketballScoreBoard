@@ -59,7 +59,7 @@ public class VentanaPrincipal {
 				JOptionPane.showMessageDialog(null, "Oprimio el Boton de torneo");		
 				}
 		});
-		ImageIcon icnTorneo = new ImageIcon("torneo.png");
+		ImageIcon icnTorneo = new ImageIcon("imagenes/torneo.png");
 		btnTorneo.setIcon(icnTorneo);
 		btnTorneo.setBounds(10, 71, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnTorneo);
@@ -74,7 +74,7 @@ public class VentanaPrincipal {
 
 			}
 		});
-		ImageIcon icnVentanaPrincipal = new ImageIcon("jugador.png");
+		ImageIcon icnVentanaPrincipal = new ImageIcon("imagenes/jugador.png");
 		btnJugador.setIcon(icnVentanaPrincipal);
 		btnJugador.setBounds(10, 209, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnJugador);
@@ -85,7 +85,7 @@ public class VentanaPrincipal {
 				JOptionPane.showMessageDialog(null, "Boton de Informacion");
 			}
 		});
-		ImageIcon icnInfo = new ImageIcon("info.png");
+		ImageIcon icnInfo = new ImageIcon("imagenes/info.png");
 		btnInfo.setIcon(icnInfo);
 		btnInfo.setBounds(295, 209, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnInfo);
@@ -96,7 +96,7 @@ public class VentanaPrincipal {
 				JOptionPane.showMessageDialog(null, "Boton Equipo");
 			}
 		});
-		ImageIcon icnEquipo = new ImageIcon("equipo.png");
+		ImageIcon icnEquipo = new ImageIcon("imagenes/equipo.png");
 		btnEquipo.setIcon(icnEquipo);
 		btnEquipo.setBounds(295, 71, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnEquipo);

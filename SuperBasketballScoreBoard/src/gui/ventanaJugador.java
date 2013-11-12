@@ -105,7 +105,7 @@ public class ventanaJugador {
 				
 			}
 		});
-		ImageIcon icnReg = new ImageIcon("back1.png");
+		ImageIcon icnReg = new ImageIcon("imagenes/back1.png");
 		btnRegresar.setIcon(icnReg);
 		btnRegresar.setBounds(10, 11, 45, 45);
 		frame.getContentPane().add(btnRegresar);
