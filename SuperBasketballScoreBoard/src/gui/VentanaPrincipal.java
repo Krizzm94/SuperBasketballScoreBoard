@@ -6,10 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Window;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -17,7 +15,7 @@ import java.awt.event.ActionEvent;
 public class VentanaPrincipal {
 
 	private JFrame VentanaPrincipal;
-	private ventanaJugador ventanaJugador;
+	private VentanaJugador ventanaJugador;
 
 	/**
 	 * Launch the application.
@@ -69,7 +67,7 @@ public class VentanaPrincipal {
 		btnJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrincipal.setVisible(false);
-				ventanaJugador = new ventanaJugador();
+				ventanaJugador = new VentanaJugador();
 				ventanaJugador.getFrame().setVisible(true);
 
 			}

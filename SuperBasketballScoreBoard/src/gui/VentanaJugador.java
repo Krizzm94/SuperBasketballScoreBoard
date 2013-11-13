@@ -1,5 +1,6 @@
 package gui;
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,13 +13,16 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
+import javax.swing.text.IconView;
 
 
-public class ventanaJugador {
+public class VentanaJugador {
 
 	private JFrame frame;
 	private JTextField textField;
 	private VentanaPrincipal ventanaPrincipal;
+	private Image imagen;
 
 	/**
 	 * Launch the application.
@@ -27,7 +31,7 @@ public class ventanaJugador {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventanaJugador window = new ventanaJugador();
+					VentanaJugador window = new VentanaJugador();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +43,7 @@ public class ventanaJugador {
 	/**
 	 * Create the application.
 	 */
-	public ventanaJugador() {
+	public VentanaJugador() {
 		initialize();
 	}
 
@@ -57,52 +61,52 @@ public class ventanaJugador {
 		lblJugador.setFont(new Font("LMS I Love This Game", Font.PLAIN, 25));
 		lblJugador.setBounds(189, 30, 189, 43);
 		frame.getContentPane().add(lblJugador);
-		
+
 		JButton btnNewButton = new JButton("AGREGAR");
 		btnNewButton.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
 		btnNewButton.setBounds(0, 289, 290, 58);
 		frame.getContentPane().add(btnNewButton);
-		
+
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
 		btnEliminar.setBounds(284, 289, 290, 58);
 		frame.getContentPane().add(btnEliminar);
-		
+
 		JLabel lblSeleccioneElTorneo = new JLabel("Seleccione el Torneo");
 		lblSeleccioneElTorneo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 12));
 		lblSeleccioneElTorneo.setBounds(68, 106, 235, 27);
 		frame.getContentPane().add(lblSeleccioneElTorneo);
-		
+
 		JLabel lblSeleccioneElEquipo = new JLabel("Seleccione el Equipo");
 		lblSeleccioneElEquipo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 12));
 		lblSeleccioneElEquipo.setBounds(68, 160, 235, 27);
 		frame.getContentPane().add(lblSeleccioneElEquipo);
-		
+
 		JLabel lblIngreseElNumero = new JLabel("Ingrese el Numero");
 		lblIngreseElNumero.setFont(new Font("LMS I Love This Game", Font.PLAIN, 12));
 		lblIngreseElNumero.setBounds(68, 214, 235, 27);
 		frame.getContentPane().add(lblIngreseElNumero);
-		
+
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(359, 106, 127, 20);
 		frame.getContentPane().add(comboBox);
-		
+
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(359, 160, 127, 20);
 		frame.getContentPane().add(comboBox_1);
-		
+
 		textField = new JTextField();
 		textField.setBounds(359, 217, 127, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
-		
+
 		JButton btnRegresar = new JButton();
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
 				ventanaPrincipal = new VentanaPrincipal();
 				ventanaPrincipal.getVentanaPrincipal().setVisible(true);
-				
+
 			}
 		});
 		ImageIcon icnReg = new ImageIcon("imagenes/back1.png");
@@ -118,6 +122,6 @@ public class ventanaJugador {
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
-	
-	
+
+
 }
