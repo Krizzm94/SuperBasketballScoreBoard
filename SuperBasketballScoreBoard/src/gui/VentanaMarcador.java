@@ -23,6 +23,7 @@ public class VentanaMarcador {
 	private int puntaje2 = 0;
 	private JLabel lblPuntosT1;
 	private JLabel lblPuntosT2;
+	private JLabel lblTiempo;
 
 	/**
 	 * Launch the application.
@@ -57,7 +58,7 @@ public class VentanaMarcador {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel lblTiempo = new JLabel("00:00");
+		this.lblTiempo = new JLabel("00:00");
 		lblTiempo.setFont(new Font("LED BOARD", Font.BOLD, 70));
 		lblTiempo.setBounds(151, 17, 290, 89);
 		frame.getContentPane().add(lblTiempo);
@@ -173,6 +174,16 @@ public class VentanaMarcador {
 		btnStart.setIcon(icnStart);
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				for (int segundos = 59; segundos>=0; segundos--) { 
+					for (int minutos = 10; minutos>=0; minutos--) { 
+					try { 
+					Thread.sleep (1000); 
+					} catch (InterruptedException e) { 
+					e.printStackTrace(); 
+					} 
+					System.out.println (minutos+" : "+segundos); 
+					}
+					}
 			}
 		});
 		btnStart.setBounds(272, 246, 50, 36);
@@ -224,6 +235,14 @@ public class VentanaMarcador {
 
 	public void setLblPuntosT2(JLabel lblPuntosT2) {
 		this.lblPuntosT2 = lblPuntosT2;
+	}
+
+	public JLabel getLblTiempo() {
+		return lblTiempo;
+	}
+
+	public void setLblTiempo(JLabel lblTiempo) {
+		this.lblTiempo = lblTiempo;
 	}
 	
 }
