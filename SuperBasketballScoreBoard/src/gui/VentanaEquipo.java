@@ -1,16 +1,12 @@
 package gui;
 import java.awt.EventQueue;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.JLayer;
 import javax.swing.JOptionPane;
-
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Window;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;

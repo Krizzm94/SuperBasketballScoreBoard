@@ -181,14 +181,14 @@ public class VentanaMarcador extends Thread{
 
 						try {//si ocurre un error al dormir el proceso(sleep(999))
 							for (; ;){//inicio del for infinito          
-								if(nuSeg!=0) {//si no es el ultimo segundo
+								if(nuSeg!=00) {//si no es el ultimo segundo
 									nuSeg--;  //decremento el numero de segundos                                  
 								}else{
-									if(nuMin!=0){//si no es el ultimo minuto
+									if(nuMin!=00){//si no es el ultimo minuto
 										nuSeg=59;//segundos comienzan en 59
 										nuMin--;//decremento el numero de minutos
 									}else{
-										if (nuHora!=0){
+										if (nuHora!=00){
 											nuHora--;//decremento el numero de horas
 											nuMin=59;//minutos comienzan en 59
 											nuSeg=59;//segundos comienzan en 59
