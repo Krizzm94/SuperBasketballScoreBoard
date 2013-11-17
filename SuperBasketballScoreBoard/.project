@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>imagenes/home.png</name>
-			<type>1</type>
-			<location>E:/UPTC/Ingenieria de Software 1/img/home.png</location>
-		</link>
-	</linkedResources>
 </projectDescription>
