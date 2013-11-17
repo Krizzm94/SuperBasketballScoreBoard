@@ -51,19 +51,19 @@ public class VentanaPrincipal {
 		VentanaPrincipal.setResizable(false);
 		VentanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		VentanaPrincipal.getContentPane().setLayout(null);
-		
+
 		JButton btnTorneo = new JButton();
 		btnTorneo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Oprimio el Boton de torneo");		
-				}
+			}
 		});
 		ImageIcon icnTorneo = new ImageIcon("imagenes/torneo.png");
 		btnTorneo.setIcon(icnTorneo);
 		btnTorneo.setBounds(10, 71, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnTorneo);
-		
-		
+
+
 		JButton btnJugador = new JButton();
 		btnJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -77,7 +77,7 @@ public class VentanaPrincipal {
 		btnJugador.setIcon(icnVentanaPrincipal);
 		btnJugador.setBounds(10, 209, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnJugador);
-		
+
 		JButton btnInfo = new JButton();
 		btnInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -88,7 +88,7 @@ public class VentanaPrincipal {
 		btnInfo.setIcon(icnInfo);
 		btnInfo.setBounds(295, 209, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnInfo);
-		
+
 		JButton btnEquipo = new JButton();
 		btnEquipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -99,13 +99,18 @@ public class VentanaPrincipal {
 		btnEquipo.setIcon(icnEquipo);
 		btnEquipo.setBounds(295, 71, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnEquipo);
-		
+
 		JLabel lblSuperBasketballScoreboard = new JLabel("Super BasketBall ScoreBoard");
-		lblSuperBasketballScoreboard.setFont(new Font("LMS I Love This Game", Font.PLAIN, 17));
+		lblSuperBasketballScoreboard.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		lblSuperBasketballScoreboard.setForeground(Color.WHITE);
-		lblSuperBasketballScoreboard.setBounds(77, 29, 460, 19);
+		lblSuperBasketballScoreboard.setBounds(35, 29, 530, 25);
 		VentanaPrincipal.getContentPane().add(lblSuperBasketballScoreboard);
-		
+
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
+		lblNewLabel.setBounds(0, 0, 574, 347);
+		VentanaPrincipal.getContentPane().add(lblNewLabel);
+
 	}
 
 	public JFrame getVentanaPrincipal() {
@@ -115,5 +120,5 @@ public class VentanaPrincipal {
 	public void setVentanaPrincipal(JFrame ventanaPrincipal) {
 		VentanaPrincipal = ventanaPrincipal;
 	}
-	
+
 }

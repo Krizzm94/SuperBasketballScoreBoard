@@ -18,9 +18,11 @@ public class VentanaMarcador extends Thread{
 	private JLabel lblPuntosT2;
 	private JLabel lblTiempo;
 	private JLabel lblNroCuarto;
-	private static int nuMin=10; 
-	private static int nuSeg=0;
-	private static int nuHora=0;
+	private JComboBox jugadoresTeam1;
+	private JComboBox jugadoresTeam2;
+	private static int nuMin = 10; 
+	private static int nuSeg = 0;
+	private static int nuHora = 0;
 	private static int puntaje1 = 0;
 	private static int puntaje2 = 0;
 	private VentanaPrincipal ventanaPrincipal;
@@ -96,9 +98,9 @@ public class VentanaMarcador extends Thread{
 		label_5.setBounds(429, 205, 46, 14);
 		frame.getContentPane().add(label_5);
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(50, 246, 103, 36);
-		frame.getContentPane().add(comboBox);
+		this.jugadoresTeam1 = new JComboBox();
+		jugadoresTeam1.setBounds(50, 246, 103, 36);
+		frame.getContentPane().add(jugadoresTeam1);
 
 		JButton btnNewButton = new JButton("FALTA");
 		btnNewButton.setBounds(166, 246, 103, 36);
@@ -132,9 +134,9 @@ public class VentanaMarcador extends Thread{
 		btnFalta.setBounds(326, 246, 103, 36);
 		frame.getContentPane().add(btnFalta);
 
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(442, 246, 103, 36);
-		frame.getContentPane().add(comboBox_1);
+		this.jugadoresTeam2 = new JComboBox();
+		jugadoresTeam2.setBounds(442, 246, 103, 36);
+		frame.getContentPane().add(jugadoresTeam2);
 
 		JButton btnPuntoTeam2 = new JButton("-1 PUNTO");
 		btnPuntoTeam2.addActionListener(new ActionListener() {
@@ -240,7 +242,7 @@ public class VentanaMarcador extends Thread{
 		btnStop.setBounds(272, 300, 50, 36);
 		frame.getContentPane().add(btnStop);
 
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondoCron.png"));
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		frame.getContentPane().add(lblNewLabel);
