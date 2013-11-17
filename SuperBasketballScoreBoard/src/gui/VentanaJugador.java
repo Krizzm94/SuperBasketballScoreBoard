@@ -21,7 +21,6 @@ public class VentanaJugador {
 	private VentanaPrincipal ventanaPrincipal;
 	private JComboBox cmbEquipo;
 	private JComboBox cmbTorneo;
-	private JLabel jlbl_Fondo;
 
 	/**
 	 * Launch the application.

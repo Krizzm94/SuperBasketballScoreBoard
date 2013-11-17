@@ -75,7 +75,7 @@ public class VentanaMarcador extends Thread{
 
 		this.lblNroCuarto = new JLabel("1");
 		lblNroCuarto.setFont(new Font("LED BOARD", Font.BOLD, 60));
-		lblNroCuarto.setBounds(272, 117, 50, 74);
+		lblNroCuarto.setBounds(266, 125, 50, 74);
 		frame.getContentPane().add(lblNroCuarto);
 
 		JLabel lblTeam = new JLabel("TEAM:");
@@ -85,7 +85,7 @@ public class VentanaMarcador extends Thread{
 
 		JLabel lblCuarto = new JLabel("TIEMPO");
 		lblCuarto.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCuarto.setBounds(270, 186, 60, 20);
+		lblCuarto.setBounds(266, 200, 60, 20);
 		frame.getContentPane().add(lblCuarto);
 
 		JLabel label_5 = new JLabel("TEAM:");
@@ -194,14 +194,17 @@ public class VentanaMarcador extends Thread{
 											nuSeg=59;//segundos comienzan en 59
 										}else{  
 											JOptionPane.showMessageDialog(null,"FINALIZO ESTE CUARTO", "Fin del conteo", JOptionPane.INFORMATION_MESSAGE);
+											getLblNroCuarto().setText("2");
 											break;//seacabo el tiempo fin hilo  
 
 										}
 									}
-								}               
+								}   
 								getLblTiempo().setText("0"+nuMin+":"+nuSeg);
 								sleep(998);//Duermo el hilo durante 999 milisegundos(casi un segundo, quintandole el tiempo de proceso)
-							}            
+
+							}
+
 						} catch (InterruptedException ex) {
 							System.out.println(ex.getMessage());
 						}
@@ -219,7 +222,10 @@ public class VentanaMarcador extends Thread{
 		btnStop.setBounds(272, 300, 50, 36);
 		frame.getContentPane().add(btnStop);
 
-
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("imagenes/fondoCron.png"));
+		lblNewLabel.setBounds(0, 0, 574, 347);
+		frame.getContentPane().add(lblNewLabel);
 
 	}
 
@@ -270,5 +276,14 @@ public class VentanaMarcador extends Thread{
 	public void setLblTiempo(JLabel lblTiempo) {
 		this.lblTiempo = lblTiempo;
 	}
+
+	public JLabel getLblNroCuarto() {
+		return lblNroCuarto;
+	}
+
+	public void setLblNroCuarto(JLabel lblNroCuarto) {
+		this.lblNroCuarto = lblNroCuarto;
+	}
+
 
 }
