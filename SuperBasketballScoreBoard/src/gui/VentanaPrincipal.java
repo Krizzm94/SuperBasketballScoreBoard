@@ -47,6 +47,7 @@ public class VentanaPrincipal {
 		VentanaPrincipal = new JFrame();
 		VentanaPrincipal.getContentPane().setBackground(new Color(0, 0, 0));
 		VentanaPrincipal.setBounds(100, 100, 580, 376);
+		VentanaPrincipal.setLocationRelativeTo(null);
 		VentanaPrincipal.setResizable(false);
 		VentanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		VentanaPrincipal.getContentPane().setLayout(null);

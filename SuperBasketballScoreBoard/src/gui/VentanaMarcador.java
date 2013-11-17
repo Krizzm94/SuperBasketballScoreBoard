@@ -23,6 +23,7 @@ public class VentanaMarcador extends Thread{
 	private static int nuHora=0;
 	private static int puntaje1 = 0;
 	private static int puntaje2 = 0;
+	private VentanaPrincipal ventanaPrincipal;
 
 	/**
 	 * Launch the application.
@@ -53,9 +54,11 @@ public class VentanaMarcador extends Thread{
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 580, 376);
+		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		this.ventanaPrincipal = new VentanaPrincipal();
 
 		this.lblTiempo = new JLabel("10:00");
 		lblTiempo.setFont(new Font("LED BOARD", Font.BOLD, 70));
@@ -164,6 +167,21 @@ public class VentanaMarcador extends Thread{
 		frame.getContentPane().add(btnRegresar);
 
 		JButton btnHome = new JButton();
+		btnHome.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				int salir = JOptionPane.showConfirmDialog(null,"¿SEGURO QUE QUIERES SALIR?", "El sistema no guardara informacion", JOptionPane.YES_NO_OPTION);
+				if (salir == JOptionPane.YES_OPTION)
+				{
+					getFrame().setVisible(false);
+					getVentanaPrincipal().getVentanaPrincipal().setVisible(true);
+				}
+
+
+
+			}
+		});
 		ImageIcon icnHome = new ImageIcon("imagenes/home.png");
 		btnHome.setIcon(icnHome);
 		btnHome.setBounds(514, 17, 50, 50);
@@ -283,6 +301,14 @@ public class VentanaMarcador extends Thread{
 
 	public void setLblNroCuarto(JLabel lblNroCuarto) {
 		this.lblNroCuarto = lblNroCuarto;
+	}
+
+	public VentanaPrincipal getVentanaPrincipal() {
+		return ventanaPrincipal;
+	}
+
+	public void setVentanaPrincipal(VentanaPrincipal ventanaPrincipal) {
+		this.ventanaPrincipal = ventanaPrincipal;
 	}
 
 
