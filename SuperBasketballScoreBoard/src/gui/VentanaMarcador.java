@@ -1,29 +1,28 @@
 package gui;
 
 import java.awt.EventQueue;
-import java.awt.Label;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-
-public class VentanaMarcador {
+public class VentanaMarcador extends Thread{
 
 	private JFrame frame;
-	private int puntaje1 = 0;
-	private int puntaje2 = 0;
 	private JLabel lblPuntosT1;
 	private JLabel lblPuntosT2;
 	private JLabel lblTiempo;
+	private JLabel lblNroCuarto;
+	private static int nuMin=10; 
+	private static int nuSeg=0;
+	private static int nuHora=0;
+	private static int puntaje1 = 0;
+	private static int puntaje2 = 0;
 
 	/**
 	 * Launch the application.
@@ -58,10 +57,11 @@ public class VentanaMarcador {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		this.lblTiempo = new JLabel("00:00");
+		this.lblTiempo = new JLabel("10:00");
 		lblTiempo.setFont(new Font("LED BOARD", Font.BOLD, 70));
 		lblTiempo.setBounds(151, 17, 290, 89);
 		frame.getContentPane().add(lblTiempo);
+
 
 		this.lblPuntosT1 = new JLabel(Integer.toString(puntaje1));
 		lblPuntosT1.setFont(new Font("LED BOARD", Font.BOLD, 70));
@@ -73,10 +73,10 @@ public class VentanaMarcador {
 		lblPuntosT2.setBounds(429, 117, 116, 89);
 		frame.getContentPane().add(lblPuntosT2);
 
-		JLabel label_3 = new JLabel("1");
-		label_3.setFont(new Font("LED BOARD", Font.BOLD, 60));
-		label_3.setBounds(272, 117, 50, 74);
-		frame.getContentPane().add(label_3);
+		this.lblNroCuarto = new JLabel("1");
+		lblNroCuarto.setFont(new Font("LED BOARD", Font.BOLD, 60));
+		lblNroCuarto.setBounds(272, 117, 50, 74);
+		frame.getContentPane().add(lblNroCuarto);
 
 		JLabel lblTeam = new JLabel("TEAM:");
 		lblTeam.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -168,32 +168,58 @@ public class VentanaMarcador {
 		btnHome.setIcon(icnHome);
 		btnHome.setBounds(514, 17, 50, 50);
 		frame.getContentPane().add(btnHome);
-		
+
 		JButton btnStart = new JButton();
 		ImageIcon icnStart = new ImageIcon("imagenes/start.png");
 		btnStart.setIcon(icnStart);
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				for (int segundos = 59; segundos>=0; segundos--) { 
-					for (int minutos = 10; minutos>=0; minutos--) { 
-					try { 
-					Thread.sleep (1000); 
-					} catch (InterruptedException e) { 
-					e.printStackTrace(); 
-					} 
-					System.out.println (minutos+" : "+segundos); 
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+
+						try {//si ocurre un error al dormir el proceso(sleep(999))
+							for (; ;){//inicio del for infinito          
+								if(nuSeg!=0) {//si no es el ultimo segundo
+									nuSeg--;  //decremento el numero de segundos                                  
+								}else{
+									if(nuMin!=0){//si no es el ultimo minuto
+										nuSeg=59;//segundos comienzan en 59
+										nuMin--;//decremento el numero de minutos
+									}else{
+										if (nuHora!=0){
+											nuHora--;//decremento el numero de horas
+											nuMin=59;//minutos comienzan en 59
+											nuSeg=59;//segundos comienzan en 59
+										}else{  
+											JOptionPane.showMessageDialog(null,"FINALIZO ESTE CUARTO", "Fin del conteo", JOptionPane.INFORMATION_MESSAGE);
+											break;//seacabo el tiempo fin hilo  
+
+										}
+									}
+								}               
+								getLblTiempo().setText("0"+nuMin+":"+nuSeg);
+								sleep(998);//Duermo el hilo durante 999 milisegundos(casi un segundo, quintandole el tiempo de proceso)
+							}            
+						} catch (InterruptedException ex) {
+							System.out.println(ex.getMessage());
+						}
+
 					}
-					}
+				}).start();
 			}
 		});
 		btnStart.setBounds(272, 246, 50, 36);
 		frame.getContentPane().add(btnStart);
-		
+
 		JButton btnStop = new JButton();
 		ImageIcon icnStop = new ImageIcon("imagenes/stop.png");
 		btnStop.setIcon(icnStop);
 		btnStop.setBounds(272, 300, 50, 36);
 		frame.getContentPane().add(btnStop);
+
+
 
 	}
 
@@ -244,5 +270,5 @@ public class VentanaMarcador {
 	public void setLblTiempo(JLabel lblTiempo) {
 		this.lblTiempo = lblTiempo;
 	}
-	
+
 }
