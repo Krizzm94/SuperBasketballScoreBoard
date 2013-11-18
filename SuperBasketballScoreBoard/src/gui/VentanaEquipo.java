@@ -1,14 +1,17 @@
 package gui;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 import Estilos.FormaBoton;
@@ -17,6 +20,7 @@ import Estilos.FormaBoton;
 public class VentanaEquipo {
 
 	private JFrame VentanaEquipo;
+	private VentanaIngresarEquipo nuevoEquipo;
 	
 
 	/**
@@ -56,14 +60,23 @@ public class VentanaEquipo {
 		
 		
 		JButton btnNuevo = new FormaBoton( "Boton" );
+		btnNuevo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+			}
+		});
 		btnNuevo.setHorizontalAlignment(SwingConstants.LEADING);
-		btnNuevo.setFont(new Font("Snap ITC", Font.PLAIN, 28));
+		btnNuevo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		btnNuevo.setText("NUEVO");
 		btnNuevo.setBackground(new Color(255, 250, 250));
-		btnNuevo.setForeground(new Color(255, 69, 0));
+		btnNuevo.setForeground(Color.DARK_GRAY);
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "aaaa");		
+//				JOptionPane.showMessageDialog(null, "aaaa");
+				nuevoEquipo=new VentanaIngresarEquipo();
+				nuevoEquipo.setVisible(true);
+				
 				}
 		});
 //		ImageIcon icnNuevo = new ImageIcon("imagenes/nuevo.png");
@@ -74,10 +87,11 @@ public class VentanaEquipo {
 		
 		
 		JButton btnBorrar = new FormaBoton( "Boton" );
-		btnBorrar.setText("BORRAR");
+		btnBorrar.setBackground(Color.WHITE);
+		btnBorrar.setText("BORRAR");	
 		btnBorrar.setHorizontalAlignment(SwingConstants.LEADING);
-		btnBorrar.setForeground(new Color(255, 69, 0));
-		btnBorrar.setFont(new Font("Snap ITC", Font.PLAIN, 28));
+		btnBorrar.setForeground(Color.DARK_GRAY);
+		btnBorrar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Boton Equipo");
@@ -89,35 +103,42 @@ public class VentanaEquipo {
 		VentanaEquipo.getContentPane().add(btnBorrar);
 		
 		JButton btnAtras = new FormaBoton( "Boton" );
+		btnAtras.setBackground(Color.WHITE);
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		btnAtras.setHorizontalAlignment(SwingConstants.LEADING);
-		btnAtras.setFont(new Font("Snap ITC", Font.PLAIN, 28));
+		btnAtras.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		btnAtras.setText("ATRAS");
-		btnAtras.setForeground(new Color(255, 69, 0));
+		btnAtras.setForeground(Color.DARK_GRAY);
 		btnAtras.setBounds(10, 209, 273, 127);
 		VentanaEquipo.getContentPane().add(btnAtras);
 //		ImageIcon icnAtras = new ImageIcon("imagenes/atras.png");
 //		btnAtras.setIcon(icnEquipo);
 		
 		JButton btnListar = new FormaBoton( "Boton" );
-		btnListar.setFont(new Font("Snap ITC", Font.PLAIN, 28));
+		btnListar.setBackground(Color.WHITE);
+		btnListar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		btnListar.setText("LISTAR");
 		btnListar.setHorizontalAlignment(SwingConstants.LEADING);
-		btnListar.setForeground(new Color(255, 69, 0));;
+		btnListar.setForeground(Color.DARK_GRAY);;
 		btnListar.setBounds(295, 209, 273, 127);
 		VentanaEquipo.getContentPane().add(btnListar);
 		
 		JLabel lblEquipo = new JLabel("EQUIPO");
-		lblEquipo.setFont(new Font("Showcard Gothic", Font.PLAIN, 30));
+		lblEquipo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 30));
 		lblEquipo.setBackground(new Color(255, 245, 238));
-		lblEquipo.setForeground(new Color(255, 69, 0));
-		lblEquipo.setBounds(219, 28, 147, 31);
+		lblEquipo.setForeground(Color.WHITE);
+		lblEquipo.setBounds(201, 11, 166, 50);
 		VentanaEquipo.getContentPane().add(lblEquipo);
 		//ImageIcon icnInfo = new ImageIcon("ima57, 209, 135.png");
 		//btnListar.setIcon(icnEquipo);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
+		lblNewLabel.setBounds(0, 0, 574, 347);
+		VentanaEquipo.getContentPane().add(lblNewLabel);
 		
 	}
 
