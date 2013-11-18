@@ -18,8 +18,8 @@ public class JugadorSql {
 		return consulta;
 	}
 	
-	public String insertarJugador(int numero,String equipo){
-		String consulta="INSERT INTO jugador VALUES("+q+q+","+q+numero+q+","+q+equipo+q+")";
+	public String insertarJugador(int id,int numero,String equipo,String torneo){
+		String consulta="INSERT INTO jugador VALUES("+q+id+q+","+q+numero+q+","+q+equipo+q+","+q+torneo+q+")";
 	return consulta;
 	
 	}

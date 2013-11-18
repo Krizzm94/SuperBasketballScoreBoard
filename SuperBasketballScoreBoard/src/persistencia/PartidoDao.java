@@ -5,32 +5,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import logica.Partido;
 import logica.Torneo;
 
 
 public class PartidoDao {
 	
 	private Conexion conexion;
-	private TorneoSql torneoSql;
+	private PartidoSql partidoSql;
 	
 
 
 public PartidoDao(){
 	
  conexion=new Conexion();
- torneoSql=new TorneoSql();
+ partidoSql=new  PartidoSql();
 	
 }
 
-public int insertarTorneo(Torneo torneo){
+public int insertarPartido(Partido partido, String local, String vis, String torneo){
 	conexion.conectarBD();
 	try{
-		String nombre=torneo.getNombre();
-		String numEquipos=String.valueOf(torneo.getNumEquipos());
-	
-		
+		String fecha=partido.getFecha();
+		String hora=partido.getHora();
+
 		Statement sentencia=conexion.getConexion().createStatement();
-		return sentencia.executeUpdate(torneoSql.insertarTorneo(nombre, numEquipos));
+		return sentencia.executeUpdate(partidoSql.insertarPartido(local, vis, fecha, hora, torneo));
 
 	}
 		catch (SQLException e) {
@@ -42,11 +42,11 @@ public int insertarTorneo(Torneo torneo){
 
 
 
-public int eliminarTorneo(String nombre){
+public int eliminarPartido(String local,String visitante,String torneo){
 	conexion.conectarBD();
 	try{
 		Statement sentencia=conexion.getConexion().createStatement();
-		return sentencia.executeUpdate(torneoSql.eliminarTorneo(nombre));
+		return sentencia.executeUpdate(partidoSql.eliminarPartido(local, visitante, torneo));
 	}
 	catch (SQLException e) {
 		System.out.println(e.getMessage());
@@ -58,11 +58,11 @@ public int eliminarTorneo(String nombre){
 
 
 
-public ResultSet ConsultarTorneos(){
+public ResultSet ConsultarPartidos(){
 	if (conexion.conectarBD()){
 		try{
 		Statement sentencia=conexion.getConexion().createStatement();
-		return	sentencia.executeQuery(torneoSql.consultarTorneo());
+		return	sentencia.executeQuery(partidoSql.consultarPartido());
 		
 		} catch (Exception e) {
 			// TODO: handle exception
