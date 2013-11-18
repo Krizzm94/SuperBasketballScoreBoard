@@ -12,7 +12,7 @@ public class Conexion {
 
 	private Connection conexion;
 	private final String DRIVER ="com.mysql.jdbc.Driver";
-	private final String URL ="jdbc:mysql://localhost:3306/*****";
+	private final String URL ="jdbc:mysql://localhost:3306/scoreboard";
 	private final String USER = "root";
 	private final String PASSWORD= "";
 	
