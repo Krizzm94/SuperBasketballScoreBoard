@@ -19,6 +19,7 @@ public class VentanaPrincipal {
 	private JFrame VentanaPrincipal;
 	private VentanaJugador ventanaJugador;
 	private VentanaTorneo ventanaTorneo;
+	private VentanaNuevoTorneo ventanaNuevoTorneo; 
 	private GestionTorneo gestion;
 
 	
@@ -28,6 +29,7 @@ public class VentanaPrincipal {
 	public VentanaPrincipal() {
 		gestion=new GestionTorneo();
 		ventanaTorneo=new VentanaTorneo(this);
+		ventanaNuevoTorneo=new VentanaNuevoTorneo(this);
 		inicializar();
 	}
 
