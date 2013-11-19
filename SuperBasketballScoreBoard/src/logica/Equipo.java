@@ -49,10 +49,10 @@ public class Equipo {
 	/**
 	 * metodo busca jugadores
 	 */
-	public Jugador buscarJugador(int numero){
-		for (Jugador jug : this.jugador) {
-			if (jug.getNumber()==numero) {
-				return jug;
+	public Jugador buscarJugador(int id){
+		for (int i=0;i<jugador.length;i++) {
+			if (jugador[i].getId()==id) {
+				return jugador[i];
 			}
 		}
 		return null;

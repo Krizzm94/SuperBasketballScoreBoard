@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-11-2013 a las 17:38:53
+-- Tiempo de generación: 19-11-2013 a las 00:13:08
 -- Versión del servidor: 5.5.25a
 -- Versión de PHP: 5.4.4
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `equipo` (
   KEY `nombre_torneo` (`nombre_torneo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+
 -- --------------------------------------------------------
 
 --
@@ -59,9 +60,11 @@ CREATE TABLE IF NOT EXISTS `jugador` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `numero` int(2) NOT NULL,
   `nombre_equipo` varchar(15) COLLATE latin1_spanish_ci NOT NULL,
+  `nombre_torneo` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `nombre_equipo` (`nombre_equipo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=1 ;
+  KEY `nombre_equipo` (`nombre_equipo`),
+  KEY `nombre_torneo` (`nombre_torneo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -112,15 +115,16 @@ ALTER TABLE `falta`
 -- Filtros para la tabla `jugador`
 --
 ALTER TABLE `jugador`
+  ADD CONSTRAINT `jugador_ibfk_2` FOREIGN KEY (`nombre_torneo`) REFERENCES `torneo` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `jugador_ibfk_1` FOREIGN KEY (`nombre_equipo`) REFERENCES `equipo` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `partido`
 --
 ALTER TABLE `partido`
-  ADD CONSTRAINT `partido_ibfk_3` FOREIGN KEY (`nombre_torneo`) REFERENCES `torneo` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `partido_ibfk_1` FOREIGN KEY (`local`) REFERENCES `equipo` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `partido_ibfk_2` FOREIGN KEY (`visitante`) REFERENCES `equipo` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `partido_ibfk_2` FOREIGN KEY (`visitante`) REFERENCES `equipo` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `partido_ibfk_3` FOREIGN KEY (`nombre_torneo`) REFERENCES `torneo` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

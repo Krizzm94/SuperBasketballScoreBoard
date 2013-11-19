@@ -51,9 +51,9 @@ public class Torneo {
 	 * metodo busca equipos
 	 */
 	public Equipo buscarEquipos(String nombre){
-		for (Equipo equi : this.equipos) {
-			if (equi.getNombre().equals(nombre)) {
-				return equi;
+		for (int i=0;i<equipos.length;i++) {
+			if (equipos[i].getNombre().equals(nombre)) {
+				return equipos[i];
 			}
 		}
 		return null;

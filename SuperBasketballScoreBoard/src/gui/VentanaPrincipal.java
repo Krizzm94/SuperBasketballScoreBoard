@@ -11,32 +11,21 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import logica.GestionTorneo;
+
 
 public class VentanaPrincipal {
 
 	private JFrame VentanaPrincipal;
 	private VentanaJugador ventanaJugador;
+	private GestionTorneo gestion;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipal window = new VentanaPrincipal();
-					window.VentanaPrincipal.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * constructor
 	 */
 	public VentanaPrincipal() {
+		gestion=new GestionTorneo();
 		inicializar();
 	}
 
@@ -121,4 +110,51 @@ public class VentanaPrincipal {
 		VentanaPrincipal = ventanaPrincipal;
 	}
 
+	/**
+	 * @return the ventanaJugador
+	 */
+	public VentanaJugador getVentanaJugador() {
+		return ventanaJugador;
+	}
+
+	/**
+	 * @param ventanaJugador the ventanaJugador to set
+	 */
+	public void setVentanaJugador(VentanaJugador ventanaJugador) {
+		this.ventanaJugador = ventanaJugador;
+	}
+
+	/**
+	 * @return the gestion
+	 */
+	public GestionTorneo getGestion() {
+		return gestion;
+	}
+
+	/**
+	 * @param gestion the gestion to set
+	 */
+	public void setGestion(GestionTorneo gestion) {
+		this.gestion = gestion;
+	}
+
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaPrincipal window = new VentanaPrincipal();
+					window.VentanaPrincipal.setVisible(true);
+					System.out.println(window.getGestion().listarTorneos());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	
 }
