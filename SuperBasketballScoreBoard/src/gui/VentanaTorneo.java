@@ -31,9 +31,9 @@ public class VentanaTorneo {
 
 	private JFrame frame;
 	private VentanaPrincipal ventanaPrincipal;
-	private JTable table;
-	private DefaultTableModel dtm;
-
+	private JTable table; //De tipo Jtable, variable para la tabla
+	private DefaultTableModel dtm; //De tipo DefaultTableModel, variable con el modelo de la tabla
+	private JScrollPane scrollPane; //De tipo JScrollPane, variable para agregarle scrollpane a la tabla
 	
 
 	/**
@@ -102,23 +102,18 @@ public class VentanaTorneo {
 		btnIrAlTorneo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
 		frame.getContentPane().add(btnIrAlTorneo);
 		
+
 		
 		
 		String[] columnNames = {"Nombre", "Numero Equipos", "Cupos"};
 
 		dtm = new DefaultTableModel (null, columnNames); 
-		table = new JTable(dtm);
-		new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		table.setFillsViewportHeight(true);
+		table = new JTable (dtm);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBackground(Color.white);
 		table.setFont(new Font("LMS I Love This Game", Font.PLAIN, 13));
 		table.setBounds(68, 68, 452, 182);
-		table.setSurrendersFocusOnKeystroke(true);
-		table.setFillsViewportHeight(true);
 		table.setRowHeight(30);
-		
-		
 		frame.getContentPane().add(table);
 		
 		JLabel lblNewLabel = new JLabel("");
