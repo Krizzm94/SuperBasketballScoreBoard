@@ -18,6 +18,7 @@ public class VentanaPrincipal {
 
 	private JFrame VentanaPrincipal;
 	private VentanaJugador ventanaJugador;
+	private VentanaTorneo ventanaTorneo;
 	private GestionTorneo gestion;
 
 	
@@ -26,6 +27,7 @@ public class VentanaPrincipal {
 	 */
 	public VentanaPrincipal() {
 		gestion=new GestionTorneo();
+		ventanaTorneo=new VentanaTorneo(this);
 		inicializar();
 	}
 
@@ -44,7 +46,8 @@ public class VentanaPrincipal {
 		JButton btnTorneo = new JButton();
 		btnTorneo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Oprimio el Boton de torneo");		
+				VentanaPrincipal.setVisible(false);
+				ventanaTorneo.getFrame().setVisible(true);
 			}
 		});
 		ImageIcon icnTorneo = new ImageIcon("imagenes/torneo.png");
@@ -139,6 +142,22 @@ public class VentanaPrincipal {
 	}
 
 	
+	
+	
+	/**
+	 * @return the ventanaTorneo
+	 */
+	public VentanaTorneo getVentanaTorneo() {
+		return ventanaTorneo;
+	}
+
+	/**
+	 * @param ventanaTorneo the ventanaTorneo to set
+	 */
+	public void setVentanaTorneo(VentanaTorneo ventanaTorneo) {
+		this.ventanaTorneo = ventanaTorneo;
+	}
+
 	/**
 	 * Launch the application.
 	 */
@@ -148,7 +167,6 @@ public class VentanaPrincipal {
 				try {
 					VentanaPrincipal window = new VentanaPrincipal();
 					window.VentanaPrincipal.setVisible(true);
-					System.out.println(window.getGestion().listarTorneos());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
