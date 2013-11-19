@@ -10,8 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
-
 import Estilos.FormaBotonCircular;
+import java.awt.Color;
 
 public class VentanaMarcador  implements Runnable {
 
@@ -283,6 +283,8 @@ public class VentanaMarcador  implements Runnable {
 		frame.getContentPane().add(btnHome);
 
 		JButton btnStart = new FormaBotonCircular("st");
+		btnStart.setText("");
+		btnStart.setBackground(new Color(0, 204, 102));
 		//		ImageIcon icnStart = new ImageIcon("imagenes/start.png");
 		//		btnStart.setIcon(icnStart);
 		btnStart.addActionListener(new ActionListener() {
@@ -295,12 +297,14 @@ public class VentanaMarcador  implements Runnable {
 			}
 		});
 
-		btnStart.setBounds(272, 246, 50, 30);
+		btnStart.setBounds(279, 243, 30, 30);
 		frame.getContentPane().add(btnStart);
 
 		JButton btnStop = new FormaBotonCircular("ps");
-		//		ImageIcon icnStop = new ImageIcon("imagenes/stop.png");
-		//		btnStop.setIcon(icnStop);
+		btnStop.setText("");
+		btnStop.setBackground(new Color(204, 0, 0));
+//		ImageIcon icnStop = new ImageIcon("imagenes/stopC.png");
+//		btnStop.setIcon(icnStop);
 		btnStop.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -308,15 +312,13 @@ public class VentanaMarcador  implements Runnable {
 
 			}
 		});
-		btnStop.setBounds(272, 275, 50, 30);
+		btnStop.setBounds(279, 275, 30, 30);
 		frame.getContentPane().add(btnStop);
 
-		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setIcon(new ImageIcon("imagenes/fondoCron.png"));
-		lblNewLabel.setBounds(0, 0, 574, 347);
-		frame.getContentPane().add(lblNewLabel);
 
 		JButton btnReanudar = new FormaBotonCircular("re");
+		btnReanudar.setText("");
+		btnReanudar.setBackground(new Color(255, 255, 51));
 		//		ImageIcon icnResume = new ImageIcon("imagenes/start.png");
 		//		btnStart.setIcon(icnResume);
 		btnReanudar.addActionListener(new ActionListener() {
@@ -326,8 +328,15 @@ public class VentanaMarcador  implements Runnable {
 				resume();				
 			}
 		});
-		btnReanudar.setBounds(272, 307, 50, 30);
+		btnReanudar.setBounds(279, 307, 30, 30);
 		frame.getContentPane().add(btnReanudar);
+
+		JLabel lblNewLabel = new JLabel();
+		lblNewLabel.setIcon(new ImageIcon("imagenes/fondoCron.png"));
+		lblNewLabel.setBounds(0, 0, 574, 347);
+		frame.getContentPane().add(lblNewLabel);
+
+
 
 	}
 
