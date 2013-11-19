@@ -34,7 +34,7 @@ public class VentanaTorneo {
 	private JTable table;
 	private DefaultTableModel dtm;
 
-	
+
 
 	/**
 	 * Create the application.
@@ -77,7 +77,7 @@ public class VentanaTorneo {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		
+
 		btnEliminar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
 		frame.getContentPane().add(btnEliminar);
 
@@ -91,19 +91,19 @@ public class VentanaTorneo {
 
 			}
 		});
-		
+
 		ImageIcon icnReg = new ImageIcon("imagenes/back1.png");
 		btnRegresar.setIcon(icnReg);
 		frame.getContentPane().add(btnRegresar);
-		
-		
+
+
 		JButton btnIrAlTorneo = new JButton("Ir al Torneo");
 		btnIrAlTorneo.setBounds(170, 278, 234, 58);
 		btnIrAlTorneo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
 		frame.getContentPane().add(btnIrAlTorneo);
-		
-		
-		
+
+
+
 		String[] columnNames = {"Nombre", "Numero Equipos", "Cupos"};
 
 		dtm = new DefaultTableModel (null, columnNames); 
@@ -117,10 +117,10 @@ public class VentanaTorneo {
 		table.setSurrendersFocusOnKeystroke(true);
 		table.setFillsViewportHeight(true);
 		table.setRowHeight(30);
-		
-		
+
+
 		frame.getContentPane().add(table);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
@@ -128,15 +128,15 @@ public class VentanaTorneo {
 		cargarTorneos();
 
 	}
-	
-	
+
+
 	public void cargarTorneos(){
-	     while(dtm.getRowCount()>0)dtm.removeRow(0);
-	   for(int c=0;c<ventanaPrincipal.getGestion().getTorneos().size();c++){
-		   String equipos=String.valueOf(ventanaPrincipal.getGestion().getTorneos().get(c).getNumEquipos());
-		   String [] filas={ventanaPrincipal.getGestion().getTorneos().get(c).getNombre(),equipos,""};
+		while(dtm.getRowCount()>0)dtm.removeRow(0);
+		for(int c=0;c<ventanaPrincipal.getGestion().getTorneos().size();c++){
+			String equipos=String.valueOf(ventanaPrincipal.getGestion().getTorneos().get(c).getNumEquipos());
+			String [] filas={ventanaPrincipal.getGestion().getTorneos().get(c).getNombre(),equipos,""};
 			dtm.addRow(filas);
-	     }
+		}
 	}
 
 	public JFrame getFrame() {
@@ -146,10 +146,10 @@ public class VentanaTorneo {
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
-	
-//	/**
-//	 * Launch the application.
-//	 */
+
+	/**
+	 * Launch the application.
+	 */
 //	public static void main(String[] args) {
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
@@ -162,6 +162,6 @@ public class VentanaTorneo {
 //			}
 //		});
 //	}
-//	
-	
+
+
 }

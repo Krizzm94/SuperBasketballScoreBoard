@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class VentanaMarcador extends Thread{
+public class VentanaMarcador extends Thread implements Runnable {
 
 	private JFrame frame;
 	private JLabel lblPuntosT1;
@@ -26,6 +26,19 @@ public class VentanaMarcador extends Thread{
 	private static int puntaje1 = 0;
 	private static int puntaje2 = 0;
 	private VentanaPrincipal ventanaPrincipal;
+	private boolean pause;
+	private boolean stop;
+	private Thread thread;
+	private long speed;
+
+	public long getSpeed() {
+		return this.speed;
+	}
+
+	public void setSpeed(long speed) {
+		this.speed = speed;
+	}
+
 
 	/**
 	 * Launch the application.
@@ -47,8 +60,86 @@ public class VentanaMarcador extends Thread{
 	 * Create the application.
 	 */
 	public VentanaMarcador() {
+		pause = false;
+		stop = false;
+		thread = new Thread(this);
+		speed = 0;
 		initialize();
 	}
+
+	public void run() {
+		while (!stop) {
+
+			for (; ;){//inicio del for infinito          
+				if(nuSeg!=00) {//si no es el ultimo segundo
+					nuSeg--;  //decremento el numero de segundos                                  
+				}else{
+					if(nuMin!=00){//si no es el ultimo minuto
+						nuSeg=59;//segundos comienzan en 59
+						nuMin--;//decremento el numero de minutos
+					}else{
+						if (nuHora!=00){
+							nuHora--;//decremento el numero de horas
+							nuMin=59;//minutos comienzan en 59
+							nuSeg=59;//segundos comienzan en 59
+						}else{  
+							JOptionPane.showMessageDialog(null,"FINALIZO ESTE CUARTO", "Fin del conteo", JOptionPane.INFORMATION_MESSAGE);
+							getLblNroCuarto().setText("2");
+							break;//seacabo el tiempo fin hilo  
+
+						}
+					}
+				}   
+				getLblTiempo().setText("0"+nuMin+":"+nuSeg);
+				try {
+					sleep(998);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}//Duermo el hilo durante 999 milisegundos(casi un segundo, quintandole el tiempo de proceso)
+
+
+				try {
+					Thread.sleep(speed);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				synchronized (this) {
+					while (pause)
+
+						try {
+							wait();
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					if (stop)
+						break;
+				}
+			}
+		}
+	}
+
+	public void start() {
+		thread.start();
+	}
+
+	//	synchronized void stop() {
+	//		stop = true;
+	//		pause = false;
+	//		notify();
+	//	}
+	//	
+	//
+	//	synchronized void resume() {
+	//		pause = false;
+	//		notify();
+	//	}
+	//	synchronized void suspend() {
+	//		pause = true;
+	//
+	//	}
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -193,52 +284,29 @@ public class VentanaMarcador extends Thread{
 		ImageIcon icnStart = new ImageIcon("imagenes/start.png");
 		btnStart.setIcon(icnStart);
 		btnStart.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new Thread(new Runnable() {
 
-					@Override
-					public void run() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-						try {//si ocurre un error al dormir el proceso(sleep(999))
-							for (; ;){//inicio del for infinito          
-								if(nuSeg!=00) {//si no es el ultimo segundo
-									nuSeg--;  //decremento el numero de segundos                                  
-								}else{
-									if(nuMin!=00){//si no es el ultimo minuto
-										nuSeg=59;//segundos comienzan en 59
-										nuMin--;//decremento el numero de minutos
-									}else{
-										if (nuHora!=00){
-											nuHora--;//decremento el numero de horas
-											nuMin=59;//minutos comienzan en 59
-											nuSeg=59;//segundos comienzan en 59
-										}else{  
-											JOptionPane.showMessageDialog(null,"FINALIZO ESTE CUARTO", "Fin del conteo", JOptionPane.INFORMATION_MESSAGE);
-											getLblNroCuarto().setText("2");
-											break;//seacabo el tiempo fin hilo  
+				start();
 
-										}
-									}
-								}   
-								getLblTiempo().setText("0"+nuMin+":"+nuSeg);
-								sleep(998);//Duermo el hilo durante 999 milisegundos(casi un segundo, quintandole el tiempo de proceso)
-
-							}
-
-						} catch (InterruptedException ex) {
-							System.out.println(ex.getMessage());
-						}
-
-					}
-				}).start();
 			}
 		});
+
 		btnStart.setBounds(272, 246, 50, 36);
 		frame.getContentPane().add(btnStart);
 
 		JButton btnStop = new JButton();
 		ImageIcon icnStop = new ImageIcon("imagenes/stop.png");
 		btnStop.setIcon(icnStop);
+		btnStop.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 		btnStop.setBounds(272, 300, 50, 36);
 		frame.getContentPane().add(btnStop);
 
