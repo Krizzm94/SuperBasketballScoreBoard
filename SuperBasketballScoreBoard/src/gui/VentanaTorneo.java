@@ -35,6 +35,7 @@ public class VentanaTorneo {
 	private DefaultTableModel dtm; //De tipo DefaultTableModel, variable con el modelo de la tabla
 	private JScrollPane scrollPane; //De tipo JScrollPane, variable para agregarle scrollpane a la tabla
 	private VentanaPrincipal ventanaPrincipal;
+	private VentanaNuevoTorneo ventanaNuevoTorneo;
 	private JFrame frame;
 
 	/**
@@ -67,6 +68,9 @@ public class VentanaTorneo {
 		btnNewButton.setBounds(10, 278, 150, 58);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				frame.setVisible(false);
+				 ventanaNuevoTorneo = new VentanaNuevoTorneo(ventanaPrincipal);
+				 ventanaNuevoTorneo.getFrame().setVisible(true);
 			}
 		});
 		btnNewButton.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
@@ -87,7 +91,6 @@ public class VentanaTorneo {
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
-				ventanaPrincipal = new VentanaPrincipal();
 				ventanaPrincipal.getVentanaPrincipal().setVisible(true);
 
 			}
@@ -111,16 +114,17 @@ public class VentanaTorneo {
 		
 		String[] columnNames = {"Nombre", "Numero Equipos", "Cupos"};
 
-		dtm = new DefaultTableModel (null, columnNames); 
+		dtm = new DefaultTableModel (columnNames,3); 
 		table = new JTable (dtm);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBackground(Color.white);
 		table.setFont(new Font("LMS I Love This Game", Font.PLAIN, 13));
-		table.setBounds(68, 68, 452, 182);
+	
 		table.setRowHeight(30);
 
-
-		frame.getContentPane().add(table);
+		JScrollPane jScrollPane = new JScrollPane(table);
+		jScrollPane.setBounds(68, 68, 452, 182);
+		frame.getContentPane().add(jScrollPane);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(0, 0, 574, 347);

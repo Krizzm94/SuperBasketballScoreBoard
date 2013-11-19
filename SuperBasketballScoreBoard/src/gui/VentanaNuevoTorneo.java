@@ -26,12 +26,14 @@ public class VentanaNuevoTorneo {
 		private JFrame frame;
 		private JTextField JTextNombreTorneo;
 		private VentanaPrincipal ventanaPrincipal;
+		private VentanaTorneo ventanaTorneo;
 		private JComboBox cmbEquipo;
 
 		/**
 		 * Create the application.
 		 */
-		public VentanaNuevoTorneo() {
+		public VentanaNuevoTorneo(VentanaPrincipal ventanaPrincipal) {
+			this.ventanaPrincipal=ventanaPrincipal;
 			initialize();
 		}
 
@@ -90,8 +92,7 @@ public class VentanaNuevoTorneo {
 			btnRegresar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					frame.setVisible(false);
-					ventanaPrincipal = new VentanaPrincipal();
-					ventanaPrincipal.getVentanaPrincipal().setVisible(true);
+					ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
 
 				}
 			});
@@ -108,6 +109,50 @@ public class VentanaNuevoTorneo {
 
 		}
 	
+		
+		
+	/**
+		 * @return the frame
+		 */
+		public JFrame getFrame() {
+			return frame;
+		}
+
+		/**
+		 * @param frame the frame to set
+		 */
+		public void setFrame(JFrame frame) {
+			this.frame = frame;
+		}
+
+		/**
+		 * @return the jTextNombreTorneo
+		 */
+		public JTextField getJTextNombreTorneo() {
+			return JTextNombreTorneo;
+		}
+
+		/**
+		 * @param jTextNombreTorneo the jTextNombreTorneo to set
+		 */
+		public void setJTextNombreTorneo(JTextField jTextNombreTorneo) {
+			JTextNombreTorneo = jTextNombreTorneo;
+		}
+
+		/**
+		 * @return the cmbEquipo
+		 */
+		public JComboBox getCmbEquipo() {
+			return cmbEquipo;
+		}
+
+		/**
+		 * @param cmbEquipo the cmbEquipo to set
+		 */
+		public void setCmbEquipo(JComboBox cmbEquipo) {
+			this.cmbEquipo = cmbEquipo;
+		}
+
 	/**
 	 * Launch the application.
 	 */
@@ -115,7 +160,7 @@ public class VentanaNuevoTorneo {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaNuevoTorneo window = new VentanaNuevoTorneo();
+					VentanaNuevoTorneo window = new VentanaNuevoTorneo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
