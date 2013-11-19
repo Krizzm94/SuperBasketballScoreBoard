@@ -75,9 +75,9 @@ public class VentanaNuevoTorneo {
 			frame.getContentPane().add(lblSeleccioneElEquipo);
 
 			this.cmbEquipo = new JComboBox();
-			cmbEquipo.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
-			cmbEquipo.setMaximumRowCount(12);
-			cmbEquipo.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+			cmbEquipo.setModel(new DefaultComboBoxModel(new String[] {"4", "6", "8", "10", "12"}));
+			cmbEquipo.setMaximumRowCount(5);
+			cmbEquipo.setFont(new Font("Lucida Bright", Font.PLAIN, 16));
 			cmbEquipo.setBounds(400, 212, 127, 33);
 			frame.getContentPane().add(cmbEquipo);
 
