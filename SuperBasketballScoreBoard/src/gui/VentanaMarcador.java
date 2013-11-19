@@ -11,7 +11,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class VentanaMarcador extends Thread implements Runnable {
+import Estilos.FormaBotonCircular;
+
+public class VentanaMarcador  implements Runnable {
 
 	private JFrame frame;
 	private JLabel lblPuntosT1;
@@ -92,7 +94,7 @@ public class VentanaMarcador extends Thread implements Runnable {
 				}   
 				getLblTiempo().setText("0"+nuMin+":"+nuSeg);
 				try {
-					sleep(998);
+					thread.sleep(998);
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -124,21 +126,21 @@ public class VentanaMarcador extends Thread implements Runnable {
 		thread.start();
 	}
 
-	//	synchronized void stop() {
-	//		stop = true;
-	//		pause = false;
-	//		notify();
-	//	}
-	//	
-	//
-	//	synchronized void resume() {
-	//		pause = false;
-	//		notify();
-	//	}
-	//	synchronized void suspend() {
-	//		pause = true;
-	//
-	//	}
+	synchronized void stop() {
+		stop = true;
+		pause = false;
+		notify();
+	}
+
+
+	synchronized void resume() {
+		pause = false;
+		notify();
+	}
+	synchronized void suspend() {
+		pause = true;
+
+	}
 
 
 	/**
@@ -280,9 +282,9 @@ public class VentanaMarcador extends Thread implements Runnable {
 		btnHome.setBounds(514, 17, 50, 50);
 		frame.getContentPane().add(btnHome);
 
-		JButton btnStart = new JButton();
-		ImageIcon icnStart = new ImageIcon("imagenes/start.png");
-		btnStart.setIcon(icnStart);
+		JButton btnStart = new FormaBotonCircular("st");
+		//		ImageIcon icnStart = new ImageIcon("imagenes/start.png");
+		//		btnStart.setIcon(icnStart);
 		btnStart.addActionListener(new ActionListener() {
 
 			@Override
@@ -293,27 +295,39 @@ public class VentanaMarcador extends Thread implements Runnable {
 			}
 		});
 
-		btnStart.setBounds(272, 246, 50, 36);
+		btnStart.setBounds(272, 246, 50, 30);
 		frame.getContentPane().add(btnStart);
 
-		JButton btnStop = new JButton();
-		ImageIcon icnStop = new ImageIcon("imagenes/stop.png");
-		btnStop.setIcon(icnStop);
+		JButton btnStop = new FormaBotonCircular("ps");
+		//		ImageIcon icnStop = new ImageIcon("imagenes/stop.png");
+		//		btnStop.setIcon(icnStop);
 		btnStop.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				suspend();
 
 			}
 		});
-		btnStop.setBounds(272, 300, 50, 36);
+		btnStop.setBounds(272, 275, 50, 30);
 		frame.getContentPane().add(btnStop);
 
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondoCron.png"));
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		frame.getContentPane().add(lblNewLabel);
+
+		JButton btnReanudar = new FormaBotonCircular("re");
+		//		ImageIcon icnResume = new ImageIcon("imagenes/start.png");
+		//		btnStart.setIcon(icnResume);
+		btnReanudar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				resume();				
+			}
+		});
+		btnReanudar.setBounds(272, 307, 50, 30);
+		frame.getContentPane().add(btnReanudar);
 
 	}
 
