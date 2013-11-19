@@ -114,16 +114,17 @@ public class VentanaTorneo {
 		
 		String[] columnNames = {"Nombre", "Numero Equipos", "Cupos"};
 
-		dtm = new DefaultTableModel (null, columnNames); 
+		dtm = new DefaultTableModel (columnNames,3); 
 		table = new JTable (dtm);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBackground(Color.white);
 		table.setFont(new Font("LMS I Love This Game", Font.PLAIN, 13));
-		table.setBounds(68, 68, 452, 182);
+	
 		table.setRowHeight(30);
 
-
-		frame.getContentPane().add(table);
+		JScrollPane jScrollPane = new JScrollPane(table);
+		jScrollPane.setBounds(68, 68, 452, 182);
+		frame.getContentPane().add(jScrollPane);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(0, 0, 574, 347);
