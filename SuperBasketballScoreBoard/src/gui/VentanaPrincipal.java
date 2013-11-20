@@ -160,6 +160,23 @@ public class VentanaPrincipal {
 		this.ventanaTorneo = ventanaTorneo;
 	}
 
+	
+	
+	
+	/**
+	 * @return the ventanaNuevoTorneo
+	 */
+	public VentanaNuevoTorneo getVentanaNuevoTorneo() {
+		return ventanaNuevoTorneo;
+	}
+
+	/**
+	 * @param ventanaNuevoTorneo the ventanaNuevoTorneo to set
+	 */
+	public void setVentanaNuevoTorneo(VentanaNuevoTorneo ventanaNuevoTorneo) {
+		this.ventanaNuevoTorneo = ventanaNuevoTorneo;
+	}
+
 	/**
 	 * Launch the application.
 	 */

@@ -14,8 +14,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.DefaultComboBoxModel;
+
+import logica.Torneo;
 
 /**
  * @author Wolfran Pinzon
@@ -28,6 +31,7 @@ public class VentanaNuevoTorneo {
 		private VentanaPrincipal ventanaPrincipal;
 		private VentanaTorneo ventanaTorneo;
 		private JComboBox cmbEquipo;
+		private JButton crear;
 
 		/**
 		 * Create the application.
@@ -54,15 +58,29 @@ public class VentanaNuevoTorneo {
 			lblJugador.setFont(new Font("LMS I Love This Game", Font.BOLD, 32));
 			lblJugador.setBounds(81, 11, 383, 90);
 			frame.getContentPane().add(lblJugador);
-
-			JButton btnNewButton = new JButton("CREAR");
-			btnNewButton.addActionListener(new ActionListener() {
+			crear = new JButton("CREAR");
+			
+			crear.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					if(JTextNombreTorneo.getText().length()!=0){
+						if(ventanaPrincipal.getGestion().validarNombreTorneo(JTextNombreTorneo.getText())==false){
+							String nombreTorneo=JTextNombreTorneo.getText();
+							int numEquipos=Integer.parseInt(cmbEquipo.getSelectedItem().toString());
+							Torneo torneo=new Torneo(nombreTorneo, numEquipos, null, null);
+							ventanaPrincipal.getGestion().agregarTorneo(torneo);
+							ventanaPrincipal.getGestion().agregarTorneoSql(torneo);
+						}
+						else{
+							JOptionPane.showMessageDialog(null,JTextNombreTorneo.getText()+" El torneo ya existe");
+						}
+					}else{
+						JOptionPane.showMessageDialog(null,"Campos vacios!!!","ERROR",JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			});
-			btnNewButton.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
-			btnNewButton.setBounds(92, 265, 372, 58);
-			frame.getContentPane().add(btnNewButton);
+			crear.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
+			crear.setBounds(92, 265, 372, 58);
+			frame.getContentPane().add(crear);
 
 			JLabel lblSeleccioneElTorneo = new JLabel("Nombre");
 			lblSeleccioneElTorneo.setForeground(new Color(255, 255, 255));
@@ -152,7 +170,24 @@ public class VentanaNuevoTorneo {
 		public void setCmbEquipo(JComboBox cmbEquipo) {
 			this.cmbEquipo = cmbEquipo;
 		}
+		
+		
 
+	/**
+		 * @return the crear
+		 */
+		public JButton getCrear() {
+			return crear;
+		}
+
+		/**
+		 * @param crear the crear to set
+		 */
+		public void setCrear(JButton crear) {
+			this.crear = crear;
+		}
+
+		
 	/**
 	 * Launch the application.
 	 */

@@ -53,7 +53,9 @@ public class GestionTorneo {
 	}
 
 
-	
+	public void agregarTorneoSql(Torneo torneo){
+		torneoDao.insertarTorneo(torneo);
+	}
 	/**
 	 * metodo para buscar torneos
 	 */
@@ -180,6 +182,13 @@ public class GestionTorneo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean validarNombreTorneo(String nombre){
+		if(buscarTorneo(nombre)!=null){
+			return true;
+		}
+		return false;
 	}
 
 }
