@@ -21,6 +21,7 @@ public class VentanaEquipo {
 
 	private JFrame VentanaEquipo;
 	private VentanaIngresarEquipo nuevoEquipo;
+	private VentanaPrincipal ventanaPrincipal;
 	
 
 	/**
@@ -107,6 +108,9 @@ public class VentanaEquipo {
 		btnAtras.setBackground(Color.WHITE);
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ventanaPrincipal = new VentanaPrincipal();
+				VentanaEquipo.setVisible(false);
+				ventanaPrincipal.getVentanaPrincipal().setVisible(true);
 			}
 		});
 		btnAtras.setHorizontalAlignment(SwingConstants.LEADING);
@@ -150,4 +154,19 @@ public class VentanaEquipo {
 	public void setVentanaPrincipal(JFrame ventanaPrincipal) {
 		VentanaEquipo = ventanaPrincipal;
 	}
+
+	public void setVentanaPrincipal(VentanaPrincipal ventanaPrincipal) {
+		this.ventanaPrincipal = ventanaPrincipal;
+	}
+
+	public JFrame getVentanaEquipo() {
+		return VentanaEquipo;
+	}
+
+	public void setVentanaEquipo(JFrame ventanaEquipo) {
+		VentanaEquipo = ventanaEquipo;
+	}
+	
+	
+	
 }

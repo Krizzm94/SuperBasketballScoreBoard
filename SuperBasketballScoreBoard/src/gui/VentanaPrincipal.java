@@ -20,9 +20,10 @@ public class VentanaPrincipal {
 	private VentanaJugador ventanaJugador;
 	private VentanaTorneo ventanaTorneo;
 	private VentanaNuevoTorneo ventanaNuevoTorneo; 
+	private VentanaEquipo ventanaEquipo;
 	private GestionTorneo gestion;
 
-	
+
 	/**
 	 * constructor
 	 */
@@ -86,7 +87,9 @@ public class VentanaPrincipal {
 		JButton btnEquipo = new JButton();
 		btnEquipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Boton Equipo");
+				ventanaEquipo = new VentanaEquipo();
+				VentanaPrincipal.setVisible(false);
+				ventanaEquipo.getVentanaEquipo().setVisible(true);
 			}
 		});
 		ImageIcon icnEquipo = new ImageIcon("imagenes/equipo.png");
@@ -143,9 +146,14 @@ public class VentanaPrincipal {
 		this.gestion = gestion;
 	}
 
-	
-	
-	
+	public VentanaEquipo getVentanaEquipo() {
+		return ventanaEquipo;
+	}
+
+	public void setVentanaEquipo(VentanaEquipo ventanaEquipo) {
+		this.ventanaEquipo = ventanaEquipo;
+	}
+
 	/**
 	 * @return the ventanaTorneo
 	 */
@@ -160,9 +168,9 @@ public class VentanaPrincipal {
 		this.ventanaTorneo = ventanaTorneo;
 	}
 
-	
-	
-	
+
+
+
 	/**
 	 * @return the ventanaNuevoTorneo
 	 */
@@ -193,5 +201,5 @@ public class VentanaPrincipal {
 		});
 	}
 
-	
+
 }
