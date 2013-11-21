@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTable;
@@ -80,6 +81,17 @@ public class VentanaTorneo {
 		btnEliminar.setBounds(414, 278, 150, 58);
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(table.getSelectedRow()>=0){
+					int fila=table.getSelectedRow();
+					String nombre=(String) table.getValueAt(fila, 0);
+					int opcion=JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar el torneo '"+nombre+"'","Advertencia",JOptionPane.YES_NO_OPTION);
+					if(opcion==0){
+						ventanaPrincipal.getGestion().eliminarTorneo(nombre);
+						cargarTorneos();
+					}
+				}else{
+					JOptionPane.showMessageDialog(null, "Por favor seleccione un torneo","Advertencia",JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
 

@@ -52,6 +52,11 @@ public class GestionTorneo {
 		this.torneos.add(torneo);
 	}
 
+	public void eliminarTorneo(String nombre){
+		this.torneos.remove(buscarTorneo(nombre));
+		torneoDao.eliminarTorneo(nombre);
+	}
+	
 
 	public void agregarTorneoSql(Torneo torneo){
 		torneoDao.insertarTorneo(torneo);
