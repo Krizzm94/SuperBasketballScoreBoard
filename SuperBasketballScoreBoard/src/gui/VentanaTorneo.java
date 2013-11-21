@@ -37,6 +37,7 @@ public class VentanaTorneo {
 	private JScrollPane scrollPane; //De tipo JScrollPane, variable para agregarle scrollpane a la tabla
 	private VentanaPrincipal ventanaPrincipal;
 	private VentanaNuevoTorneo ventanaNuevoTorneo;
+	private VentanaIrTorneo ventanaIrTorneo;
 	private JFrame frame;
 
 	/**
@@ -116,6 +117,20 @@ public class VentanaTorneo {
 
 		JButton btnIrAlTorneo = new JButton("Ir al Torneo");
 		btnIrAlTorneo.setBounds(170, 278, 234, 58);
+		btnIrAlTorneo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(table.getSelectedRow()>=0){
+				frame.setVisible(false);
+				int fila=table.getSelectedRow();
+				String nombre=(String) table.getValueAt(fila, 0);
+				ventanaPrincipal.setTorneo(nombre);
+				 ventanaIrTorneo = new VentanaIrTorneo(ventanaPrincipal);
+				 ventanaIrTorneo.getFrame().setVisible(true);
+				}else{
+					JOptionPane.showMessageDialog(null, "Por favor seleccione un torneo","Advertencia",JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
 		btnIrAlTorneo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
 		frame.getContentPane().add(btnIrAlTorneo);
 

@@ -21,7 +21,9 @@ public class VentanaPrincipal {
 	private VentanaTorneo ventanaTorneo;
 	private VentanaNuevoTorneo ventanaNuevoTorneo; 
 	private VentanaEquipo ventanaEquipo;
+	private VentanaIrTorneo ventanaIrTorneo;
 	private GestionTorneo gestion;
+	private String torneo;
 
 
 	/**
@@ -31,6 +33,7 @@ public class VentanaPrincipal {
 		gestion=new GestionTorneo();
 		ventanaTorneo=new VentanaTorneo(this);
 		ventanaNuevoTorneo=new VentanaNuevoTorneo(this);
+		ventanaIrTorneo=new VentanaIrTorneo(this);
 		inicializar();
 	}
 
@@ -183,6 +186,37 @@ public class VentanaPrincipal {
 	 */
 	public void setVentanaNuevoTorneo(VentanaNuevoTorneo ventanaNuevoTorneo) {
 		this.ventanaNuevoTorneo = ventanaNuevoTorneo;
+	}
+
+	
+	
+	
+	/**
+	 * @return the ventanaIrTorneo
+	 */
+	public VentanaIrTorneo getVentanaIrTorneo() {
+		return ventanaIrTorneo;
+	}
+
+	/**
+	 * @param ventanaIrTorneo the ventanaIrTorneo to set
+	 */
+	public void setVentanaIrTorneo(VentanaIrTorneo ventanaIrTorneo) {
+		this.ventanaIrTorneo = ventanaIrTorneo;
+	}
+
+	/**
+	 * @return the torneo
+	 */
+	public String getTorneo() {
+		return torneo;
+	}
+
+	/**
+	 * @param torneo the torneo to set
+	 */
+	public void setTorneo(String torneo) {
+		this.torneo = torneo;
 	}
 
 	/**
