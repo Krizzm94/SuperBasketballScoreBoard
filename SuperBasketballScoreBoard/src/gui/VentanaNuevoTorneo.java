@@ -69,6 +69,8 @@ public class VentanaNuevoTorneo {
 							Torneo torneo=new Torneo(nombreTorneo, numEquipos, null, null);
 							ventanaPrincipal.getGestion().agregarTorneo(torneo);
 							ventanaPrincipal.getGestion().agregarTorneoSql(torneo);
+							JOptionPane.showMessageDialog(null, "Torneo creado exitosamente!",JTextNombreTorneo.getText(),JOptionPane.INFORMATION_MESSAGE);
+							JTextNombreTorneo.setText("");
 						}
 						else{
 							JOptionPane.showMessageDialog(null,JTextNombreTorneo.getText()+" El torneo ya existe");
@@ -110,6 +112,7 @@ public class VentanaNuevoTorneo {
 			btnRegresar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					frame.setVisible(false);
+					ventanaPrincipal.getVentanaTorneo().cargarTorneos();
 					ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
 
 				}
