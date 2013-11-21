@@ -50,6 +50,8 @@ public class VentanaIngresarEquipo extends JFrame {
 				try {
 					VentanaIngresarEquipo frame = new VentanaIngresarEquipo();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

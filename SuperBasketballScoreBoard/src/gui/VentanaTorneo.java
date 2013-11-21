@@ -54,6 +54,7 @@ public class VentanaTorneo {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 580, 376);
 		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 

@@ -54,6 +54,7 @@ public class VentanaEquipo {
 		VentanaEquipo.getContentPane().setBackground(new Color(0, 0, 0));
 		VentanaEquipo.setBounds(100, 100, 580, 376);
 		VentanaEquipo.setResizable(false);
+		VentanaEquipo.setLocationRelativeTo(null);
 		VentanaEquipo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		VentanaEquipo.getContentPane().setLayout(null);
 		
