@@ -22,6 +22,7 @@ public class VentanaPrincipal {
 	private VentanaNuevoTorneo ventanaNuevoTorneo; 
 	private VentanaEquipo ventanaEquipo;
 	private VentanaIrTorneo ventanaIrTorneo;
+	private VentanaMarcador ventanaMarcador;
 	private GestionTorneo gestion;
 	private String torneo;
 
@@ -34,6 +35,7 @@ public class VentanaPrincipal {
 		ventanaTorneo=new VentanaTorneo(this);
 		ventanaNuevoTorneo=new VentanaNuevoTorneo(this);
 		ventanaIrTorneo=new VentanaIrTorneo(this);
+		ventanaMarcador=new VentanaMarcador(this);
 		inicializar();
 	}
 
@@ -172,7 +174,21 @@ public class VentanaPrincipal {
 	}
 
 
+	
 
+	/**
+	 * @return the ventanaMarcador
+	 */
+	public VentanaMarcador getVentanaMarcador() {
+		return ventanaMarcador;
+	}
+
+	/**
+	 * @param ventanaMarcador the ventanaMarcador to set
+	 */
+	public void setVentanaMarcador(VentanaMarcador ventanaMarcador) {
+		this.ventanaMarcador = ventanaMarcador;
+	}
 
 	/**
 	 * @return the ventanaNuevoTorneo

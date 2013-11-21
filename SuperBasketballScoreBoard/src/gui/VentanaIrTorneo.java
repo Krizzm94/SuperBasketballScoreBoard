@@ -88,6 +88,8 @@ public class VentanaIrTorneo {
 		JButton btnIrAlPartido = new JButton("Ir al Partido");
 		btnIrAlPartido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				frame.setVisible(false);
+				ventanaPrincipal.getVentanaMarcador().getFrame().setVisible(true);
 			}
 		});
 		btnIrAlPartido.setBounds(100, 278, 388, 58);

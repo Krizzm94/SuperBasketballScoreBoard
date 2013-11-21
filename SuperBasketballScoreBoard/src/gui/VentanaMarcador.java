@@ -42,30 +42,17 @@ public class VentanaMarcador  implements Runnable {
 	}
 
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaMarcador window = new VentanaMarcador();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
 	 */
-	public VentanaMarcador() {
+	public VentanaMarcador(VentanaPrincipal ventanaPrincipal) {
+		
 		pause = false;
 		stop = false;
 		thread = new Thread(this);
 		speed = 0;
+		this.ventanaPrincipal=ventanaPrincipal;
 		initialize();
 	}
 
@@ -153,7 +140,6 @@ public class VentanaMarcador  implements Runnable {
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		this.ventanaPrincipal = new VentanaPrincipal();
 
 		this.lblTiempo = new JLabel("10:00");
 		lblTiempo.setFont(new Font("LED BOARD", Font.BOLD, 70));
@@ -404,5 +390,22 @@ public class VentanaMarcador  implements Runnable {
 		this.ventanaPrincipal = ventanaPrincipal;
 	}
 
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaMarcador window = new VentanaMarcador(null);
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
 
 }
