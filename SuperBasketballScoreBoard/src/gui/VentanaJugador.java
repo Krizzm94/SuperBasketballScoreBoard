@@ -7,18 +7,24 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
 import javax.swing.JTextField;
 import java.awt.Color;
+
+import logica.Torneo;
 
 
 public class VentanaJugador {
 
 	private JFrame frame;
-	private JTextField textField;
+	private JTextField txtNumero;
 	private VentanaPrincipal ventanaPrincipal;
 	private JComboBox cmbEquipo;
 	private JComboBox cmbTorneo;
@@ -59,7 +65,13 @@ public class VentanaJugador {
 		frame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 		frame.getContentPane().setLayout(null);
 
+		this.cmbTorneo = new JComboBox();
+		cmbTorneo.setBounds(401, 106, 127, 27);
+		frame.getContentPane().add(cmbTorneo);
 
+		this.cmbEquipo = new JComboBox();
+		cmbEquipo.setBounds(401, 160, 127, 27);
+		frame.getContentPane().add(cmbEquipo);
 
 		JLabel lblJugador = new JLabel("JUGADOR");
 		lblJugador.setForeground(new Color(255, 255, 255));
@@ -67,10 +79,23 @@ public class VentanaJugador {
 		lblJugador.setBounds(134, 11, 219, 43);
 		frame.getContentPane().add(lblJugador);
 
-		JButton btnNewButton = new JButton("AGREGAR");
-		btnNewButton.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
-		btnNewButton.setBounds(0, 289, 290, 58);
-		frame.getContentPane().add(btnNewButton);
+		JButton btnAgregar = new JButton("AGREGAR");
+		btnAgregar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				if((cmbEquipo.getSelectedItem())== null || cmbTorneo.getSelectedItem() == null || getTxtNumero().getText().length()==0){				
+					JOptionPane.showMessageDialog(null,"Por Favor llene"+"\n"+"todos los campos","Campos Vacios",JOptionPane.WARNING_MESSAGE );
+				}else{
+					JOptionPane.showMessageDialog(null,"esta bn" );
+				}
+			}
+		}
+				);
+		btnAgregar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
+		btnAgregar.setBounds(0, 289, 290, 58);
+		frame.getContentPane().add(btnAgregar);
 
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
@@ -95,18 +120,37 @@ public class VentanaJugador {
 		lblIngreseElNumero.setBounds(10, 214, 369, 27);
 		frame.getContentPane().add(lblIngreseElNumero);
 
-		this.cmbTorneo = new JComboBox();
-		cmbTorneo.setBounds(401, 106, 127, 27);
-		frame.getContentPane().add(cmbTorneo);
+		txtNumero = new JTextField();
+		txtNumero.addKeyListener(new KeyListener() {
 
-		this.cmbEquipo = new JComboBox();
-		cmbEquipo.setBounds(401, 160, 127, 27);
-		frame.getContentPane().add(cmbEquipo);
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				char caracter = e.getKeyChar();
+				if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE))
+				{
+					e.consume();
+					JOptionPane.showMessageDialog(null, "Ingrese solo numeros");
+				}
+				if (txtNumero.getText().length() >= 2) {
+				e.setKeyChar('\0');
+				}
+			}
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
 
-		textField = new JTextField();
-		textField.setBounds(401, 214, 127, 27);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+			}
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		txtNumero.setBounds(401, 214, 127, 27);
+		frame.getContentPane().add(txtNumero);
+		txtNumero.setColumns(10);
 
 		JButton btnRegresar = new JButton();
 		btnRegresar.addActionListener(new ActionListener() {
@@ -136,6 +180,30 @@ public class VentanaJugador {
 
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
+	}
+
+	public JComboBox getCmbEquipo() {
+		return cmbEquipo;
+	}
+
+	public void setCmbEquipo(JComboBox cmbEquipo) {
+		this.cmbEquipo = cmbEquipo;
+	}
+
+	public JComboBox getCmbTorneo() {
+		return cmbTorneo;
+	}
+
+	public void setCmbTorneo(JComboBox cmbTorneo) {
+		this.cmbTorneo = cmbTorneo;
+	}
+
+	public JTextField getTxtNumero() {
+		return txtNumero;
+	}
+
+	public void setTxtNumero(JTextField txtNumero) {
+		this.txtNumero = txtNumero;
 	}
 
 
