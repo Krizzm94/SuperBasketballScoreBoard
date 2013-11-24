@@ -41,6 +41,7 @@ public class VentanaIngresarEquipo extends JFrame {
 	private JTextField txtNombre;
 	private JTextField txtJugadores;
 	private JTextField txtLugar;
+	private VentanaEquipo ventanaEquipo;
 
 	/**
 	 * Launch the application.
@@ -103,6 +104,17 @@ public class VentanaIngresarEquipo extends JFrame {
 		);
 		
 		JButton btnAtras = new FormaBotonCircular("ATRAS");
+		btnAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaIngresarEquipo frame  = new VentanaIngresarEquipo();
+				frame.setVisible(false);
+				ventanaEquipo = new VentanaEquipo();
+				ventanaEquipo.getVentanaEquipo().setVisible(true);
+				
+			}
+		});
 		
 		JButton btnGuardar = new FormaBotonCircular("GUARDAR");
 		btnGuardar.setPreferredSize(new Dimension(65, 65));
@@ -263,4 +275,12 @@ public class VentanaIngresarEquipo extends JFrame {
 		      return renderer;
 		    }
 		  }
+	public VentanaEquipo getVentanaEquipo() {
+		return ventanaEquipo;
+	}
+
+	public void setVentanaEquipo(VentanaEquipo ventanaEquipo) {
+		this.ventanaEquipo = ventanaEquipo;
+	}
+	 
 }

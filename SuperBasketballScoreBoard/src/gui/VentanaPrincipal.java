@@ -28,7 +28,6 @@ public class VentanaPrincipal {
 	private GestionTorneo gestion;
 	private String torneo;
 
-
 	/**
 	 * constructor
 	 */
