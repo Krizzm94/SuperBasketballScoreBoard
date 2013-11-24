@@ -1,7 +1,7 @@
 package gui;
 
+import java.awt.Component;
 import java.awt.EventQueue;
-import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,8 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
 import javax.swing.JTextField;
 import java.awt.Color;
-
 import logica.Torneo;
+import logica.Jugador;
 
 
 public class VentanaJugador {
@@ -66,10 +65,12 @@ public class VentanaJugador {
 		frame.getContentPane().setLayout(null);
 
 		this.cmbTorneo = new JComboBox();
+		cmbTorneo.addItem("NBA");
 		cmbTorneo.setBounds(401, 106, 127, 27);
 		frame.getContentPane().add(cmbTorneo);
 
 		this.cmbEquipo = new JComboBox();
+		cmbEquipo.addItem("LAKERS");
 		cmbEquipo.setBounds(401, 160, 127, 27);
 		frame.getContentPane().add(cmbEquipo);
 
@@ -88,7 +89,12 @@ public class VentanaJugador {
 				if((cmbEquipo.getSelectedItem())== null || cmbTorneo.getSelectedItem() == null || getTxtNumero().getText().length()==0){				
 					JOptionPane.showMessageDialog(null,"Por Favor llene"+"\n"+"todos los campos","Campos Vacios",JOptionPane.WARNING_MESSAGE );
 				}else{
-					JOptionPane.showMessageDialog(null,"esta bn" );
+					
+					String nombreTorneo = cmbEquipo.getSelectedItem().toString();
+					String nombreEquipo = cmbTorneo.getSelectedItem().toString();
+					String numero = txtNumero.getText();
+					JOptionPane.showMessageDialog(null,"los datos son: " + nombreTorneo+" "+nombreEquipo+" "+numero );
+					txtNumero.setText("");
 				}
 			}
 		}
@@ -133,7 +139,7 @@ public class VentanaJugador {
 					JOptionPane.showMessageDialog(null, "Ingrese solo numeros");
 				}
 				if (txtNumero.getText().length() >= 2) {
-				e.setKeyChar('\0');
+					e.setKeyChar('\0');
 				}
 			}
 			@Override

@@ -33,6 +33,7 @@ public class VentanaNuevoTorneo {
 		private VentanaTorneo ventanaTorneo;
 		private JComboBox cmbEquipo;
 		private JButton crear;
+		private VentanaJugador ventanaJugador;
 
 		/**
 		 * Create the application.
@@ -54,6 +55,7 @@ public class VentanaNuevoTorneo {
 			frame.setUndecorated(true);
 			frame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 			frame.getContentPane().setLayout(null);
+			ventanaJugador = new VentanaJugador();
 
 
 
@@ -73,6 +75,7 @@ public class VentanaNuevoTorneo {
 							Torneo torneo=new Torneo(nombreTorneo, numEquipos, null, null);
 							ventanaPrincipal.getGestion().agregarTorneo(torneo);
 							ventanaPrincipal.getGestion().agregarTorneoSql(torneo);
+//							getVentanaJugador().getCmbTorneo().addItem(nombreTorneo);
 							JOptionPane.showMessageDialog(null, "Torneo creado exitosamente!",JTextNombreTorneo.getText(),JOptionPane.INFORMATION_MESSAGE);
 							JTextNombreTorneo.setText("");
 						}
@@ -195,6 +198,14 @@ public class VentanaNuevoTorneo {
 		}
 
 		
+	public VentanaJugador getVentanaJugador() {
+			return ventanaJugador;
+		}
+
+		public void setVentanaJugador(VentanaJugador ventanaJugador) {
+			this.ventanaJugador = ventanaJugador;
+		}
+
 	/**
 	 * Launch the application.
 	 */
