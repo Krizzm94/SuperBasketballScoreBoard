@@ -7,12 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import logica.GestionTorneo;
 
 
@@ -105,17 +103,37 @@ public class VentanaPrincipal {
 		btnEquipo.setBounds(295, 71, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnEquipo);
 
-		JLabel lblSuperBasketballScoreboard = new JLabel("Super BasketBall ScoreBoard");
+		JLabel lblSuperBasketballScoreboard = new JLabel("Super BasketBall\r\nScoreBoard");
 		lblSuperBasketballScoreboard.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		lblSuperBasketballScoreboard.setForeground(Color.WHITE);
-		lblSuperBasketballScoreboard.setBounds(35, 29, 530, 25);
+		lblSuperBasketballScoreboard.setBounds(10, 11, 505, 62);
 		VentanaPrincipal.getContentPane().add(lblSuperBasketballScoreboard);
+
+		JButton btnClose = new JButton();
+		btnClose.setIcon(new ImageIcon("imagenes/close.png"));
+		btnClose.setToolTipText("SALIR");
+		btnClose.setBounds(543, 5, 30, 30);
+		btnClose.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				int salir = JOptionPane.showConfirmDialog(null,"¿SEGURO QUE QUIERES SALIR LA APP?", "Salir", JOptionPane.YES_NO_OPTION);
+				if (salir == JOptionPane.YES_OPTION)
+				{
+					System.exit(0);
+				}
+
+
+			}
+		}
+				);
+		VentanaPrincipal.getContentPane().add(btnClose);
 
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		VentanaPrincipal.getContentPane().add(lblNewLabel);
-
 	}
 
 	public JFrame getVentanaPrincipal() {
@@ -176,9 +194,6 @@ public class VentanaPrincipal {
 		this.ventanaTorneo = ventanaTorneo;
 	}
 
-
-	
-
 	/**
 	 * @return the ventanaMarcador
 	 */
@@ -207,9 +222,6 @@ public class VentanaPrincipal {
 		this.ventanaNuevoTorneo = ventanaNuevoTorneo;
 	}
 
-	
-	
-	
 	/**
 	 * @return the ventanaIrTorneo
 	 */
@@ -251,7 +263,8 @@ public class VentanaPrincipal {
 					e.printStackTrace();
 				}
 			}
-		});
+		}
+				);
 	}
 
 
