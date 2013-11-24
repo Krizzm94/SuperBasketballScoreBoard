@@ -61,6 +61,16 @@ public class Torneo {
 	}
 	
 	
+	public int contarEquipos(){
+		int contador=0;
+		for(int i=0;i<equipos.length;i++){
+			if(equipos[i]!=null){
+				contador++;
+			}
+		}
+		return contador;
+	}
+	
 	/**
 	 * metodo para agregar partidos a torneos
 	 */

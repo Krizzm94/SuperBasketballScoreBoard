@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -35,7 +36,6 @@ public class VentanaTorneo {
 
 	private JTable table; //De tipo Jtable, variable para la tabla
 	private DefaultTableModel dtm; //De tipo DefaultTableModel, variable con el modelo de la tabla
-	private JScrollPane scrollPane; //De tipo JScrollPane, variable para agregarle scrollpane a la tabla
 	private VentanaPrincipal ventanaPrincipal;
 	private VentanaNuevoTorneo ventanaNuevoTorneo;
 	private VentanaIrTorneo ventanaIrTorneo;
@@ -65,12 +65,12 @@ public class VentanaTorneo {
 
 
 		JLabel lblJugador = new JLabel("TORNEOS");
-		lblJugador.setBounds(165, 13, 219, 43);
-		lblJugador.setForeground(new Color(255, 255, 255));
-		lblJugador.setFont(new Font("LMS I Love This Game", Font.BOLD, 30));
+		lblJugador.setBounds(165, 13, 219, 70);
+		lblJugador.setForeground(Color.WHITE);
+		lblJugador.setFont(new Font("Varsity Playbook", Font.PLAIN, 60));
 		frame.getContentPane().add(lblJugador);
 
-		JButton btnNewButton = new JButton("Nuevo");
+		JButton btnNewButton = new JButton("NUEVO");
 		btnNewButton.setBounds(10, 278, 150, 58);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -79,28 +79,30 @@ public class VentanaTorneo {
 				 ventanaNuevoTorneo.getFrame().setVisible(true);
 			}
 		});
-		btnNewButton.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
+		btnNewButton.setFont(new Font("Varsity Playbook", Font.PLAIN, 35));
 		frame.getContentPane().add(btnNewButton);
 
 		JButton btnEliminar = new JButton("ELIMINAR");
-		btnEliminar.setBounds(414, 278, 150, 58);
+		btnEliminar.setBounds(398, 278, 168, 58);
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow()>=0){
 					int fila=table.getSelectedRow();
 					String nombre=(String) table.getValueAt(fila, 0);
-					int opcion=JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar el torneo '"+nombre+"'","Advertencia",JOptionPane.YES_NO_OPTION);
+					final Icon ic1  =  new ImageIcon("imagenes/caution.png");
+					int opcion=JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar\n el torneo '"+nombre+"'","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic1);
 					if(opcion==0){
 						ventanaPrincipal.getGestion().eliminarTorneo(nombre);
 						cargarTorneos();
 					}
 				}else{
-					JOptionPane.showMessageDialog(null, "Por favor seleccione un torneo","Advertencia",JOptionPane.WARNING_MESSAGE);
+					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
+					JOptionPane.showMessageDialog(null, "Por favor seleccione un torneo","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
 				}
 			}
 		});
 
-		btnEliminar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
+		btnEliminar.setFont(new Font("Varsity Playbook", Font.PLAIN, 35));
 		frame.getContentPane().add(btnEliminar);
 
 		JButton btnRegresar = new JButton();
@@ -117,9 +119,31 @@ public class VentanaTorneo {
 		btnRegresar.setIcon(icnReg);
 		frame.getContentPane().add(btnRegresar);
 
+		
+		JButton btnHome = new JButton();
+		btnHome.addActionListener(new ActionListener() {
 
-		JButton btnIrAlTorneo = new JButton("Ir al Torneo");
-		btnIrAlTorneo.setBounds(170, 278, 234, 58);
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				final Icon ic2 =  new ImageIcon("imagenes/menu.png");
+				int salir = JOptionPane.showConfirmDialog(null,"¿SEGURO QUE QUIERES IR AL MENU PRINCIPAL?", "Ir al menu principal", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic2);
+				if (salir == JOptionPane.YES_OPTION)
+				{
+					getFrame().setVisible(false);
+					ventanaPrincipal.getVentanaPrincipal().setVisible(true);
+				}
+
+
+
+			}
+		});
+		ImageIcon icnHome = new ImageIcon("imagenes/home.png");
+		btnHome.setIcon(icnHome);
+		btnHome.setBounds(514, 17, 50, 50);
+		frame.getContentPane().add(btnHome);
+
+		JButton btnIrAlTorneo = new JButton("IR AL TORNEO");
+		btnIrAlTorneo.setBounds(170, 278, 220, 58);
 		btnIrAlTorneo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(table.getSelectedRow()>=0){
@@ -130,11 +154,12 @@ public class VentanaTorneo {
 				 ventanaIrTorneo = new VentanaIrTorneo(ventanaPrincipal);
 				 ventanaIrTorneo.getFrame().setVisible(true);
 				}else{
-					JOptionPane.showMessageDialog(null, "Por favor seleccione un torneo","Advertencia",JOptionPane.WARNING_MESSAGE);
+					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
+					JOptionPane.showMessageDialog(null, "Por favor seleccione un torneo","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
 				}
 			}
 		});
-		btnIrAlTorneo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
+		btnIrAlTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 35));
 		frame.getContentPane().add(btnIrAlTorneo);
 
 
@@ -143,16 +168,23 @@ public class VentanaTorneo {
 
 		
 		
-		String[] columnNames = {"Nombre", "Numero Equipos", "Cupos"};
+		String[] columnNames = {"Nombre", "Equipos", "Cupos"};
 
-		dtm = new DefaultTableModel (columnNames,3); 
+		dtm = new DefaultTableModel (columnNames,3);
 		table = new JTable (dtm);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBackground(Color.white);
-		table.setFont(new Font("LMS I Love This Game", Font.PLAIN, 13));
-	
+		table.setFont(new Font("Varsity Playbook", Font.PLAIN, 28));
 		table.setRowHeight(30);
+		
+		int[] anchos = {200, 30, 30};
 
+		for(int i = 0; i < dtm.getColumnCount(); i++) {
+			table.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+
+		}
+
+		
 		JScrollPane jScrollPane = new JScrollPane(table);
 		jScrollPane.setBounds(68, 68, 452, 182);
 		frame.getContentPane().add(jScrollPane);
@@ -170,7 +202,9 @@ public class VentanaTorneo {
 		while(dtm.getRowCount()>0)dtm.removeRow(0);
 		for(int c=0;c<ventanaPrincipal.getGestion().getTorneos().size();c++){
 			String equipos=String.valueOf(ventanaPrincipal.getGestion().getTorneos().get(c).getNumEquipos());
-			String [] filas={ventanaPrincipal.getGestion().getTorneos().get(c).getNombre(),equipos,""};
+			int cup=(ventanaPrincipal.getGestion().getTorneos().get(c).getNumEquipos())-(ventanaPrincipal.getGestion().getTorneos().get(c).contarEquipos());
+			String cupos=String.valueOf(cup);
+			String [] filas={ventanaPrincipal.getGestion().getTorneos().get(c).getNombre(),equipos,cupos};
 			dtm.addRow(filas);
 		}
 	}

@@ -1,6 +1,7 @@
 package gui;
 import java.awt.EventQueue;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -109,6 +110,7 @@ public class VentanaPrincipal {
 		lblSuperBasketballScoreboard.setBounds(10, 11, 505, 62);
 		VentanaPrincipal.getContentPane().add(lblSuperBasketballScoreboard);
 
+		final Icon icono  =  new ImageIcon("imagenes/power.png");
 		JButton btnClose = new JButton();
 		btnClose.setIcon(new ImageIcon("imagenes/close.png"));
 		btnClose.setToolTipText("SALIR");
@@ -118,7 +120,10 @@ public class VentanaPrincipal {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				int salir = JOptionPane.showConfirmDialog(null,"¿SEGURO QUE QUIERES SALIR LA APP?", "Salir", JOptionPane.YES_NO_OPTION);
+				int salir = JOptionPane.showConfirmDialog(null,
+														"<html><center><font SIZE='5' face='Verdana' color=black> ¿SEGURO QUE DESEA <p>SALIR DE LA APP?</font></center></html>",
+														"SALIR!!!", 
+														JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,icono);
 				if (salir == JOptionPane.YES_OPTION)
 				{
 					System.exit(0);
