@@ -15,6 +15,7 @@ import javax.swing.Box;
 import javax.swing.ComboBoxEditor;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.GroupLayout;
+import javax.swing.JRootPane;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -66,7 +67,9 @@ public class VentanaIngresarEquipo extends JFrame {
 	public VentanaIngresarEquipo() {
 		setAutoRequestFocus(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 580, 376);
+		setUndecorated(true);
+		getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+		setBounds(100, 100, 580, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

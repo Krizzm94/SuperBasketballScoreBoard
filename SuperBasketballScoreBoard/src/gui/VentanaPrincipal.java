@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -45,10 +47,12 @@ public class VentanaPrincipal {
 	private void inicializar() {
 		VentanaPrincipal = new JFrame();
 		VentanaPrincipal.getContentPane().setBackground(new Color(0, 0, 0));
-		VentanaPrincipal.setBounds(100, 100, 580, 376);
+		VentanaPrincipal.setBounds(100, 100, 580, 350);
 		VentanaPrincipal.setLocationRelativeTo(null);
 		VentanaPrincipal.setResizable(false);
 		VentanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		VentanaPrincipal.setUndecorated(true);
+		VentanaPrincipal.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 		VentanaPrincipal.getContentPane().setLayout(null);
 
 		JButton btnTorneo = new JButton();

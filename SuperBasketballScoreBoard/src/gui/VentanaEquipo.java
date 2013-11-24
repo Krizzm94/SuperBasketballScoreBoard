@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
 import javax.swing.SwingConstants;
 
 import Estilos.FormaBoton;
@@ -53,10 +54,12 @@ public class VentanaEquipo {
 	private void inicializar() {
 		VentanaEquipo = new JFrame();
 		VentanaEquipo.getContentPane().setBackground(new Color(0, 0, 0));
-		VentanaEquipo.setBounds(100, 100, 580, 376);
+		VentanaEquipo.setBounds(100, 100, 580, 350);
 		VentanaEquipo.setResizable(false);
 		VentanaEquipo.setLocationRelativeTo(null);
 		VentanaEquipo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		VentanaEquipo.setUndecorated(true);
+		VentanaEquipo.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 		VentanaEquipo.getContentPane().setLayout(null);
 		
 		
