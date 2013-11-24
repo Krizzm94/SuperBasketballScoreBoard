@@ -24,8 +24,8 @@ public class VentanaMarcador  implements Runnable {
 	private JLabel lblNroCuarto;
 	private JComboBox jugadoresTeam1;
 	private JComboBox jugadoresTeam2;
-	private static int nuMin = 10; 
-	private static int nuSeg = 0;
+	private static int nuMin = 0; 
+	private static int nuSeg = 10;
 	private static int nuHora = 0;
 	private static int puntaje1 = 0;
 	private static int puntaje2 = 0;
@@ -49,11 +49,11 @@ public class VentanaMarcador  implements Runnable {
 	 * Create the application.
 	 */
 	public VentanaMarcador(VentanaPrincipal ventanaPrincipal) {
-		
+
 		pause = false;
 		stop = false;
 		thread = new Thread(this);
-		speed = 0;
+		speed = 998;
 		this.ventanaPrincipal=ventanaPrincipal;
 		initialize();
 	}
@@ -74,22 +74,16 @@ public class VentanaMarcador  implements Runnable {
 							nuMin=59;//minutos comienzan en 59
 							nuSeg=59;//segundos comienzan en 59
 						}else{  
-							JOptionPane.showMessageDialog(null,"FINALIZO ESTE CUARTO", "Fin del conteo", JOptionPane.INFORMATION_MESSAGE);
-							getLblNroCuarto().setText("2");
+
 							break;//seacabo el tiempo fin hilo  
 
+
 						}
+
 					}
 				}   
 				getLblTiempo().setText("0"+nuMin+":"+nuSeg);
-				try {
-					thread.sleep(998);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}//Duermo el hilo durante 999 milisegundos(casi un segundo, quintandole el tiempo de proceso)
-
-
+				//			
 				try {
 					Thread.sleep(speed);
 				} catch (Exception e) {
@@ -105,6 +99,8 @@ public class VentanaMarcador  implements Runnable {
 							e.printStackTrace();
 						}
 					if (stop)
+
+
 						break;
 				}
 			}
@@ -118,6 +114,10 @@ public class VentanaMarcador  implements Runnable {
 	synchronized void stop() {
 		stop = true;
 		pause = false;
+		JOptionPane.showMessageDialog(null,"FINALIZO ESTE CUARTO", "Fin del conteo", JOptionPane.INFORMATION_MESSAGE);
+		getLblNroCuarto().setText("2");
+		getLblTiempo().setText("0"+nuMin+":"+"0"+nuSeg);
+	
 		notify();
 	}
 
@@ -272,11 +272,9 @@ public class VentanaMarcador  implements Runnable {
 		btnHome.setBounds(514, 17, 50, 50);
 		frame.getContentPane().add(btnHome);
 
-		JButton btnStart = new FormaBotonCircular("st");
-		btnStart.setText("");
-		btnStart.setBackground(new Color(0, 204, 102));
-		//		ImageIcon icnStart = new ImageIcon("imagenes/start.png");
-		//		btnStart.setIcon(icnStart);
+		JButton btnStart = new JButton();
+		ImageIcon icnStart = new ImageIcon("imagenes/inicio.png");
+		btnStart.setIcon(icnStart);
 		btnStart.addActionListener(new ActionListener() {
 
 			@Override
@@ -290,11 +288,9 @@ public class VentanaMarcador  implements Runnable {
 		btnStart.setBounds(279, 243, 30, 30);
 		frame.getContentPane().add(btnStart);
 
-		JButton btnStop = new FormaBotonCircular("ps");
-		btnStop.setText("");
-		btnStop.setBackground(new Color(204, 0, 0));
-//		ImageIcon icnStop = new ImageIcon("imagenes/stopC.png");
-//		btnStop.setIcon(icnStop);
+		JButton btnStop = new JButton();
+		ImageIcon icnStop = new ImageIcon("imagenes/pausa.png");
+		btnStop.setIcon(icnStop);
 		btnStop.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -306,11 +302,9 @@ public class VentanaMarcador  implements Runnable {
 		frame.getContentPane().add(btnStop);
 
 
-		JButton btnReanudar = new FormaBotonCircular("re");
-		btnReanudar.setText("");
-		btnReanudar.setBackground(new Color(255, 255, 51));
-		//		ImageIcon icnResume = new ImageIcon("imagenes/start.png");
-		//		btnStart.setIcon(icnResume);
+		JButton btnReanudar = new JButton();
+		ImageIcon icnResume = new ImageIcon("imagenes/reanudar.png");
+		btnReanudar.setIcon(icnResume);
 		btnReanudar.addActionListener(new ActionListener() {
 
 			@Override
@@ -410,6 +404,6 @@ public class VentanaMarcador  implements Runnable {
 			}
 		});
 	}
-	
+
 
 }
