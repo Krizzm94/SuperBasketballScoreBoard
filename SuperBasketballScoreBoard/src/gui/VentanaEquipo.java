@@ -78,9 +78,10 @@ public class VentanaEquipo {
 		btnNuevo.setForeground(Color.DARK_GRAY);
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				VentanaEquipo.setVisible(false);
 				nuevoEquipo=new VentanaIngresarEquipo();
 				nuevoEquipo.setVisible(true);
-				VentanaEquipo.setVisible(false);
+				
 				
 				}
 		});
