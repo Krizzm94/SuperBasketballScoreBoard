@@ -56,6 +56,7 @@ public class VentanaPrincipal {
 		VentanaPrincipal.getContentPane().setLayout(null);
 
 		JButton btnTorneo = new JButton();
+		btnTorneo.setToolTipText("Aqui puedes agregar, eliminar y consultar torneos.");
 		btnTorneo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrincipal.setVisible(false);
@@ -69,6 +70,7 @@ public class VentanaPrincipal {
 
 
 		JButton btnJugador = new JButton();
+		btnJugador.setToolTipText("Aqui puedes agregar y eliminar jugadores si tienes torneos y equipos creados.");
 		btnJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrincipal.setVisible(false);
@@ -94,6 +96,7 @@ public class VentanaPrincipal {
 		VentanaPrincipal.getContentPane().add(btnInfo);
 
 		JButton btnEquipo = new JButton();
+		btnEquipo.setToolTipText("Aqui puedes agregar y eliminar equipos con torneos creados previamnte.");
 		btnEquipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ventanaEquipo = new VentanaEquipo();
