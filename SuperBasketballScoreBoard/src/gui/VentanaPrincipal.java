@@ -26,6 +26,8 @@ public class VentanaPrincipal {
 	private VentanaMarcador ventanaMarcador;
 	private GestionTorneo gestion;
 	private String torneo;
+	private String local;
+	private String visitante;
 
 	/**
 	 * constructor
@@ -253,6 +255,36 @@ public class VentanaPrincipal {
 	 */
 	public void setTorneo(String torneo) {
 		this.torneo = torneo;
+	}
+
+	
+	
+	/**
+	 * @return the local
+	 */
+	public String getLocal() {
+		return local;
+	}
+
+	/**
+	 * @param local the local to set
+	 */
+	public void setLocal(String local) {
+		this.local = local;
+	}
+
+	/**
+	 * @return the visitante
+	 */
+	public String getVisitante() {
+		return visitante;
+	}
+
+	/**
+	 * @param visitante the visitante to set
+	 */
+	public void setVisitante(String visitante) {
+		this.visitante = visitante;
 	}
 
 	/**

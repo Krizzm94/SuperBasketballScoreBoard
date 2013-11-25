@@ -154,6 +154,7 @@ public class VentanaTorneo {
 				String nombre=(String) table.getValueAt(fila, 0);
 				ventanaPrincipal.setTorneo(nombre);
 				 ventanaIrTorneo = new VentanaIrTorneo(ventanaPrincipal);
+				 ventanaIrTorneo.cargarPartidos();
 				 ventanaIrTorneo.getFrame().setVisible(true);
 				}else{
 					final Icon ic3  =  new ImageIcon("imagenes/denied.png");

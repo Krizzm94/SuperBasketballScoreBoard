@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -61,10 +62,10 @@ public class VentanaNuevoTorneo {
 
 			JLabel lblJugador = new JLabel("NUEVO TORNEO");
 			lblJugador.setForeground(new Color(255, 255, 255));
-			lblJugador.setFont(new Font("LMS I Love This Game", Font.BOLD, 32));
-			lblJugador.setBounds(81, 11, 383, 90);
+			lblJugador.setFont(new Font("Varsity Playbook", Font.PLAIN, 60));
+			lblJugador.setBounds(110, 11, 383, 90);
 			frame.getContentPane().add(lblJugador);
-			crear = new JButton("CREAR");
+			crear = new JButton("CREAR TORNEO");
 			
 			crear.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -76,44 +77,52 @@ public class VentanaNuevoTorneo {
 							ventanaPrincipal.getGestion().agregarTorneo(torneo);
 							ventanaPrincipal.getGestion().agregarTorneoSql(torneo);
 //							getVentanaJugador().getCmbTorneo().addItem(nombreTorneo);
-							JOptionPane.showMessageDialog(null, "Torneo creado exitosamente!",JTextNombreTorneo.getText(),JOptionPane.INFORMATION_MESSAGE);
-							JTextNombreTorneo.setText("");
+							final Icon ic1 =  new ImageIcon("imagenes/check.png");
+							JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>torneo creado<p>exitosamente!</font></center></html>",nombreTorneo,JOptionPane.PLAIN_MESSAGE,ic1);
+//							JTextNombreTorneo.setText("");
+							frame.setVisible(false);
+							ventanaPrincipal.getVentanaTorneo().cargarTorneos();
+							ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
 						}
 						else{
-							JOptionPane.showMessageDialog(null,JTextNombreTorneo.getText()+" El torneo ya existe");
+							final Icon ic2  =  new ImageIcon("imagenes/denied.png");
+							JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> El torneo ya existe!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic2);
 						}
 					}else{
-						JOptionPane.showMessageDialog(null,"Campos vacios!!!","ERROR",JOptionPane.ERROR_MESSAGE);
+						final Icon ic3  =  new ImageIcon("imagenes/denied.png");
+						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>  Campos Vacios!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
 					}
 				}
 			});
-			crear.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
+			crear.setFont(new Font("Varsity Playbook", Font.PLAIN, 35));
 			crear.setBounds(92, 265, 372, 58);
 			frame.getContentPane().add(crear);
 
 			JLabel lblSeleccioneElTorneo = new JLabel("Nombre");
 			lblSeleccioneElTorneo.setForeground(new Color(255, 255, 255));
-			lblSeleccioneElTorneo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 23));
+			lblSeleccioneElTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 45));
 			lblSeleccioneElTorneo.setBounds(44, 126, 192, 39);
 			frame.getContentPane().add(lblSeleccioneElTorneo);
 
 			JLabel lblSeleccioneElEquipo = new JLabel("Numero Equipos");
 			lblSeleccioneElEquipo.setForeground(new Color(255, 255, 255));
-			lblSeleccioneElEquipo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 23));
+			lblSeleccioneElEquipo.setFont(new Font("Varsity Playbook", Font.PLAIN, 45));
 			lblSeleccioneElEquipo.setBounds(42, 204, 318, 45);
 			frame.getContentPane().add(lblSeleccioneElEquipo);
 
 			this.cmbEquipo = new JComboBox();
 			cmbEquipo.setModel(new DefaultComboBoxModel(new String[] {"4", "6", "8", "10", "12"}));
 			cmbEquipo.setMaximumRowCount(5);
-			cmbEquipo.setFont(new Font("Lucida Bright", Font.PLAIN, 16));
+			cmbEquipo.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 			cmbEquipo.setBounds(400, 212, 127, 33);
 			frame.getContentPane().add(cmbEquipo);
 
 			JTextNombreTorneo = new JTextField();
-			JTextNombreTorneo.setBounds(302, 129, 223, 39);
+			JTextNombreTorneo.setBounds(202, 129, 323, 45);
+			JTextNombreTorneo.setColumns(20);
+			JTextNombreTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 40));
 			frame.getContentPane().add(JTextNombreTorneo);
-			JTextNombreTorneo.setColumns(10);
+			
 
 			JButton btnRegresar = new JButton();
 			btnRegresar.addActionListener(new ActionListener() {
@@ -129,6 +138,30 @@ public class VentanaNuevoTorneo {
 			btnRegresar.setBounds(10, 11, 45, 45);
 			frame.getContentPane().add(btnRegresar);
 
+			JButton btnHome = new JButton();
+			btnHome.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					final Icon ic2 =  new ImageIcon("imagenes/menu.png");
+					int salir = JOptionPane.showConfirmDialog(null,"<html><center><font SIZE='5' face='Verdana' color=black>¿SEGURO QUE DESEA <P>IR AL MENU PRINCIPAL?</font></center></html>"
+															, "Ir al menu principal", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic2);
+					if (salir == JOptionPane.YES_OPTION)
+					{
+						getFrame().setVisible(false);
+						ventanaPrincipal.getVentanaPrincipal().setVisible(true);
+					}
+
+
+
+				}
+			});
+			ImageIcon icnHome = new ImageIcon("imagenes/home.png");
+			btnHome.setIcon(icnHome);
+			btnHome.setBounds(514, 17, 50, 50);
+			frame.getContentPane().add(btnHome);
+			
+			
 			JLabel lblNewLabel = new JLabel("New label");
 			lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
 			lblNewLabel.setBounds(0, 0, 574, 347);
