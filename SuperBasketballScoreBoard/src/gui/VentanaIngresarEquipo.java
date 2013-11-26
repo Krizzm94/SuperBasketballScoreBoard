@@ -131,6 +131,7 @@ public class VentanaIngresarEquipo  {
 
 
 		JButton btnGuardar = new FormaBotonCircular("GUARDAR");
+		btnGuardar.setToolTipText("Crea un nuevo equipo");
 		btnGuardar.setText("");
 		btnGuardar.setBounds(429, 65, 119, 119);
 		btnGuardar.setIcon(new ImageIcon("imagenes/botonGuardar.png"));
@@ -143,6 +144,7 @@ public class VentanaIngresarEquipo  {
 		});
 
 		JButton btnAtras = new FormaBotonCircular("");
+		btnAtras.setToolTipText("Devuelve al menu anterior");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
