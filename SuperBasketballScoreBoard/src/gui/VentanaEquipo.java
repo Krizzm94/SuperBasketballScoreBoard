@@ -79,8 +79,9 @@ public class VentanaEquipo {
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaEquipo.setVisible(false);
-				nuevoEquipo=new VentanaIngresarEquipo();
-				nuevoEquipo.setVisible(true);
+				nuevoEquipo = new VentanaIngresarEquipo();
+				getNuevoEquipo().getFrame().setVisible(true);
+				getNuevoEquipo().getFrame().setLocationRelativeTo(null);
 				
 				
 				}
@@ -169,6 +170,14 @@ public class VentanaEquipo {
 
 	public void setVentanaEquipo(JFrame ventanaEquipo) {
 		VentanaEquipo = ventanaEquipo;
+	}
+
+	public VentanaIngresarEquipo getNuevoEquipo() {
+		return nuevoEquipo;
+	}
+
+	public void setNuevoEquipo(VentanaIngresarEquipo nuevoEquipo) {
+		this.nuevoEquipo = nuevoEquipo;
 	}
 	
 	

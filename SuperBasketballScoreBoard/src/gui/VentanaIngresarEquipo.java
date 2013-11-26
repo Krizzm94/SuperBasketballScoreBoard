@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.Panel;
 import java.awt.GridLayout;
 import java.awt.Component;
@@ -38,8 +39,9 @@ import java.awt.Font;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 
-public class VentanaIngresarEquipo extends JFrame {
+public class VentanaIngresarEquipo  {
 
+	private static JFrame frame;
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtLugar;
@@ -52,9 +54,9 @@ public class VentanaIngresarEquipo extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaIngresarEquipo frame = new VentanaIngresarEquipo();
+					VentanaIngresarEquipo window = new VentanaIngresarEquipo();
+					window.frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,14 +68,15 @@ public class VentanaIngresarEquipo extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaIngresarEquipo() {
-		setAutoRequestFocus(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setUndecorated(true);
-		getRootPane().setWindowDecorationStyle(JRootPane.NONE);
-		setBounds(100, 100, 580, 350);
+		frame = new JFrame();
+		frame.setAutoRequestFocus(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setUndecorated(true);
+		frame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+		frame.setBounds(100, 100, 580, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		frame.setContentPane(contentPane);
 
 		JLabel lblTorneo = new JLabel("Torneo");
 		lblTorneo.setBounds(28, 80, 119, 24);
@@ -142,7 +145,6 @@ public class VentanaIngresarEquipo extends JFrame {
 		JButton btnAtras = new FormaBotonCircular("");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaIngresarEquipo frame  = new VentanaIngresarEquipo();
 				frame.setVisible(false);
 				ventanaEquipo = new VentanaEquipo();
 				ventanaEquipo.getVentanaEquipo().setVisible(true);
@@ -153,7 +155,7 @@ public class VentanaIngresarEquipo extends JFrame {
 		btnAtras.setPreferredSize(new Dimension(65, 65));
 		btnAtras.setMinimumSize(new Dimension(65, 23));
 		btnAtras.setMaximumSize(new Dimension(65, 30));
-	
+
 		contentPane.setLayout(null);
 		contentPane.add(lblTorneo);
 		contentPane.add(torneo);
@@ -200,5 +202,13 @@ public class VentanaIngresarEquipo extends JFrame {
 			return renderer;
 		}
 	}
+	public static JFrame getFrame() {
+		return frame;
+	}
+
+	public static void setFrame(JFrame frame) {
+		VentanaIngresarEquipo.frame = frame;
+	}
+	
 
 }
