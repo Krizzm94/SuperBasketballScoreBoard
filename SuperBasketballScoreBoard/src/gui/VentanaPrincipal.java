@@ -1,6 +1,7 @@
 package gui;
 import java.awt.EventQueue;
 
+import javax.sound.midi.MidiDevice.Info;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -29,6 +30,7 @@ public class VentanaPrincipal {
 	private String torneo;
 	private String local;
 	private String visitante;
+	private Informacion informacion;
 
 	/**
 	 * constructor
@@ -39,6 +41,7 @@ public class VentanaPrincipal {
 		ventanaNuevoTorneo=new VentanaNuevoTorneo(this);
 		ventanaIrTorneo=new VentanaIrTorneo(this);
 		ventanaMarcador=new VentanaMarcador(this);
+		informacion=new Informacion(this);
 		inicializar();
 	}
 
@@ -88,7 +91,8 @@ public class VentanaPrincipal {
 		JButton btnInfo = new JButton();
 		btnInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Boton de Informacion");
+				VentanaPrincipal.setVisible(false);
+				informacion.getFrame().setVisible(true);	
 			}
 		});
 		ImageIcon icnInfo = new ImageIcon("imagenes/infoF.png");
@@ -128,9 +132,9 @@ public class VentanaPrincipal {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				int salir = JOptionPane.showConfirmDialog(null,
-														"<html><center><font SIZE='5' face='Verdana' color=black> ¿SEGURO QUE DESEA <p>SALIR DE LA APP?</font></center></html>",
-														"SALIR!!!", 
-														JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,icono);
+						"<html><center><font SIZE='5' face='Verdana' color=black> ¿SEGURO QUE DESEA <p>SALIR DE LA APP?</font></center></html>",
+						"SALIR!!!", 
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,icono);
 				if (salir == JOptionPane.YES_OPTION)
 				{
 					System.exit(0);
@@ -262,8 +266,8 @@ public class VentanaPrincipal {
 		this.torneo = torneo;
 	}
 
-	
-	
+
+
 	/**
 	 * @return the local
 	 */
@@ -290,6 +294,16 @@ public class VentanaPrincipal {
 	 */
 	public void setVisitante(String visitante) {
 		this.visitante = visitante;
+	}
+	
+	
+
+	public Informacion getInformacion() {
+		return informacion;
+	}
+
+	public void setInformacion(Informacion informacion) {
+		this.informacion = informacion;
 	}
 
 	/**
