@@ -1,6 +1,7 @@
 package gui;
 import java.awt.EventQueue;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -63,7 +64,7 @@ public class VentanaPrincipal {
 				ventanaTorneo.getFrame().setVisible(true);
 			}
 		});
-		ImageIcon icnTorneo = new ImageIcon("imagenes/torneoN.png");
+		ImageIcon icnTorneo = new ImageIcon("imagenes/torneoF.png");
 		btnTorneo.setIcon(icnTorneo);
 		btnTorneo.setBounds(10, 71, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnTorneo);
@@ -79,7 +80,7 @@ public class VentanaPrincipal {
 
 			}
 		});	
-		ImageIcon icnVentanaPrincipal = new ImageIcon("imagenes/jugadorN.png");
+		ImageIcon icnVentanaPrincipal = new ImageIcon("imagenes/jugadorF.png");
 		btnJugador.setIcon(icnVentanaPrincipal);
 		btnJugador.setBounds(10, 209, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnJugador);
@@ -90,7 +91,7 @@ public class VentanaPrincipal {
 				JOptionPane.showMessageDialog(null, "Boton de Informacion");
 			}
 		});
-		ImageIcon icnInfo = new ImageIcon("imagenes/infoN.png");
+		ImageIcon icnInfo = new ImageIcon("imagenes/infoF.png");
 		btnInfo.setIcon(icnInfo);
 		btnInfo.setBounds(295, 209, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnInfo);
@@ -104,15 +105,16 @@ public class VentanaPrincipal {
 				ventanaEquipo.getVentanaEquipo().setVisible(true);
 			}
 		});
-		ImageIcon icnEquipo = new ImageIcon("imagenes/equipoN.png");
+		ImageIcon icnEquipo = new ImageIcon("imagenes/equipoF.png");
 		btnEquipo.setIcon(icnEquipo);
 		btnEquipo.setBounds(295, 71, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnEquipo);
 
-		JLabel lblSuperBasketballScoreboard = new JLabel("Super BasketBall\r\nScoreBoard");
-		lblSuperBasketballScoreboard.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
-		lblSuperBasketballScoreboard.setForeground(Color.WHITE);
-		lblSuperBasketballScoreboard.setBounds(10, 11, 505, 62);
+		JLabel lblSuperBasketballScoreboard = new JLabel("Super BasketBallScoreBoard");
+		lblSuperBasketballScoreboard.setBorder(BorderFactory.createLineBorder(Color.white));
+		lblSuperBasketballScoreboard.setFont(new Font("Dafunk2", Font.PLAIN, 26));
+		lblSuperBasketballScoreboard.setForeground(Color.white);
+		lblSuperBasketballScoreboard.setBounds(10, 11, 505, 50);
 		VentanaPrincipal.getContentPane().add(lblSuperBasketballScoreboard);
 
 		final Icon icono  =  new ImageIcon("imagenes/power.png");
