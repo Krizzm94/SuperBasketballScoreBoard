@@ -66,12 +66,10 @@ public class VentanaJugador {
 		frame.getContentPane().setLayout(null);
 
 		this.cmbTorneo = new JComboBox();
-		cmbTorneo.addItem("NBA");
 		cmbTorneo.setBounds(401, 106, 127, 27);
 		frame.getContentPane().add(cmbTorneo);
 
 		this.cmbEquipo = new JComboBox();
-		cmbEquipo.addItem("LAKERS");
 		cmbEquipo.setBounds(401, 160, 127, 27);
 		frame.getContentPane().add(cmbEquipo);
 
@@ -177,9 +175,15 @@ public class VentanaJugador {
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		frame.getContentPane().add(lblNewLabel);
 
-
+		cargarTorneos();
 	}
-
+	
+	public void cargarTorneos(){
+		cmbTorneo.removeAllItems();
+		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
+				cmbTorneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
+		}
+	}
 	public JFrame getFrame() {
 		return frame;
 	}
