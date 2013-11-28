@@ -69,7 +69,7 @@ public class Informacion  extends JFrame{
 		frame.getContentPane().add(jScrollPane);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("imagenes/fondoInfo.png"));
+		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
 		lblNewLabel.setBounds(0, 0, 580, 350);
 		frame.getContentPane().add(lblNewLabel);
 		

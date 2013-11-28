@@ -46,6 +46,7 @@ public class VentanaIngresarEquipo  {
 	private JTextField txtNombre;
 	private JTextField txtLugar;
 	private VentanaEquipo ventanaEquipo;
+	private VentanaPrincipal ventanaPrincipal;
 
 	/**
 	 * Launch the application.
@@ -54,7 +55,7 @@ public class VentanaIngresarEquipo  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaIngresarEquipo window = new VentanaIngresarEquipo();
+					VentanaIngresarEquipo window = new VentanaIngresarEquipo(null);
 					window.frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -67,7 +68,8 @@ public class VentanaIngresarEquipo  {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaIngresarEquipo() {
+	public VentanaIngresarEquipo(VentanaPrincipal ventanaPrincipal) {
+		this.ventanaPrincipal=ventanaPrincipal;
 		frame = new JFrame();
 		frame.setAutoRequestFocus(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -148,7 +150,6 @@ public class VentanaIngresarEquipo  {
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
-				ventanaEquipo = new VentanaEquipo();
 				ventanaEquipo.getVentanaEquipo().setVisible(true);
 			}
 		});

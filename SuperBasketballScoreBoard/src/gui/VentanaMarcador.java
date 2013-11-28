@@ -166,7 +166,7 @@ public class VentanaMarcador  implements Runnable {
 		lblNroCuarto.setBounds(266, 125, 50, 74);
 		frame.getContentPane().add(lblNroCuarto);
 
-		JLabel lblTeam = new JLabel("TEAM:");
+		JLabel lblTeam = new JLabel(ventanaPrincipal.getLocal());
 		lblTeam.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblTeam.setBounds(50, 205, 46, 14);
 		frame.getContentPane().add(lblTeam);
@@ -176,7 +176,7 @@ public class VentanaMarcador  implements Runnable {
 		lblCuarto.setBounds(266, 200, 60, 20);
 		frame.getContentPane().add(lblCuarto);
 
-		JLabel label_5 = new JLabel("TEAM:");
+		JLabel label_5 = new JLabel(ventanaPrincipal.getVisitante());
 		label_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		label_5.setBounds(429, 205, 46, 14);
 		frame.getContentPane().add(label_5);
