@@ -111,7 +111,7 @@ public class VentanaNuevoTorneo {
 			frame.getContentPane().add(lblSeleccioneElEquipo);
 
 			this.cmbEquipo = new JComboBox();
-			cmbEquipo.setModel(new DefaultComboBoxModel(new String[] {"4", "6", "8", "10", "12"}));
+			cmbEquipo.setModel(new DefaultComboBoxModel(new String[] {"4","8","16"}));
 			cmbEquipo.setMaximumRowCount(5);
 			cmbEquipo.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 			cmbEquipo.setBounds(400, 212, 127, 33);

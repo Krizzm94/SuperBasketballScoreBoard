@@ -124,7 +124,7 @@ public class VentanaIrTorneo {
 					frame.setVisible(false);
 					int fila=table.getSelectedRow();
 					String local=(String) table.getValueAt(fila, 0);
-					String visitante=(String) table.getValueAt(fila, 0);
+					String visitante=(String) table.getValueAt(fila, 1);
 					ventanaPrincipal.setLocal(local);
 					ventanaPrincipal.setVisitante(visitante);
 					 ventanaMarcador = new VentanaMarcador(ventanaPrincipal);
