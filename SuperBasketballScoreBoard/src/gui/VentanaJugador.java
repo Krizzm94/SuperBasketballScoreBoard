@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -86,17 +88,20 @@ public class VentanaJugador {
 			public void actionPerformed(ActionEvent arg0) {
 
 				if((cmbEquipo.getSelectedItem())== null || cmbTorneo.getSelectedItem() == null || getTxtNumero().getText().length()==0){				
-					JOptionPane.showMessageDialog(null,"Por Favor llene"+"\n"+"todos los campos","Campos Vacios",JOptionPane.WARNING_MESSAGE );
-				}else{
-					
-					String nombreTorneo = cmbEquipo.getSelectedItem().toString();
-					String nombreEquipo = cmbTorneo.getSelectedItem().toString();
-					String numero = txtNumero.getText();
-					JOptionPane.showMessageDialog(null,"los datos son: " + nombreTorneo+" "+nombreEquipo+" "+numero );
-					txtNumero.setText("");
+					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
+					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>  Complete el Formulario!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
 				}
+				else
+				{
+						String nombreTorneo = cmbEquipo.getSelectedItem().toString();
+						String nombreEquipo = cmbTorneo.getSelectedItem().toString();
+						String numero = txtNumero.getText();
+						JOptionPane.showMessageDialog(null,"los datos son: " + nombreTorneo+" "+nombreEquipo+" "+numero );
+						txtNumero.setText("");
+					}
 			}
 		}
+	
 				);
 		btnAgregar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
 		btnAgregar.setBounds(0, 289, 290, 58);
@@ -176,45 +181,54 @@ public class VentanaJugador {
 		frame.getContentPane().add(lblNewLabel);
 
 		cargarTorneos();
-	}
-	
-	public void cargarTorneos(){
-		cmbTorneo.removeAllItems();
-		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
-				cmbTorneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
-		}
-	}
-	public JFrame getFrame() {
-		return frame;
-	}
+		//		cargarEquipos();
+}
 
-	public void setFrame(JFrame frame) {
-		this.frame = frame;
+public void cargarTorneos(){
+	cmbTorneo.removeAllItems();
+	for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
+		cmbTorneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
 	}
+}
 
-	public JComboBox getCmbEquipo() {
-		return cmbEquipo;
-	}
+//	public void cargarEquipos(){
+//		cmbEquipo.removeAllItems();
+//		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
+//				cmbTorneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
+//		}
+//	}
 
-	public void setCmbEquipo(JComboBox cmbEquipo) {
-		this.cmbEquipo = cmbEquipo;
-	}
+public JFrame getFrame() {
+	return frame;
+}
 
-	public JComboBox getCmbTorneo() {
-		return cmbTorneo;
-	}
+public void setFrame(JFrame frame) {
+	this.frame = frame;
+}
 
-	public void setCmbTorneo(JComboBox cmbTorneo) {
-		this.cmbTorneo = cmbTorneo;
-	}
+public JComboBox getCmbEquipo() {
+	return cmbEquipo;
+}
 
-	public JTextField getTxtNumero() {
-		return txtNumero;
-	}
+public void setCmbEquipo(JComboBox cmbEquipo) {
+	this.cmbEquipo = cmbEquipo;
+}
 
-	public void setTxtNumero(JTextField txtNumero) {
-		this.txtNumero = txtNumero;
-	}
+public JComboBox getCmbTorneo() {
+	return cmbTorneo;
+}
+
+public void setCmbTorneo(JComboBox cmbTorneo) {
+	this.cmbTorneo = cmbTorneo;
+}
+
+public JTextField getTxtNumero() {
+	return txtNumero;
+}
+
+public void setTxtNumero(JTextField txtNumero) {
+	this.txtNumero = txtNumero;
+}
 
 
 }
