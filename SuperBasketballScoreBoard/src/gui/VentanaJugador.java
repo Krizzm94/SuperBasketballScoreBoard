@@ -35,7 +35,7 @@ public class VentanaJugador {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaJugador window = new VentanaJugador();
+					VentanaJugador window = new VentanaJugador(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,8 @@ public class VentanaJugador {
 	/**
 	 * Create the application.
 	 */
-	public VentanaJugador() {
+	public VentanaJugador(VentanaPrincipal ventanaPrincipal) {
+		this.ventanaPrincipal=ventanaPrincipal;
 		initialize();
 	}
 
@@ -162,7 +163,6 @@ public class VentanaJugador {
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
-				ventanaPrincipal = new VentanaPrincipal();
 				ventanaPrincipal.getVentanaPrincipal().setVisible(true);
 
 			}

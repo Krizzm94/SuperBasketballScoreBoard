@@ -56,7 +56,6 @@ public class VentanaNuevoTorneo {
 			frame.setUndecorated(true);
 			frame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 			frame.getContentPane().setLayout(null);
-			ventanaJugador = new VentanaJugador();
 
 
 

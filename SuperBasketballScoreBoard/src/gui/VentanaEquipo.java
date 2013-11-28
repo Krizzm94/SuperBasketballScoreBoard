@@ -32,7 +32,7 @@ public class VentanaEquipo {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaEquipo window = new VentanaEquipo();
+					VentanaEquipo window = new VentanaEquipo(null);
 					window.VentanaEquipo.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,8 @@ public class VentanaEquipo {
 	/**
 	 * constructor
 	 */
-	public VentanaEquipo() {
+	public VentanaEquipo(VentanaPrincipal ventanaPrincipal) {
+		this.ventanaPrincipal=ventanaPrincipal;
 		inicializar();
 	}
 
@@ -79,7 +80,6 @@ public class VentanaEquipo {
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaEquipo.setVisible(false);
-				nuevoEquipo = new VentanaIngresarEquipo();
 				getNuevoEquipo().getFrame().setVisible(true);
 				getNuevoEquipo().getFrame().setLocationRelativeTo(null);
 				
@@ -113,7 +113,6 @@ public class VentanaEquipo {
 		btnAtras.setBackground(Color.WHITE);
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ventanaPrincipal = new VentanaPrincipal();
 				VentanaEquipo.setVisible(false);
 				ventanaPrincipal.getVentanaPrincipal().setVisible(true);
 			}

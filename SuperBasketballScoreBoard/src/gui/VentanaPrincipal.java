@@ -26,6 +26,7 @@ public class VentanaPrincipal {
 	private VentanaEquipo ventanaEquipo;
 	private VentanaIrTorneo ventanaIrTorneo;
 	private VentanaMarcador ventanaMarcador;
+	private VentanaIngresarEquipo ventanaIngresarEquipo;
 	private GestionTorneo gestion;
 	private String torneo;
 	private String local;
@@ -41,6 +42,9 @@ public class VentanaPrincipal {
 		ventanaNuevoTorneo=new VentanaNuevoTorneo(this);
 		ventanaIrTorneo=new VentanaIrTorneo(this);
 		ventanaMarcador=new VentanaMarcador(this);
+		ventanaEquipo =new VentanaEquipo(this);
+		ventanaIngresarEquipo=new VentanaIngresarEquipo(this);
+		ventanaJugador=new VentanaJugador(this);
 		informacion=new Informacion(this);
 		inicializar();
 	}
@@ -78,7 +82,6 @@ public class VentanaPrincipal {
 		btnJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrincipal.setVisible(false);
-				ventanaJugador = new VentanaJugador();
 				ventanaJugador.getFrame().setVisible(true);
 
 			}
@@ -104,7 +107,6 @@ public class VentanaPrincipal {
 		btnEquipo.setToolTipText("Aqui puedes agregar y eliminar equipos con torneos creados previamnte.");
 		btnEquipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ventanaEquipo = new VentanaEquipo();
 				VentanaPrincipal.setVisible(false);
 				ventanaEquipo.getVentanaEquipo().setVisible(true);
 			}
@@ -304,6 +306,22 @@ public class VentanaPrincipal {
 
 	public void setInformacion(Informacion informacion) {
 		this.informacion = informacion;
+	}
+	
+	
+
+	/**
+	 * @return the ventanaIngresarEquipo
+	 */
+	public VentanaIngresarEquipo getVentanaIngresarEquipo() {
+		return ventanaIngresarEquipo;
+	}
+
+	/**
+	 * @param ventanaIngresarEquipo the ventanaIngresarEquipo to set
+	 */
+	public void setVentanaIngresarEquipo(VentanaIngresarEquipo ventanaIngresarEquipo) {
+		this.ventanaIngresarEquipo = ventanaIngresarEquipo;
 	}
 
 	/**
