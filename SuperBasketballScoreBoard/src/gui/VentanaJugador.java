@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -66,12 +68,10 @@ public class VentanaJugador {
 		frame.getContentPane().setLayout(null);
 
 		this.cmbTorneo = new JComboBox();
-		cmbTorneo.addItem("NBA");
 		cmbTorneo.setBounds(401, 106, 127, 27);
 		frame.getContentPane().add(cmbTorneo);
 
 		this.cmbEquipo = new JComboBox();
-		cmbEquipo.addItem("LAKERS");
 		cmbEquipo.setBounds(401, 160, 127, 27);
 		frame.getContentPane().add(cmbEquipo);
 
@@ -88,17 +88,20 @@ public class VentanaJugador {
 			public void actionPerformed(ActionEvent arg0) {
 
 				if((cmbEquipo.getSelectedItem())== null || cmbTorneo.getSelectedItem() == null || getTxtNumero().getText().length()==0){				
-					JOptionPane.showMessageDialog(null,"Por Favor llene"+"\n"+"todos los campos","Campos Vacios",JOptionPane.WARNING_MESSAGE );
-				}else{
-					
-					String nombreTorneo = cmbEquipo.getSelectedItem().toString();
-					String nombreEquipo = cmbTorneo.getSelectedItem().toString();
-					String numero = txtNumero.getText();
-					JOptionPane.showMessageDialog(null,"los datos son: " + nombreTorneo+" "+nombreEquipo+" "+numero );
-					txtNumero.setText("");
+					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
+					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>  Complete el Formulario!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
 				}
+				else
+				{
+						String nombreTorneo = cmbEquipo.getSelectedItem().toString();
+						String nombreEquipo = cmbTorneo.getSelectedItem().toString();
+						String numero = txtNumero.getText();
+						JOptionPane.showMessageDialog(null,"los datos son: " + nombreTorneo+" "+nombreEquipo+" "+numero );
+						txtNumero.setText("");
+					}
 			}
 		}
+	
 				);
 		btnAgregar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
 		btnAgregar.setBounds(0, 289, 290, 58);
@@ -177,40 +180,55 @@ public class VentanaJugador {
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		frame.getContentPane().add(lblNewLabel);
 
+		cargarTorneos();
+		//		cargarEquipos();
+}
 
+public void cargarTorneos(){
+	cmbTorneo.removeAllItems();
+	for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
+		cmbTorneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
 	}
+}
 
-	public JFrame getFrame() {
-		return frame;
-	}
+//	public void cargarEquipos(){
+//		cmbEquipo.removeAllItems();
+//		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
+//				cmbTorneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
+//		}
+//	}
 
-	public void setFrame(JFrame frame) {
-		this.frame = frame;
-	}
+public JFrame getFrame() {
+	return frame;
+}
 
-	public JComboBox getCmbEquipo() {
-		return cmbEquipo;
-	}
+public void setFrame(JFrame frame) {
+	this.frame = frame;
+}
 
-	public void setCmbEquipo(JComboBox cmbEquipo) {
-		this.cmbEquipo = cmbEquipo;
-	}
+public JComboBox getCmbEquipo() {
+	return cmbEquipo;
+}
 
-	public JComboBox getCmbTorneo() {
-		return cmbTorneo;
-	}
+public void setCmbEquipo(JComboBox cmbEquipo) {
+	this.cmbEquipo = cmbEquipo;
+}
 
-	public void setCmbTorneo(JComboBox cmbTorneo) {
-		this.cmbTorneo = cmbTorneo;
-	}
+public JComboBox getCmbTorneo() {
+	return cmbTorneo;
+}
 
-	public JTextField getTxtNumero() {
-		return txtNumero;
-	}
+public void setCmbTorneo(JComboBox cmbTorneo) {
+	this.cmbTorneo = cmbTorneo;
+}
 
-	public void setTxtNumero(JTextField txtNumero) {
-		this.txtNumero = txtNumero;
-	}
+public JTextField getTxtNumero() {
+	return txtNumero;
+}
+
+public void setTxtNumero(JTextField txtNumero) {
+	this.txtNumero = txtNumero;
+}
 
 
 }

@@ -68,7 +68,7 @@ public class VentanaIngresarEquipo  {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaIngresarEquipo(VentanaPrincipal ventanaPrincipal) {
+	public VentanaIngresarEquipo(final VentanaPrincipal ventanaPrincipal) {
 		this.ventanaPrincipal=ventanaPrincipal;
 		frame = new JFrame();
 		frame.setAutoRequestFocus(false);
@@ -150,6 +150,7 @@ public class VentanaIngresarEquipo  {
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
+				ventanaEquipo = new VentanaEquipo(ventanaPrincipal);
 				ventanaEquipo.getVentanaEquipo().setVisible(true);
 			}
 		});

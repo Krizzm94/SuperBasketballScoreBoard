@@ -95,6 +95,7 @@ public class VentanaTorneo {
 					if(opcion==0){
 						ventanaPrincipal.getGestion().eliminarTorneo(nombre);
 						cargarTorneos();
+						ventanaPrincipal.getVentanaJugador().cargarTorneos();
 					}
 				}else{
 					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
