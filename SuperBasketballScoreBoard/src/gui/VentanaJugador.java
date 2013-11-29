@@ -23,6 +23,7 @@ import java.awt.Color;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import logica.Equipo;
 import logica.Torneo;
 import logica.Jugador;
 
@@ -76,13 +77,13 @@ public class VentanaJugador {
 		cmbTorneo.setBounds(401, 106, 127, 27);
 		frame.getContentPane().add(cmbTorneo);
 		cmbTorneo.addItemListener(new ItemListener() {
-			
+
 			@Override
 			public void itemStateChanged(ItemEvent arg0) {
 				// TODO Auto-generated method stub
 				String torneo=cmbTorneo.getSelectedItem().toString();
 				cargarEquipos(torneo);
-				
+
 			}
 		});
 
@@ -108,15 +109,31 @@ public class VentanaJugador {
 				}
 				else
 				{
-						String nombreTorneo = cmbEquipo.getSelectedItem().toString();
-						String nombreEquipo = cmbTorneo.getSelectedItem().toString();
-						String numero = txtNumero.getText();
-						JOptionPane.showMessageDialog(null,"los datos son: " + nombreTorneo+" "+nombreEquipo+" "+numero );
-						txtNumero.setText("");
+					String nombreTorneo = cmbTorneo.getSelectedItem().toString();
+					String nombreEquipo = cmbEquipo.getSelectedItem().toString();
+					String numero = txtNumero.getText();
+					Jugador jugador = new Jugador(Integer.parseInt(numero));
+					Equipo equi = ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).buscarEquipos(nombreEquipo);
+					Jugador j=equi.buscarJugador(Integer.parseInt(numero));
+					System.out.println(equi);
+					if(equi.buscarJugador(Integer.parseInt(numero))!= null){
+						final Icon ic2  =  new ImageIcon("imagenes/denied.png");
+						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> El Jugador ya existe</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic2);
+					
 					}
+					else{
+						equi.agregarJugador(jugador);
+						ventanaPrincipal.getGestion().getJugadorDao().insertarJugador(jugador, nombreEquipo, nombreTorneo);
+						final Icon ic1 =  new ImageIcon("imagenes/check.png");
+						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Jugador creado<p>Exitosamente</font></center></html>",nombreTorneo,JOptionPane.PLAIN_MESSAGE,ic1);
+						txtNumero.setText("");
+						
+					}
+						
+				}
 			}
 		}
-	
+
 				);
 		btnAgregar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
 		btnAgregar.setBounds(0, 289, 290, 58);
@@ -197,57 +214,57 @@ public class VentanaJugador {
 
 		cargarTorneos();
 		//		cargarEquipos();
-}
-
-public void cargarTorneos(){
-	cmbTorneo.removeAllItems();
-	for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
-		cmbTorneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
 	}
-}
 
-public void cargarEquipos(String torneo){
+	public void cargarTorneos(){
+		cmbTorneo.removeAllItems();
+		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
+			cmbTorneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
+		}
+	}
+
+	public void cargarEquipos(String torneo){
 		cmbEquipo.removeAllItems();
 		Torneo tor= ventanaPrincipal.getGestion().buscarTorneo(torneo);
 		for(int i=0;i<tor.getEquipos().length;i++){
 			if(tor.getEquipos()[i]!=null){
 				cmbEquipo.addItem(tor.getEquipos()[i].getNombre());				
-		
+
 			}
 		}
 	}
 
-public JFrame getFrame() {
-	return frame;
-}
+	public JFrame getFrame() {
+		return frame;
+	}
 
-public void setFrame(JFrame frame) {
-	this.frame = frame;
-}
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
 
-public JComboBox getCmbEquipo() {
-	return cmbEquipo;
-}
+	public JComboBox getCmbEquipo() {
+		return cmbEquipo;
+	}
 
-public void setCmbEquipo(JComboBox cmbEquipo) {
-	this.cmbEquipo = cmbEquipo;
-}
+	public void setCmbEquipo(JComboBox cmbEquipo) {
+		this.cmbEquipo = cmbEquipo;
+	}
 
-public JComboBox getCmbTorneo() {
-	return cmbTorneo;
-}
+	public JComboBox getCmbTorneo() {
+		return cmbTorneo;
+	}
 
-public void setCmbTorneo(JComboBox cmbTorneo) {
-	this.cmbTorneo = cmbTorneo;
-}
+	public void setCmbTorneo(JComboBox cmbTorneo) {
+		this.cmbTorneo = cmbTorneo;
+	}
 
-public JTextField getTxtNumero() {
-	return txtNumero;
-}
+	public JTextField getTxtNumero() {
+		return txtNumero;
+	}
 
-public void setTxtNumero(JTextField txtNumero) {
-	this.txtNumero = txtNumero;
-}
+	public void setTxtNumero(JTextField txtNumero) {
+		this.txtNumero = txtNumero;
+	}
 
 
 }

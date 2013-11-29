@@ -137,7 +137,7 @@ public class GestionTorneo {
 				int numero=Integer.parseInt(consulta.getString("numero"));
 				String nomEquipo=consulta.getString("nombre_equipo");
 				String nomTorneo=consulta.getString("nombre_torneo");
-				Jugador jugador=new Jugador(id, numero);
+				Jugador jugador=new Jugador( numero);
 				Equipo equi=buscarTorneo(nomTorneo).buscarEquipos(nomEquipo);
 				equi.agregarJugador(jugador);
 				
@@ -178,6 +178,47 @@ public class GestionTorneo {
 		}
 		return false;
 	}
+
+
+	public TorneoDao getTorneoDao() {
+		return torneoDao;
+	}
+
+
+	public void setTorneoDao(TorneoDao torneoDao) {
+		this.torneoDao = torneoDao;
+	}
+
+
+	public EquipoDao getEquipoDao() {
+		return equipoDao;
+	}
+
+
+	public void setEquipoDao(EquipoDao equipoDao) {
+		this.equipoDao = equipoDao;
+	}
+
+
+	public PartidoDao getPartidoDao() {
+		return partidoDao;
+	}
+
+
+	public void setPartidoDao(PartidoDao partidoDao) {
+		this.partidoDao = partidoDao;
+	}
+
+
+	public JugadorDao getJugadorDao() {
+		return jugadorDao;
+	}
+
+
+	public void setJugadorDao(JugadorDao jugadorDao) {
+		this.jugadorDao = jugadorDao;
+	}
+	
 	
 	
 
