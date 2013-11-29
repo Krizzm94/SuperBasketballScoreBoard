@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import persistencia.EquipoDao;
-import persistencia.FaltaDao;
 import persistencia.JugadorDao;
 import persistencia.PartidoDao;
 import persistencia.TorneoDao;
@@ -24,7 +23,6 @@ public class GestionTorneo {
 	private EquipoDao equipoDao;
 	private PartidoDao partidoDao;
 	private JugadorDao jugadorDao;
-	private FaltaDao faltaDao;
 	
 	
 	/**
@@ -35,13 +33,11 @@ public class GestionTorneo {
 		equipoDao=new EquipoDao();
 		partidoDao=new PartidoDao();
 		jugadorDao=new JugadorDao();
-		faltaDao=new FaltaDao();
 		this.torneos = new ArrayList<Torneo>();
 		cargarTorneos();
 		cargarEquipos();
 		cargarJugadores();
 		cargarPartidos();
-		cargarFaltas();
 	}
 
 	
@@ -141,7 +137,7 @@ public class GestionTorneo {
 				int numero=Integer.parseInt(consulta.getString("numero"));
 				String nomEquipo=consulta.getString("nombre_equipo");
 				String nomTorneo=consulta.getString("nombre_torneo");
-				Jugador jugador=new Jugador(id, numero, null);
+				Jugador jugador=new Jugador(id, numero);
 				Equipo equi=buscarTorneo(nomTorneo).buscarEquipos(nomEquipo);
 				equi.agregarJugador(jugador);
 				
@@ -174,20 +170,7 @@ public class GestionTorneo {
 		}
 	}
 	
-	public void cargarFaltas(){
-		ResultSet consulta=faltaDao.ConsultarFalta();
-		try {
-			while(consulta.next()){
-				int id=Integer.parseInt(consulta.getString("id"));
-				int idJug=Integer.parseInt(consulta.getString("id_jugador"));
-				Falta falta=new Falta(id);
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
 	
 	public boolean validarNombreTorneo(String nombre){
 		if(buscarTorneo(nombre)!=null){

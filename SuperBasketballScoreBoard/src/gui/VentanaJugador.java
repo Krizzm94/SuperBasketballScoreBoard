@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -18,6 +20,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import logica.Torneo;
 import logica.Jugador;
 
@@ -70,6 +75,16 @@ public class VentanaJugador {
 		this.cmbTorneo = new JComboBox();
 		cmbTorneo.setBounds(401, 106, 127, 27);
 		frame.getContentPane().add(cmbTorneo);
+		cmbTorneo.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent arg0) {
+				// TODO Auto-generated method stub
+				String torneo=cmbTorneo.getSelectedItem().toString();
+				cargarEquipos(torneo);
+				
+			}
+		});
 
 		this.cmbEquipo = new JComboBox();
 		cmbEquipo.setBounds(401, 160, 127, 27);
@@ -191,12 +206,16 @@ public void cargarTorneos(){
 	}
 }
 
-//	public void cargarEquipos(){
-//		cmbEquipo.removeAllItems();
-//		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
-//				cmbTorneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
-//		}
-//	}
+public void cargarEquipos(String torneo){
+		cmbEquipo.removeAllItems();
+		Torneo tor= ventanaPrincipal.getGestion().buscarTorneo(torneo);
+		for(int i=0;i<tor.getEquipos().length;i++){
+			if(tor.getEquipos()[i]!=null){
+				cmbEquipo.addItem(tor.getEquipos()[i].getNombre());				
+		
+			}
+		}
+	}
 
 public JFrame getFrame() {
 	return frame;
