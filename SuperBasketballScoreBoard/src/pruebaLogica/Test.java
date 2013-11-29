@@ -4,7 +4,6 @@
 package pruebaLogica;
 
 import logica.Equipo;
-import logica.Falta;
 import logica.GestionTorneo;
 import logica.Jugador;
 import logica.Partido;
@@ -33,14 +32,14 @@ public class Test {
 		Equipo equipo5=new Equipo("duitama", 8, "verde", "duitama", null);
 		
 		/*crear jugadores*/
-		Jugador jugador1=new Jugador(1, 1, null);
-		Jugador jugador2=new Jugador(2, 2, null);
-		Jugador jugador3=new Jugador(3, 3, null);
-		Jugador jugador4=new Jugador(4, 4, null);
-		Jugador jugador5=new Jugador(5, 5, null);
-		Jugador jugador6=new Jugador(6, 6, null);
-		Jugador jugador7=new Jugador(7, 7, null);
-		Jugador jugador8=new Jugador(8, 8, null);
+		Jugador jugador1=new Jugador( 1);
+		Jugador jugador2=new Jugador( 2);
+		Jugador jugador3=new Jugador( 3);
+		Jugador jugador4=new Jugador( 4);
+		Jugador jugador5=new Jugador( 5);
+		Jugador jugador6=new Jugador( 6);
+		Jugador jugador7=new Jugador( 7);
+		Jugador jugador8=new Jugador( 8);
 		
 		/*agregar equipos*/
 		gestion.getTorneos().get(0).agregarEquipo(equipo);
@@ -102,11 +101,6 @@ public class Test {
 		gestion.getTorneos().get(0).agregarPartido(partido2);
 		gestion.getTorneos().get(2).agregarPartido(partido3);
 		
-		/*agregar falta*/
-		Falta f=new Falta(1);
-		Falta f2=new Falta(2);
-		gestion.getTorneos().get(0).getEquipos()[0].getJugador()[2].agregarFalta(f);
-		gestion.getTorneos().get(0).getEquipos()[0].getJugador()[2].agregarFalta(f2);
 		
 		/*listar informacion*/
 		System.out.println(gestion.listarTorneos());
