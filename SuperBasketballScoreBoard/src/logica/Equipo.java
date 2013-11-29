@@ -16,7 +16,7 @@ public class Equipo {
 	private String color;
 	private String lugar;
 	private Jugador[] jugador;
-	
+
 	/**
 	 * Constructor de la clase
 	 */
@@ -29,7 +29,7 @@ public class Equipo {
 		this.jugador=new Jugador[8];
 	}
 
-	
+
 	/**
 	 * metodo agrega jugadores a los equipos
 	 */
@@ -44,21 +44,26 @@ public class Equipo {
 		}
 		return secuencia;
 	}
-	
-	
+
+
 	/**
 	 * metodo busca jugadores
 	 */
-	public Jugador buscarJugador(int id){
+	public Jugador buscarJugador(int num){
 		for (int i=0;i<jugador.length;i++) {
-			if (jugador[i].getId()==id) {
-				return jugador[i];
+			if(jugador[i]!= null){
+				if (jugador[i].getNumber()==num) {
+					return jugador[i];
+				}
+			}
+			else{
+				return null;
 			}
 		}
 		return null;
-		
+
 	}
-	
+
 	/**
 	 * @return the nombre
 	 */
@@ -139,9 +144,9 @@ public class Equipo {
 				+ ", color=" + color + ", lugar=" + lugar + ", jugador="
 				+ Arrays.toString(jugador) + "]";
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }
