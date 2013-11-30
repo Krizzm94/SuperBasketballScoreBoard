@@ -81,17 +81,17 @@ public class VentanaIngresarEquipo  {
 		lbljugadores.setForeground(Color.WHITE);
 
 		JLabel lblColor = new JLabel("COLOR");
-		lblColor.setBounds(28, 231, 142, 37);
+		lblColor.setBounds(20, 236, 142, 37);
 		lblColor.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 		lblColor.setForeground(Color.WHITE);
 
 		JLabel lblLugar = new JLabel("LUGAR");
-		lblLugar.setBounds(28, 279, 191, 30);
+		lblLugar.setBounds(20, 284, 191, 30);
 		lblLugar.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 		lblLugar.setForeground(Color.WHITE);
 
 		txtNombre = new JTextField();
-		txtNombre.setBounds(201, 135, 185, 34);
+		txtNombre.setBounds(181, 135, 185, 34);
 		txtNombre.setColumns(10);
 
 		final JComboBox numJugadores = new JComboBox();
@@ -115,11 +115,11 @@ public class VentanaIngresarEquipo  {
 		JLabel lblTorneo = new JLabel("TORNEO");
 		lblTorneo.setForeground(Color.WHITE);
 		lblTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
-		lblTorneo.setBounds(28, 80, 102, 37);
+		lblTorneo.setBounds(20, 97, 102, 37);
 		contentPane.add(lblTorneo);
 
 		cmbtorneo = new JComboBox();
-		cmbtorneo.setBounds(142, 80, 219, 24);
+		cmbtorneo.setBounds(147, 100, 219, 24);
 
 		contentPane.add(cmbtorneo);
 
@@ -128,7 +128,7 @@ public class VentanaIngresarEquipo  {
 		JButton btnGuardar = new FormaBotonCircular("GUARDAR");
 		btnGuardar.setToolTipText("Crea un nuevo equipo");
 		btnGuardar.setText("");
-		btnGuardar.setBounds(429, 65, 119, 119);
+		btnGuardar.setBounds(424, 135, 119, 119);
 		btnGuardar.setIcon(new ImageIcon("imagenes/botonGuardar.png"));
 		btnGuardar.setPreferredSize(new Dimension(65, 65));
 		btnGuardar.setMinimumSize(new Dimension(65, 23));
@@ -157,8 +157,8 @@ public class VentanaIngresarEquipo  {
 				ventanaEquipo.getVentanaEquipo().setVisible(true);
 			}
 		});
-		btnAtras.setBounds(429, 195, 119, 119);
-		btnAtras.setIcon(new ImageIcon("imagenes/botonAtras.png"));
+		btnAtras.setBounds(30, 11, 75, 75);
+		btnAtras.setIcon(new ImageIcon("imagenes/botonAtras2.png"));
 		btnAtras.setPreferredSize(new Dimension(65, 65));
 		btnAtras.setMinimumSize(new Dimension(65, 23));
 		btnAtras.setMaximumSize(new Dimension(65, 30));
