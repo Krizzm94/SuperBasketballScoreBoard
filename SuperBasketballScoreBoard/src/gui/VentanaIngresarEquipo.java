@@ -35,6 +35,8 @@ import Estilos.FormaBotonCircular;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.Font;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
@@ -50,7 +52,7 @@ public class VentanaIngresarEquipo  {
 	private JTextField txtLugar;
 	private VentanaEquipo ventanaEquipo;
 	private VentanaPrincipal ventanaPrincipal;
-
+	private 	final JComboBox cmbtorneo ;
 
 
 	/**
@@ -115,11 +117,12 @@ public class VentanaIngresarEquipo  {
 		lblTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 		lblTorneo.setBounds(28, 80, 102, 37);
 		contentPane.add(lblTorneo);
-		
-		final JComboBox cmbtorneo = new JComboBox();
+
+		cmbtorneo = new JComboBox();
 		cmbtorneo.setBounds(142, 80, 219, 24);
+
 		contentPane.add(cmbtorneo);
-	
+
 
 
 		JButton btnGuardar = new FormaBotonCircular("GUARDAR");
@@ -139,11 +142,12 @@ public class VentanaIngresarEquipo  {
 				String lugar=txtLugar.getText();
 				Equipo equipo=new Equipo(nombre, numJugador, color, lugar);
 				ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).agregarEquipo(equipo);
-				
+//				ventanaPrincipal.getGestion().agregarEquipoSql(equipo, nombreTorneo);
+
 			}
 		});
 		contentPane.add(btnGuardar);
-		
+
 		JButton btnAtras = new FormaBotonCircular("");
 		btnAtras.setToolTipText("Devuelve al menu anterior");
 		btnAtras.addActionListener(new ActionListener() {
@@ -168,8 +172,8 @@ public class VentanaIngresarEquipo  {
 		contentPane.add(txtNombre);
 		contentPane.add(lbljugadores);
 		contentPane.add(lblLugar);
-		
-	
+
+
 
 		JLabel lblNuevoEquipo = new JLabel("NUEVO EQUIPO");
 		lblNuevoEquipo.setForeground(Color.WHITE);
@@ -183,7 +187,7 @@ public class VentanaIngresarEquipo  {
 		contentPane.add(lblNewLabel);
 
 
-
+		cargarTorneos();
 
 
 	}
@@ -206,7 +210,12 @@ public class VentanaIngresarEquipo  {
 		}
 	}
 
-
+	public void cargarTorneos(){
+		cmbtorneo.removeAllItems();
+		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
+			cmbtorneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
+		}
+	}
 
 
 

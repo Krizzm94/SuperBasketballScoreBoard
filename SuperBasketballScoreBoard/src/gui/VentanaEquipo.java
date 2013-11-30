@@ -9,6 +9,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -98,13 +99,28 @@ public class VentanaEquipo {
 		btnBorrar.setForeground(Color.DARK_GRAY);
 		btnBorrar.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 		btnBorrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Boton Equipo");
-			}
-		});
+			public void actionPerformed(ActionEvent e) {
+				if(table.getSelectedRow()>=0){
+					int fila=table.getSelectedRow();
+					String nombre=(String) table.getValueAt(fila, 0);
+					final Icon ic1  =  new ImageIcon("imagenes/caution.png");
+					int opcion=JOptionPane.showConfirmDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Esta seguro que desea<p>eliminar el torneo <p>'"+nombre+"'</font></center></html>",
+															"Advertencia!",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic1);
+					if(opcion==0){
+//						ventanaPrincipal.getGestion().eliminarTorneo(nombre);
+//						cargarTorneos();
+//						ventanaPrincipal.getVentanaJugador().cargarTorneos();
+//						ventanaPrincipal.getVentanaEquipo().cargarTorneos();
+					}
+				}else{
+					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
+					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Por favor seleccione <p>un torneo!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
+				}}}
+			);
 		
 		btnBorrar.setBounds(384, 291, 160, 45);
 		VentanaEquipo.getContentPane().add(btnBorrar);
+		
 
 		JButton btnAtras = new FormaBotonCircular( "Boton" );
 		btnAtras.setBackground(Color.WHITE);

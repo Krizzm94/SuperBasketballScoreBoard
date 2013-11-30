@@ -57,6 +57,7 @@ public class GestionTorneo {
 	public void agregarTorneoSql(Torneo torneo){
 		torneoDao.insertarTorneo(torneo);
 	}
+	
 	/**
 	 * metodo para buscar torneos
 	 */
@@ -122,11 +123,15 @@ public class GestionTorneo {
 				Torneo tor=buscarTorneo(torneo);
 				Equipo equipo=new Equipo(nombre, numJugadores, color, lugar);
 				tor.agregarEquipo(equipo);
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public void agregarEquipoSql(Equipo equipo,String torneo){
+		equipoDao.insertarTorneo(equipo, torneo);
 	}
 	
 	public void cargarJugadores(){
