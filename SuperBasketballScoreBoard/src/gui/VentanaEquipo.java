@@ -192,24 +192,28 @@ public class VentanaEquipo {
 		cargarTorneos();
 
 	}
+	
+	
 	public void cargarTorneos(){
 		torneo.removeAllItems();
 		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
 			torneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
 		}
 	}
+	
+	
 	private void cargarEquipos(String t) {
 		while(dtm.getRowCount()>0)dtm.removeRow(0);
 		Torneo tor=ventanaPrincipal.getGestion().buscarTorneo(t);
-		System.out.println(tor);
 		for(int i=0;i<tor.getEquipos().length;i++){
-			
-			String nombre=String.valueOf(tor.getEquipos()[i].getNombre());
-			int jug=tor.getEquipos()[i].getNumJugadores();
-			String jugadores=String.valueOf(jug);
-			String lugar=String.valueOf(tor.getEquipos()[i].getLugar());
-			String [] filas={nombre,jugadores,lugar};
-			dtm.addRow(filas);
+			if(tor.getEquipos()[i]!=null){
+				String nombre=String.valueOf(tor.getEquipos()[i].getNombre());
+				int jug=tor.getEquipos()[i].getNumJugadores();
+				String jugadores=String.valueOf(jug);
+				String lugar=String.valueOf(tor.getEquipos()[i].getLugar());
+				String [] filas={nombre,jugadores,lugar};
+				dtm.addRow(filas);
+			}
 		}
 		
 	}
