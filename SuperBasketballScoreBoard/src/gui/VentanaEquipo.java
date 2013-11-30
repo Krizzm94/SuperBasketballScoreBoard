@@ -122,22 +122,22 @@ public class VentanaEquipo {
 		VentanaEquipo.getContentPane().add(btnBorrar);
 		
 
-		JButton btnAtras = new FormaBotonCircular( "Boton" );
-		btnAtras.setBackground(Color.WHITE);
+		JButton btnAtras = new FormaBotonCircular("");
+		btnAtras.setToolTipText("Devuelve al menu anterior");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaEquipo.setVisible(false);
 				ventanaPrincipal.getVentanaPrincipal().setVisible(true);
 			}
 		});
-		btnAtras.setHorizontalAlignment(SwingConstants.LEADING);
-		btnAtras.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
-		btnAtras.setText("ATRAS");
-		btnAtras.setForeground(Color.DARK_GRAY);
-		btnAtras.setBounds(10, 3, 72, 73);
+		btnAtras.setBounds(32, 10, 75, 75);
+		btnAtras.setIcon(new ImageIcon("imagenes/botonAtras2.png"));
+		btnAtras.setPreferredSize(new Dimension(65, 65));
+		btnAtras.setMinimumSize(new Dimension(65, 23));
+		btnAtras.setMaximumSize(new Dimension(65, 30));
 		VentanaEquipo.getContentPane().add(btnAtras);
 		
-
+	
 		JButton btnListar = new FormaBoton( "Boton" );
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -185,11 +185,11 @@ public class VentanaEquipo {
 		JLabel lblTorneo = new JLabel("TORNEO:");
 		lblTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 40));
 		lblTorneo.setForeground(Color.WHITE);
-		lblTorneo.setBounds(81, 71, 128, 44);
+		lblTorneo.setBounds(117, 71, 128, 44);
 		VentanaEquipo.getContentPane().add(lblTorneo);
 
 		torneo = new JComboBox();
-		torneo.setBounds(221, 71, 285, 33);
+		torneo.setBounds(255, 71, 267, 33);
 		VentanaEquipo.getContentPane().add(torneo);
 		torneo.addItemListener(new ItemListener() {
 			
