@@ -21,26 +21,10 @@ import Estilos.FormaBoton;
 public class VentanaEquipo {
 
 	private JFrame VentanaEquipo;
-	private VentanaIngresarEquipo nuevoEquipo;
 	private VentanaPrincipal ventanaPrincipal;
 	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaEquipo window = new VentanaEquipo(null);
-					window.VentanaEquipo.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * constructor
 	 */
@@ -80,8 +64,8 @@ public class VentanaEquipo {
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaEquipo.setVisible(false);
-				getNuevoEquipo().getFrame().setVisible(true);
-				getNuevoEquipo().getFrame().setLocationRelativeTo(null);
+				ventanaPrincipal.getVentanaIngresarEquipo().getFrame().setVisible(true);
+				ventanaPrincipal.getVentanaIngresarEquipo().getFrame().setLocationRelativeTo(null);
 				
 				
 				}
@@ -171,13 +155,7 @@ public class VentanaEquipo {
 		VentanaEquipo = ventanaEquipo;
 	}
 
-	public VentanaIngresarEquipo getNuevoEquipo() {
-		return nuevoEquipo;
-	}
 
-	public void setNuevoEquipo(VentanaIngresarEquipo nuevoEquipo) {
-		this.nuevoEquipo = nuevoEquipo;
-	}
 	
 	
 	

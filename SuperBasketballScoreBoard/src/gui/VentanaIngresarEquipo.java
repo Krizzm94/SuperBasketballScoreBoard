@@ -47,23 +47,9 @@ public class VentanaIngresarEquipo  {
 	private JTextField txtLugar;
 	private VentanaEquipo ventanaEquipo;
 	private VentanaPrincipal ventanaPrincipal;
+	private JComboBox torneo;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaIngresarEquipo window = new VentanaIngresarEquipo(null);
-					window.frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -105,7 +91,7 @@ public class VentanaIngresarEquipo  {
 		lblLugar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		lblLugar.setForeground(Color.WHITE);
 
-		JComboBox torneo = new JComboBox();
+		torneo = new JComboBox();
 		torneo.setBounds(201, 78, 185, 34);
 
 		txtNombre = new JTextField();
@@ -184,6 +170,8 @@ public class VentanaIngresarEquipo  {
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
 		lblNewLabel.setBounds(0, 0, 580, 350);
 		contentPane.add(lblNewLabel);
+		
+		cargarTorneos();
 
 
 
@@ -206,6 +194,16 @@ public class VentanaIngresarEquipo  {
 			return renderer;
 		}
 	}
+	
+	
+	public void cargarTorneos(){
+		torneo.removeAllItems();
+		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
+			torneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
+		}
+	}
+	
+	
 	public static JFrame getFrame() {
 		return frame;
 	}

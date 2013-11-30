@@ -81,6 +81,7 @@ public class VentanaNuevoTorneo {
 //							JTextNombreTorneo.setText("");
 							frame.setVisible(false);
 							ventanaPrincipal.getVentanaTorneo().cargarTorneos();
+							ventanaPrincipal.getVentanaIngresarEquipo().cargarTorneos();
 							ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
 						}
 						else{
