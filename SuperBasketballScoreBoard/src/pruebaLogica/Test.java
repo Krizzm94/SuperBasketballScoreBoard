@@ -24,12 +24,12 @@ public class Test {
 		gestion.agregarTorneo(new Torneo("duitama", 12, null, null));
 		
 		/*crear equipos*/
-		Equipo equipo=new Equipo("lakers", 8, "Azul", "sogamoso", null);
-		Equipo equipo1=new Equipo("bulls", 8, "rojo", "sogamoso", null);
-		Equipo equipo2=new Equipo("uptc", 8, "amarillo", "sogamoso", null);
-		Equipo equipo3=new Equipo("miami", 8, "blanco", "sogamoso", null);
-		Equipo equipo4=new Equipo("invensibles", 8, "negro", "sogamoso", null);
-		Equipo equipo5=new Equipo("duitama", 8, "verde", "duitama", null);
+		Equipo equipo=new Equipo("lakers", 8, "Azul", "sogamoso");
+		Equipo equipo1=new Equipo("bulls", 8, "rojo", "sogamoso");
+		Equipo equipo2=new Equipo("uptc", 8, "amarillo", "sogamoso");
+		Equipo equipo3=new Equipo("miami", 8, "blanco", "sogamoso");
+		Equipo equipo4=new Equipo("invensibles", 8, "negro", "sogamoso");
+		Equipo equipo5=new Equipo("duitama", 8, "verde", "duitama");
 		
 		/*crear jugadores*/
 		Jugador jugador1=new Jugador( 1);

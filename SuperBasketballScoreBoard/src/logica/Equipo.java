@@ -20,7 +20,7 @@ public class Equipo {
 	/**
 	 * Constructor de la clase
 	 */
-	public Equipo(String nombre, int numJugadores, String color, String lugar, Jugador[] jugador) {
+	public Equipo(String nombre, int numJugadores, String color, String lugar) {
 		super();
 		this.nombre = nombre;
 		this.numJugadores = numJugadores;

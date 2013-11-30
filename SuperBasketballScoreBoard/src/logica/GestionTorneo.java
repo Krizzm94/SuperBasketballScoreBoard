@@ -101,7 +101,7 @@ public class GestionTorneo {
 			while(consulta.next()){
 				String nombre=consulta.getString("nombre");
 				int numEquipos=Integer.parseInt(consulta.getString("num_equipos"));
-				Torneo torneo=new Torneo(nombre,numEquipos,null,null);
+				Torneo torneo=new Torneo(nombre,numEquipos, null, null);
 				agregarTorneo(torneo);
 			}
 		} catch (SQLException e) {
@@ -120,7 +120,7 @@ public class GestionTorneo {
 				String lugar=consulta.getString("lugar");
 				String torneo=consulta.getString("nombre_torneo");
 				Torneo tor=buscarTorneo(torneo);
-				Equipo equipo=new Equipo(nombre, numJugadores, color, lugar, null);
+				Equipo equipo=new Equipo(nombre, numJugadores, color, lugar);
 				tor.agregarEquipo(equipo);
 			}
 		} catch (SQLException e) {

@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -21,6 +23,8 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.Dimension;
 import javax.swing.JComboBox;
+
+import logica.Torneo;
 
 import Estilos.FormaBoton;
 import Estilos.FormaBotonCircular;
@@ -86,7 +90,7 @@ public class VentanaEquipo {
 		btnNuevo.setBounds(22, 291, 160, 45);
 		VentanaEquipo.getContentPane().add(btnNuevo);
 
-
+                                                                                               
 
 		JButton btnBorrar = new FormaBoton( "Boton" );
 		btnBorrar.setBackground(Color.WHITE);
@@ -171,6 +175,14 @@ public class VentanaEquipo {
 		torneo = new JComboBox();
 		torneo.setBounds(221, 71, 285, 33);
 		VentanaEquipo.getContentPane().add(torneo);
+		torneo.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				String t=torneo.getSelectedItem().toString();
+				cargarEquipos(t);
+			}
+		});
 		
 
 		JLabel lblNewLabel = new JLabel("New label");
@@ -185,6 +197,21 @@ public class VentanaEquipo {
 		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
 			torneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
 		}
+	}
+	private void cargarEquipos(String t) {
+		while(dtm.getRowCount()>0)dtm.removeRow(0);
+		Torneo tor=ventanaPrincipal.getGestion().buscarTorneo(t);
+		System.out.println(tor);
+		for(int i=0;i<tor.getEquipos().length;i++){
+			
+			String nombre=String.valueOf(tor.getEquipos()[i].getNombre());
+			int jug=tor.getEquipos()[i].getNumJugadores();
+			String jugadores=String.valueOf(jug);
+			String lugar=String.valueOf(tor.getEquipos()[i].getLugar());
+			String [] filas={nombre,jugadores,lugar};
+			dtm.addRow(filas);
+		}
+		
 	}
 	public JFrame getVentanaPrincipal() {
 		return VentanaEquipo;

@@ -39,6 +39,9 @@ import java.awt.Font;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 
+import logica.Equipo;
+import logica.Torneo;
+
 public class VentanaIngresarEquipo  {
 
 	private static JFrame frame;
@@ -65,39 +68,39 @@ public class VentanaIngresarEquipo  {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 
-		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(28, 102, 142, 24);
-		lblNombre.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
+		JLabel lblNombre = new JLabel("NOMBRE");
+		lblNombre.setBounds(28, 145, 142, 24);
+		lblNombre.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 		lblNombre.setForeground(Color.WHITE);
 
-		JLabel lbljugadores = new JLabel("N Jugadores");
-		lbljugadores.setBounds(28, 158, 219, 29);
-		lbljugadores.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
+		JLabel lbljugadores = new JLabel("N JUGADORES");
+		lbljugadores.setBounds(28, 191, 219, 29);
+		lbljugadores.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 		lbljugadores.setForeground(Color.WHITE);
 
-		JLabel lblColor = new JLabel("Color");
-		lblColor.setBounds(28, 212, 142, 37);
-		lblColor.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
+		JLabel lblColor = new JLabel("COLOR");
+		lblColor.setBounds(28, 231, 142, 37);
+		lblColor.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 		lblColor.setForeground(Color.WHITE);
 
-		JLabel lblLugar = new JLabel("Lugar");
+		JLabel lblLugar = new JLabel("LUGAR");
 		lblLugar.setBounds(28, 279, 191, 30);
-		lblLugar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
+		lblLugar.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 		lblLugar.setForeground(Color.WHITE);
 
 		txtNombre = new JTextField();
-		txtNombre.setBounds(205, 100, 185, 34);
+		txtNombre.setBounds(201, 135, 185, 34);
 		txtNombre.setColumns(10);
 
-		JComboBox numJugadores = new JComboBox();
-		numJugadores.setBounds(280, 158, 49, 34);
+		final JComboBox numJugadores = new JComboBox();
+		numJugadores.setBounds(281, 186, 49, 34);
 		numJugadores.setModel(new DefaultComboBoxModel(new String[] {"6", "7", "8"}));
 		Color colors[] = { Color.black, Color.blue, Color.cyan, Color.darkGray,
 				Color.gray, Color.green, Color.lightGray, Color.magenta,
 				Color.orange, Color.pink, Color.red, Color.white, Color.yellow };
 
-		JComboBox colores = new JComboBox(colors);
-		colores.setBounds(238, 212, 71, 37);
+		final JComboBox colores = new JComboBox(colors);
+		colores.setBounds(238, 231, 71, 37);
 		colores.setMaximumRowCount(5);
 		colores.setEditable(true);
 		colores.setRenderer(new ColorCellRenderer());
@@ -107,6 +110,16 @@ public class VentanaIngresarEquipo  {
 		txtLugar = new JTextField();
 		txtLugar.setBounds(201, 280, 185, 34);
 		txtLugar.setColumns(10);
+		JLabel lblTorneo = new JLabel("TORNEO");
+		lblTorneo.setForeground(Color.WHITE);
+		lblTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
+		lblTorneo.setBounds(28, 80, 102, 37);
+		contentPane.add(lblTorneo);
+		
+		final JComboBox cmbtorneo = new JComboBox();
+		cmbtorneo.setBounds(142, 80, 219, 24);
+		contentPane.add(cmbtorneo);
+	
 
 
 		JButton btnGuardar = new FormaBotonCircular("GUARDAR");
@@ -119,9 +132,18 @@ public class VentanaIngresarEquipo  {
 		btnGuardar.setMaximumSize(new Dimension(65, 30));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String nombreTorneo = cmbtorneo.getSelectedItem().toString();
+				String nombre=txtNombre.getText();
+				int numJugador=Integer.parseInt(numJugadores.getSelectedItem().toString());
+				String color=colores.getSelectedItem().toString();
+				String lugar=txtLugar.getText();
+				Equipo equipo=new Equipo(nombre, numJugador, color, lugar);
+				ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).agregarEquipo(equipo);
+				
 			}
 		});
-
+		contentPane.add(btnGuardar);
+		
 		JButton btnAtras = new FormaBotonCircular("");
 		btnAtras.setToolTipText("Devuelve al menu anterior");
 		btnAtras.addActionListener(new ActionListener() {
@@ -136,7 +158,7 @@ public class VentanaIngresarEquipo  {
 		btnAtras.setPreferredSize(new Dimension(65, 65));
 		btnAtras.setMinimumSize(new Dimension(65, 23));
 		btnAtras.setMaximumSize(new Dimension(65, 30));
-
+		contentPane.add(btnAtras);
 		contentPane.setLayout(null);
 		contentPane.add(lblNombre);
 		contentPane.add(lblColor);
@@ -146,8 +168,8 @@ public class VentanaIngresarEquipo  {
 		contentPane.add(txtNombre);
 		contentPane.add(lbljugadores);
 		contentPane.add(lblLugar);
-		contentPane.add(btnGuardar);
-		contentPane.add(btnAtras);
+		
+	
 
 		JLabel lblNuevoEquipo = new JLabel("NUEVO EQUIPO");
 		lblNuevoEquipo.setForeground(Color.WHITE);
@@ -195,6 +217,4 @@ public class VentanaIngresarEquipo  {
 	public static void setFrame(JFrame frame) {
 		VentanaIngresarEquipo.frame = frame;
 	}
-
-
 }
