@@ -6,9 +6,14 @@ package gui;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,8 +25,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.SwingConstants;
 
 import logica.Torneo;
+
+//import logica.Torneo;
 
 /**
  * @author Wolfran Pinzon
@@ -87,7 +96,7 @@ public class VentanaIrTorneo {
 			public void actionPerformed(ActionEvent arg0) {
 				final Icon ic2 =  new ImageIcon("imagenes/menu.png");
 				int salir = JOptionPane.showConfirmDialog(null,"<html><center><font SIZE='5' face='Verdana' color=black>¿SEGURO QUE DESEA <P>IR AL MENU PRINCIPAL?</font></center></html>"
-														, "Ir al menu principal", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic2);
+						, "Ir al menu principal", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic2);
 				if (salir == JOptionPane.YES_OPTION)
 				{
 					getFrame().setVisible(false);
@@ -102,11 +111,11 @@ public class VentanaIrTorneo {
 		btnHome.setIcon(icnHome);
 		btnHome.setBounds(514, 17, 50, 50);
 		frame.getContentPane().add(btnHome);
-		
-		
-		
+
+
+
 		ImageIcon icnReg = new ImageIcon("imagenes/back1.png");
-		
+
 		JLabel lblProgramacion = new JLabel();
 		lblProgramacion.setText("Programacion");
 		lblProgramacion.setForeground(Color.WHITE);
@@ -127,25 +136,20 @@ public class VentanaIrTorneo {
 					String visitante=(String) table.getValueAt(fila, 1);
 					ventanaPrincipal.setLocal(local);
 					ventanaPrincipal.setVisitante(visitante);
-					 ventanaMarcador = new VentanaMarcador(ventanaPrincipal);
-					 frame.setVisible(false);
-					 ventanaMarcador.getFrame().setVisible(true);
-					}else{
-						final Icon ic3  =  new ImageIcon("imagenes/denied.png");
-						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Por favor seleccione <p>un Partido!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
-					}
+					ventanaMarcador = new VentanaMarcador(ventanaPrincipal);
+					frame.setVisible(false);
+					ventanaMarcador.getFrame().setVisible(true);
+				}else{
+					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
+					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Por favor seleccione <p>un Partido!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
+				}
 			}
 		});
-		btnIrAlPartido.setBounds(100, 278, 388, 58);
+		btnIrAlPartido.setBounds(20, 281, 248, 58);
 		btnIrAlPartido.setFont(new Font("Varsity Playbook", Font.PLAIN, 35));
 		frame.getContentPane().add(btnIrAlPartido);
 
 
-
-		
-
-		
-		
 		String[] columnNames = {"Local", "Visitante", "Fecha","Hora"};
 
 		dtm = new DefaultTableModel (null,columnNames); 
@@ -153,13 +157,13 @@ public class VentanaIrTorneo {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBackground(Color.white);
 		table.setFont(new Font("Varsity Playbook", Font.PLAIN, 28));
-	
+
 		table.setRowHeight(30);
 		int[] anchos = {100,100, 100, 40};
 
 		for(int i = 0; i < dtm.getColumnCount(); i++) {
 			table.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-			
+
 		}
 
 
@@ -167,13 +171,31 @@ public class VentanaIrTorneo {
 		jScrollPane.setBounds(22, 83, 535, 184);
 		frame.getContentPane().add(jScrollPane);
 
+
+		JButton btnExportar = new JButton("Exportar");
+		btnExportar.setBounds(310, 281, 248, 58);
+		btnExportar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				saveToImage(table, table.getTableHeader()); 
+				final Icon ic1 =  new ImageIcon("imagenes/check.png");
+				JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Tabla Exportada<p>Exitosamente</font></center></html>","",JOptionPane.PLAIN_MESSAGE,ic1);
+				
+			}
+		});
+		btnExportar.setFont(new Font("Varsity Playbook", Font.PLAIN, 35));
+		frame.getContentPane().add(btnExportar);
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
 		frame.getContentPane().add(lblNewLabel);
+
 	}
 
-	
+
 	public void cargarPartidos(){
 		while(dtm.getRowCount()>0)dtm.removeRow(0);
 		Torneo tor=ventanaPrincipal.getGestion().buscarTorneo(ventanaPrincipal.getTorneo());
@@ -186,8 +208,28 @@ public class VentanaIrTorneo {
 			dtm.addRow(filas);
 		}
 	}
-	
-	
+
+
+	private static void saveToImage(JTable table, JTableHeader header)  
+	{  
+		int w = Math.max(table.getWidth(), header.getWidth());  
+		int h = table.getHeight() + header.getHeight();  
+		BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);  
+		Graphics2D g2 = bi.createGraphics();  
+		header.paint(g2);  
+		g2.translate(0, header.getHeight());  
+		table.paint(g2);  
+		g2.dispose();  
+		try  
+		{  
+			ImageIO.write(bi, "png", new File("tableImage.png"));  
+		}  
+		catch(IOException ioe)  
+		{  
+			System.out.println("write: " + ioe.getMessage());  
+		}  
+	}  
+
 	/**
 	 * @return the dtm
 	 */
