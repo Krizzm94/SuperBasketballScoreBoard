@@ -19,6 +19,9 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
 import javax.swing.JTextField;
+
+import Estilos.FormaBoton;
+
 import java.awt.Color;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -75,6 +78,7 @@ public class VentanaJugador {
 
 		this.cmbTorneo = new JComboBox();
 		cmbTorneo.setBounds(401, 106, 127, 27);
+		cmbTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 20));
 		frame.getContentPane().add(cmbTorneo);
 		cmbTorneo.addItemListener(new ItemListener() {
 
@@ -89,15 +93,16 @@ public class VentanaJugador {
 
 		this.cmbEquipo = new JComboBox();
 		cmbEquipo.setBounds(401, 160, 127, 27);
+		cmbEquipo.setFont(new Font("Varsity Playbook", Font.PLAIN, 20));
 		frame.getContentPane().add(cmbEquipo);
 
 		JLabel lblJugador = new JLabel("JUGADOR");
 		lblJugador.setForeground(new Color(255, 255, 255));
-		lblJugador.setFont(new Font("LMS I Love This Game", Font.BOLD, 30));
-		lblJugador.setBounds(134, 11, 219, 43);
+		lblJugador.setFont(new Font("Varsity Playbook", Font.PLAIN, 60));
+		lblJugador.setBounds(165, 13, 219, 70);
 		frame.getContentPane().add(lblJugador);
 
-		JButton btnAgregar = new JButton("AGREGAR");
+		JButton btnAgregar = new FormaBoton( "AGREGAR" );;
 		btnAgregar.addActionListener(new ActionListener() {
 
 			@Override
@@ -135,31 +140,26 @@ public class VentanaJugador {
 		}
 
 				);
-		btnAgregar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
-		btnAgregar.setBounds(0, 289, 290, 58);
+		btnAgregar.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
+		btnAgregar.setBounds(145, 280, 290, 58);
 		frame.getContentPane().add(btnAgregar);
-
-		JButton btnEliminar = new JButton("ELIMINAR");
-		btnEliminar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 15));
-		btnEliminar.setBounds(284, 289, 290, 58);
-		frame.getContentPane().add(btnEliminar);
 
 		JLabel lblSeleccioneElTorneo = new JLabel("Seleccione el Torneo");
 		lblSeleccioneElTorneo.setForeground(new Color(255, 255, 255));
-		lblSeleccioneElTorneo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
-		lblSeleccioneElTorneo.setBounds(10, 106, 369, 27);
+		lblSeleccioneElTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 45));
+		lblSeleccioneElTorneo.setBounds(10, 106, 369, 38);
 		frame.getContentPane().add(lblSeleccioneElTorneo);
 
 		JLabel lblSeleccioneElEquipo = new JLabel("Seleccione el Equipo");
 		lblSeleccioneElEquipo.setForeground(new Color(255, 255, 255));
-		lblSeleccioneElEquipo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
-		lblSeleccioneElEquipo.setBounds(10, 160, 369, 27);
+		lblSeleccioneElEquipo.setFont(new Font("Varsity Playbook", Font.PLAIN, 45));
+		lblSeleccioneElEquipo.setBounds(10, 160, 369, 38);
 		frame.getContentPane().add(lblSeleccioneElEquipo);
 
 		JLabel lblIngreseElNumero = new JLabel("Ingrese el Numero");
 		lblIngreseElNumero.setForeground(new Color(255, 255, 255));
-		lblIngreseElNumero.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
-		lblIngreseElNumero.setBounds(10, 214, 369, 27);
+		lblIngreseElNumero.setFont(new Font("Varsity Playbook", Font.PLAIN, 45));
+		lblIngreseElNumero.setBounds(10, 214, 369, 38);
 		frame.getContentPane().add(lblIngreseElNumero);
 
 		txtNumero = new JTextField();
@@ -172,7 +172,9 @@ public class VentanaJugador {
 				if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE))
 				{
 					e.consume();
-					JOptionPane.showMessageDialog(null, "Ingrese solo numeros");
+					final Icon ic1 =  new ImageIcon("imagenes/caution.png");
+					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Ingrese Unicamente<p>Numeros</font></center></html>","No permitido",JOptionPane.PLAIN_MESSAGE,ic1);
+					
 				}
 				if (txtNumero.getText().length() >= 2) {
 					e.setKeyChar('\0');
@@ -191,6 +193,7 @@ public class VentanaJugador {
 			}
 		});
 		txtNumero.setBounds(401, 214, 127, 27);
+		txtNumero.setFont(new Font("Varsity Playbook", Font.PLAIN, 20));
 		frame.getContentPane().add(txtNumero);
 		txtNumero.setColumns(10);
 
