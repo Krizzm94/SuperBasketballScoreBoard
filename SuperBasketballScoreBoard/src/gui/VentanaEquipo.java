@@ -13,18 +13,31 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import java.awt.Dimension;
+import javax.swing.JComboBox;
 
 import Estilos.FormaBoton;
+import Estilos.FormaBotonCircular;
+
+
 
 
 public class VentanaEquipo {
 
 	private JFrame VentanaEquipo;
 	private VentanaPrincipal ventanaPrincipal;
-	
+	private JTable table;
+	private DefaultTableModel dtm;
+	private JComboBox torneo;
 
-	
+
+
 	/**
 	 * constructor
 	 */
@@ -46,18 +59,17 @@ public class VentanaEquipo {
 		VentanaEquipo.setUndecorated(true);
 		VentanaEquipo.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 		VentanaEquipo.getContentPane().setLayout(null);
-		
-		
-		
+
+
+
 		JButton btnNuevo = new FormaBoton( "Boton" );
 		btnNuevo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
+
 			}
 		});
-		btnNuevo.setHorizontalAlignment(SwingConstants.LEADING);
-		btnNuevo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
+		btnNuevo.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 		btnNuevo.setText("NUEVO");
 		btnNuevo.setBackground(new Color(255, 250, 250));
 		btnNuevo.setForeground(Color.DARK_GRAY);
@@ -66,34 +78,31 @@ public class VentanaEquipo {
 				VentanaEquipo.setVisible(false);
 				ventanaPrincipal.getVentanaIngresarEquipo().getFrame().setVisible(true);
 				ventanaPrincipal.getVentanaIngresarEquipo().getFrame().setLocationRelativeTo(null);
-				
-				
-				}
+
+
+			}
 		});
-//		ImageIcon icnNuevo = new ImageIcon("imagenes/nuevo.png");
-//		btnNuevo.setIcon(icnNuevo);
-		btnNuevo.setBounds(10, 71, 273, 127);
+		
+		btnNuevo.setBounds(22, 291, 160, 45);
 		VentanaEquipo.getContentPane().add(btnNuevo);
-		
-		
-		
+
+
+
 		JButton btnBorrar = new FormaBoton( "Boton" );
 		btnBorrar.setBackground(Color.WHITE);
-		btnBorrar.setText("BORRAR");	
-		btnBorrar.setHorizontalAlignment(SwingConstants.LEADING);
+		btnBorrar.setText("BORRAR");
 		btnBorrar.setForeground(Color.DARK_GRAY);
-		btnBorrar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
+		btnBorrar.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Boton Equipo");
 			}
 		});
-//		ImageIcon icnEquipo = new ImageIcon("imagenes/borrar.png");
-//		btnBorrar.setIcon(icnEquipo);
-		btnBorrar.setBounds(295, 71, 273, 127);
-		VentanaEquipo.getContentPane().add(btnBorrar);
 		
-		JButton btnAtras = new FormaBoton( "Boton" );
+		btnBorrar.setBounds(384, 291, 160, 45);
+		VentanaEquipo.getContentPane().add(btnBorrar);
+
+		JButton btnAtras = new FormaBotonCircular( "Boton" );
 		btnAtras.setBackground(Color.WHITE);
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -105,36 +114,78 @@ public class VentanaEquipo {
 		btnAtras.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		btnAtras.setText("ATRAS");
 		btnAtras.setForeground(Color.DARK_GRAY);
-		btnAtras.setBounds(10, 209, 273, 127);
+		btnAtras.setBounds(10, 3, 72, 73);
 		VentanaEquipo.getContentPane().add(btnAtras);
-//		ImageIcon icnAtras = new ImageIcon("imagenes/atras.png");
-//		btnAtras.setIcon(icnEquipo);
 		
+
 		JButton btnListar = new FormaBoton( "Boton" );
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnListar.setBackground(Color.WHITE);
-		btnListar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
-		btnListar.setText("LISTAR");
-		btnListar.setHorizontalAlignment(SwingConstants.LEADING);
+		btnListar.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
+		btnListar.setText("VER");
 		btnListar.setForeground(Color.DARK_GRAY);;
-		btnListar.setBounds(295, 209, 273, 127);
+		btnListar.setBounds(200, 291, 160, 45);
 		VentanaEquipo.getContentPane().add(btnListar);
-		
-		JLabel lblEquipo = new JLabel("EQUIPO");
-		lblEquipo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 30));
+
+		JLabel lblEquipo = new JLabel("EQUIPOS");
+		lblEquipo.setFont(new Font("Varsity Playbook", Font.PLAIN, 60));
 		lblEquipo.setBackground(new Color(255, 245, 238));
 		lblEquipo.setForeground(Color.WHITE);
-		lblEquipo.setBounds(201, 11, 166, 50);
+		lblEquipo.setBounds(200, 10, 190, 66);
 		VentanaEquipo.getContentPane().add(lblEquipo);
-		//ImageIcon icnInfo = new ImageIcon("ima57, 209, 135.png");
-		//btnListar.setIcon(icnEquipo);
+
+
+		String[] columnNames = {"Nombre", "#Jugadores","Lugar"};
+
+		dtm = new DefaultTableModel (null,columnNames);
+		table = new JTable(dtm);
+
+
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setBackground(Color.white);
+		table.setFont(new Font("Varsity Playbook", Font.PLAIN, 28));
+		table.setRowHeight(30);
+
+		int[] anchos = {150, 30, 150};
+
+		for(int i = 0; i < dtm.getColumnCount(); i++) {
+			table.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+
+		}
+
+
+		JScrollPane tablaEquipo = new JScrollPane(table);
+		tablaEquipo.setBounds(70, 126, 452, 146);
+		tablaEquipo.setFont(new  Font("Varsity Playbook", Font.PLAIN, 28) );
+		VentanaEquipo.getContentPane().add(tablaEquipo);
+
+		JLabel lblTorneo = new JLabel("TORNEO:");
+		lblTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 40));
+		lblTorneo.setForeground(Color.WHITE);
+		lblTorneo.setBounds(81, 71, 128, 44);
+		VentanaEquipo.getContentPane().add(lblTorneo);
+
+		torneo = new JComboBox();
+		torneo.setBounds(221, 71, 285, 33);
+		VentanaEquipo.getContentPane().add(torneo);
 		
+
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		VentanaEquipo.getContentPane().add(lblNewLabel);
-		
-	}
+		cargarTorneos();
 
+	}
+	public void cargarTorneos(){
+		torneo.removeAllItems();
+		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
+			torneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
+		}
+	}
 	public JFrame getVentanaPrincipal() {
 		return VentanaEquipo;
 	}
@@ -154,9 +205,4 @@ public class VentanaEquipo {
 	public void setVentanaEquipo(JFrame ventanaEquipo) {
 		VentanaEquipo = ventanaEquipo;
 	}
-
-
-	
-	
-	
 }

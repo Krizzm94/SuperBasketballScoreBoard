@@ -47,9 +47,8 @@ public class VentanaIngresarEquipo  {
 	private JTextField txtLugar;
 	private VentanaEquipo ventanaEquipo;
 	private VentanaPrincipal ventanaPrincipal;
-	private JComboBox torneo;
 
-	
+
 
 	/**
 	 * Create the frame.
@@ -66,23 +65,18 @@ public class VentanaIngresarEquipo  {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 
-		JLabel lblTorneo = new JLabel("Torneo");
-		lblTorneo.setBounds(28, 80, 119, 24);
-		lblTorneo.setForeground(Color.WHITE);
-		lblTorneo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
-
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(28, 132, 142, 24);
+		lblNombre.setBounds(28, 102, 142, 24);
 		lblNombre.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		lblNombre.setForeground(Color.WHITE);
 
 		JLabel lbljugadores = new JLabel("N Jugadores");
-		lbljugadores.setBounds(28, 186, 219, 29);
+		lbljugadores.setBounds(28, 158, 219, 29);
 		lbljugadores.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		lbljugadores.setForeground(Color.WHITE);
 
 		JLabel lblColor = new JLabel("Color");
-		lblColor.setBounds(28, 226, 142, 37);
+		lblColor.setBounds(28, 212, 142, 37);
 		lblColor.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		lblColor.setForeground(Color.WHITE);
 
@@ -91,22 +85,19 @@ public class VentanaIngresarEquipo  {
 		lblLugar.setFont(new Font("LMS I Love This Game", Font.PLAIN, 20));
 		lblLugar.setForeground(Color.WHITE);
 
-		torneo = new JComboBox();
-		torneo.setBounds(201, 78, 185, 34);
-
 		txtNombre = new JTextField();
-		txtNombre.setBounds(201, 130, 185, 34);
+		txtNombre.setBounds(205, 100, 185, 34);
 		txtNombre.setColumns(10);
 
 		JComboBox numJugadores = new JComboBox();
-		numJugadores.setBounds(257, 182, 49, 34);
+		numJugadores.setBounds(280, 158, 49, 34);
 		numJugadores.setModel(new DefaultComboBoxModel(new String[] {"6", "7", "8"}));
 		Color colors[] = { Color.black, Color.blue, Color.cyan, Color.darkGray,
 				Color.gray, Color.green, Color.lightGray, Color.magenta,
 				Color.orange, Color.pink, Color.red, Color.white, Color.yellow };
 
 		JComboBox colores = new JComboBox(colors);
-		colores.setBounds(205, 226, 71, 37);
+		colores.setBounds(238, 212, 71, 37);
 		colores.setMaximumRowCount(5);
 		colores.setEditable(true);
 		colores.setRenderer(new ColorCellRenderer());
@@ -147,8 +138,6 @@ public class VentanaIngresarEquipo  {
 		btnAtras.setMaximumSize(new Dimension(65, 30));
 
 		contentPane.setLayout(null);
-		contentPane.add(lblTorneo);
-		contentPane.add(torneo);
 		contentPane.add(lblNombre);
 		contentPane.add(lblColor);
 		contentPane.add(numJugadores);
@@ -170,8 +159,8 @@ public class VentanaIngresarEquipo  {
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
 		lblNewLabel.setBounds(0, 0, 580, 350);
 		contentPane.add(lblNewLabel);
-		
-		cargarTorneos();
+
+
 
 
 
@@ -194,16 +183,11 @@ public class VentanaIngresarEquipo  {
 			return renderer;
 		}
 	}
-	
-	
-	public void cargarTorneos(){
-		torneo.removeAllItems();
-		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
-			torneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
-		}
-	}
-	
-	
+
+
+
+
+
 	public static JFrame getFrame() {
 		return frame;
 	}
@@ -211,6 +195,6 @@ public class VentanaIngresarEquipo  {
 	public static void setFrame(JFrame frame) {
 		VentanaIngresarEquipo.frame = frame;
 	}
-	
+
 
 }
