@@ -41,6 +41,7 @@ public class VentanaMarcador  implements Runnable {
 	private Thread thread;
 	private long speed;
 
+	
 	public long getSpeed() {
 		return this.speed;
 	}
@@ -55,7 +56,6 @@ public class VentanaMarcador  implements Runnable {
 	 * Create the application.
 	 */
 	public VentanaMarcador(VentanaPrincipal ventanaPrincipal) {
-
 		pause = false;
 		stop = false;
 		thread = new Thread(this);
@@ -152,39 +152,46 @@ public class VentanaMarcador  implements Runnable {
 		frame.getContentPane().setLayout(null);
 
 		this.lblTiempo = new JLabel("10:00");
-		lblTiempo.setFont(new Font("LED BOARD", Font.BOLD, 70));
-		lblTiempo.setBounds(151, 17, 290, 89);
+		lblTiempo.setFont(new Font("DIGITAL-7", Font.BOLD, 100));
+		lblTiempo.setForeground(Color.white);
+		lblTiempo.setBounds(150, 11, 290, 89);
 		frame.getContentPane().add(lblTiempo);
 
 
 		this.lblPuntosT1 = new JLabel(Integer.toString(puntaje1));
-		lblPuntosT1.setFont(new Font("LED BOARD", Font.BOLD, 70));
-		lblPuntosT1.setBounds(50, 117, 116, 89);
+		lblPuntosT1.setFont(new Font("DIGITAL-7", Font.BOLD, 70));
+		lblPuntosT1.setForeground(Color.white);
+		lblPuntosT1.setBounds(21, 142, 116, 89);
 		frame.getContentPane().add(lblPuntosT1);
 
 		this.lblPuntosT2 = new JLabel(Integer.toString(puntaje2));
-		lblPuntosT2.setFont(new Font("LED BOARD", Font.BOLD, 70));
-		lblPuntosT2.setBounds(429, 117, 116, 89);
+		lblPuntosT2.setFont(new Font("DIGITAL-7", Font.BOLD, 70));
+		lblPuntosT2.setForeground(Color.white);
+		lblPuntosT2.setBounds(448, 142, 116, 89);
 		frame.getContentPane().add(lblPuntosT2);
 
 		this.lblNroCuarto = new JLabel("1");
-		lblNroCuarto.setFont(new Font("LED BOARD", Font.BOLD, 60));
+		lblNroCuarto.setFont(new Font("DIGITAL-7", Font.BOLD, 60));
+		lblNroCuarto.setForeground(Color.white);
 		lblNroCuarto.setBounds(266, 125, 50, 74);
 		frame.getContentPane().add(lblNroCuarto);
 
 		JLabel lblTeam = new JLabel(ventanaPrincipal.getLocal());
 		lblTeam.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblTeam.setBounds(50, 205, 46, 14);
+		lblTeam.setForeground(Color.white);
+		lblTeam.setBounds(50, 217, 52, 14);
 		frame.getContentPane().add(lblTeam);
 
 		JLabel lblCuarto = new JLabel("TIEMPO");
 		lblCuarto.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCuarto.setForeground(Color.white);
 		lblCuarto.setBounds(266, 200, 60, 20);
 		frame.getContentPane().add(lblCuarto);
 
 		JLabel label_5 = new JLabel(ventanaPrincipal.getVisitante());
 		label_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_5.setBounds(429, 205, 46, 14);
+		label_5.setForeground(Color.white);
+		label_5.setBounds(489, 217, 52, 14);
 		frame.getContentPane().add(label_5);
 
 		this.jugadoresTeam1 = new JComboBox();
@@ -192,11 +199,13 @@ public class VentanaMarcador  implements Runnable {
 		frame.getContentPane().add(jugadoresTeam1);
 
 		this.btnFalta1 = new JButton("FALTA");
+		btnFalta1.setFont(new Font("Dafunk2", Font.PLAIN, 17));
 		btnFalta1.setEnabled(false);
 		btnFalta1.setBounds(166, 246, 103, 36);
 		frame.getContentPane().add(btnFalta1);
 
 		this.btnPuntoTeam1 = new JButton("1 PUNTO");
+		btnPuntoTeam1.setFont(new Font("Dafunk2", Font.PLAIN, 15));
 		btnPuntoTeam1.setEnabled(false);
 		btnPuntoTeam1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -210,6 +219,7 @@ public class VentanaMarcador  implements Runnable {
 		frame.getContentPane().add(btnPuntoTeam1);
 
 		this.btnPuntoTeam_1 = new JButton("-1 PUNTO");
+		btnPuntoTeam_1.setFont(new Font("Dafunk2", Font.PLAIN, 13));
 		btnPuntoTeam_1.setEnabled(false);
 		btnPuntoTeam_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -223,6 +233,7 @@ public class VentanaMarcador  implements Runnable {
 		frame.getContentPane().add(btnPuntoTeam_1);
 
 		this.btnFalta2 = new JButton("FALTA");
+		btnFalta2.setFont(new Font("Dafunk2",Font.PLAIN, 17));
 		btnFalta2.setEnabled(false);
 		btnFalta2.setBounds(326, 246, 103, 36);
 		frame.getContentPane().add(btnFalta2);
@@ -232,6 +243,7 @@ public class VentanaMarcador  implements Runnable {
 		frame.getContentPane().add(jugadoresTeam2);
 
 		this.btnPuntoTeam2 = new JButton("-1 PUNTO");
+		btnPuntoTeam2.setFont(new Font("Dafunk2", Font.PLAIN, 13));
 		btnPuntoTeam2.setEnabled(false);
 		btnPuntoTeam2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -245,6 +257,7 @@ public class VentanaMarcador  implements Runnable {
 		frame.getContentPane().add(btnPuntoTeam2);
 
 		this.btnPuntoTeam_2 = new JButton("1 PUNTO");
+		btnPuntoTeam_2.setFont(new Font("Dafunk2", Font.PLAIN, 15));
 		btnPuntoTeam_2.setEnabled(false);
 		btnPuntoTeam_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -260,7 +273,7 @@ public class VentanaMarcador  implements Runnable {
 		JButton btnRegresar = new JButton();
 		ImageIcon icnReg = new ImageIcon("imagenes/back1.png");
 		btnRegresar.setIcon(icnReg);
-		btnRegresar.setBounds(10, 11, 50, 50);
+		btnRegresar.setBounds(57, 0, 50, 50);
 		frame.getContentPane().add(btnRegresar);
 
 		JButton btnHome = new JButton();
@@ -272,13 +285,13 @@ public class VentanaMarcador  implements Runnable {
 				if (salir == JOptionPane.YES_OPTION)
 				{
 					getFrame().setVisible(false);
-					getVentanaPrincipal().getVentanaPrincipal().setVisible(true);
+//					getVentanaPrincipal().getVentanaPrincipal().setVisible(true);
 				}
 			}
 		});
 		ImageIcon icnHome = new ImageIcon("imagenes/home.png");
 		btnHome.setIcon(icnHome);
-		btnHome.setBounds(514, 17, 50, 50);
+		btnHome.setBounds(469, 0, 50, 50);
 		frame.getContentPane().add(btnHome);
 
 		JButton btnStart = new JButton();
@@ -343,7 +356,7 @@ public class VentanaMarcador  implements Runnable {
 		frame.getContentPane().add(btnReanudar);
 
 		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setIcon(new ImageIcon("imagenes/fondoCron.png"));
+		lblNewLabel.setIcon(new ImageIcon("imagenes/fondoMarcador.png"));
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		frame.getContentPane().add(lblNewLabel);
 
