@@ -24,8 +24,14 @@ public class VentanaMarcador  implements Runnable {
 	private JLabel lblNroCuarto;
 	private JComboBox jugadoresTeam1;
 	private JComboBox jugadoresTeam2;
-	private static int nuMin = 0; 
-	private static int nuSeg = 10;
+	private JButton btnPuntoTeam1;
+	private JButton btnPuntoTeam_1;
+	private JButton btnPuntoTeam2;
+	private JButton btnPuntoTeam_2;
+	private JButton btnFalta1;
+	private JButton btnFalta2;
+	private static int nuMin = 10; 
+	private static int nuSeg = 0;
 	private static int nuHora = 0;
 	private static int puntaje1 = 0;
 	private static int puntaje2 = 0;
@@ -117,7 +123,7 @@ public class VentanaMarcador  implements Runnable {
 		JOptionPane.showMessageDialog(null,"FINALIZO ESTE CUARTO", "Fin del conteo", JOptionPane.INFORMATION_MESSAGE);
 		getLblNroCuarto().setText("2");
 		getLblTiempo().setText("0"+nuMin+":"+"0"+nuSeg);
-	
+
 		notify();
 	}
 
@@ -185,11 +191,13 @@ public class VentanaMarcador  implements Runnable {
 		jugadoresTeam1.setBounds(50, 246, 103, 36);
 		frame.getContentPane().add(jugadoresTeam1);
 
-		JButton btnNewButton = new JButton("FALTA");
-		btnNewButton.setBounds(166, 246, 103, 36);
-		frame.getContentPane().add(btnNewButton);
+		this.btnFalta1 = new JButton("FALTA");
+		btnFalta1.setEnabled(false);
+		btnFalta1.setBounds(166, 246, 103, 36);
+		frame.getContentPane().add(btnFalta1);
 
-		JButton btnPuntoTeam1 = new JButton("1 PUNTO");
+		this.btnPuntoTeam1 = new JButton("1 PUNTO");
+		btnPuntoTeam1.setEnabled(false);
 		btnPuntoTeam1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int aux = getPuntaje1()+1;
@@ -201,7 +209,8 @@ public class VentanaMarcador  implements Runnable {
 		btnPuntoTeam1.setBounds(50, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam1);
 
-		JButton btnPuntoTeam_1 = new JButton("-1 PUNTO");
+		this.btnPuntoTeam_1 = new JButton("-1 PUNTO");
+		btnPuntoTeam_1.setEnabled(false);
 		btnPuntoTeam_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int aux = getPuntaje1()-1;
@@ -213,15 +222,17 @@ public class VentanaMarcador  implements Runnable {
 		btnPuntoTeam_1.setBounds(166, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam_1);
 
-		JButton btnFalta = new JButton("FALTA");
-		btnFalta.setBounds(326, 246, 103, 36);
-		frame.getContentPane().add(btnFalta);
+		this.btnFalta2 = new JButton("FALTA");
+		btnFalta2.setEnabled(false);
+		btnFalta2.setBounds(326, 246, 103, 36);
+		frame.getContentPane().add(btnFalta2);
 
 		this.jugadoresTeam2 = new JComboBox();
 		jugadoresTeam2.setBounds(442, 246, 103, 36);
 		frame.getContentPane().add(jugadoresTeam2);
 
-		JButton btnPuntoTeam2 = new JButton("-1 PUNTO");
+		this.btnPuntoTeam2 = new JButton("-1 PUNTO");
+		btnPuntoTeam2.setEnabled(false);
 		btnPuntoTeam2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int aux = getPuntaje2()-1;
@@ -233,7 +244,8 @@ public class VentanaMarcador  implements Runnable {
 		btnPuntoTeam2.setBounds(442, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam2);
 
-		JButton btnPuntoTeam_2 = new JButton("1 PUNTO");
+		this.btnPuntoTeam_2 = new JButton("1 PUNTO");
+		btnPuntoTeam_2.setEnabled(false);
 		btnPuntoTeam_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int aux = getPuntaje2()+1;
@@ -262,9 +274,6 @@ public class VentanaMarcador  implements Runnable {
 					getFrame().setVisible(false);
 					getVentanaPrincipal().getVentanaPrincipal().setVisible(true);
 				}
-
-
-
 			}
 		});
 		ImageIcon icnHome = new ImageIcon("imagenes/home.png");
@@ -281,6 +290,12 @@ public class VentanaMarcador  implements Runnable {
 			public void actionPerformed(ActionEvent e) {
 
 				start();
+				btnPuntoTeam1.setEnabled(true);
+				btnPuntoTeam_2.setEnabled(true); 
+				btnPuntoTeam2.setEnabled(true);
+				btnPuntoTeam_1.setEnabled(true);
+				btnFalta1.setEnabled(true);
+				btnFalta2.setEnabled(true);
 
 			}
 		});
@@ -295,6 +310,12 @@ public class VentanaMarcador  implements Runnable {
 
 			public void actionPerformed(ActionEvent e) {
 				suspend();
+				btnPuntoTeam1.setEnabled(false);
+				btnPuntoTeam_2.setEnabled(false); 
+				btnPuntoTeam2.setEnabled(false);
+				btnPuntoTeam_1.setEnabled(false);
+				btnFalta1.setEnabled(false);
+				btnFalta2.setEnabled(false);
 
 			}
 		});
@@ -309,7 +330,13 @@ public class VentanaMarcador  implements Runnable {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				resume();				
+				resume();		
+				btnPuntoTeam1.setEnabled(true);
+				btnPuntoTeam_2.setEnabled(true); 
+				btnPuntoTeam2.setEnabled(true);
+				btnPuntoTeam_1.setEnabled(true);
+				btnFalta1.setEnabled(true);
+				btnFalta2.setEnabled(true);
 			}
 		});
 		btnReanudar.setBounds(279, 307, 30, 30);
