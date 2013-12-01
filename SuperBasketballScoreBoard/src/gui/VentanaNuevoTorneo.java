@@ -82,6 +82,7 @@ public class VentanaNuevoTorneo {
 							frame.setVisible(false);
 							ventanaPrincipal.getVentanaTorneo().cargarTorneos();
 							ventanaPrincipal.getVentanaEquipo().cargarTorneos();
+							ventanaPrincipal.getVentanaJugador().cargarTorneos();
 							ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
 						}
 						else{

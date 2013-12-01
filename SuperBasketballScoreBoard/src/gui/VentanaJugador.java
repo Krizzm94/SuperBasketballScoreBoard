@@ -85,9 +85,10 @@ public class VentanaJugador {
 			@Override
 			public void itemStateChanged(ItemEvent arg0) {
 				// TODO Auto-generated method stub
-				String torneo=cmbTorneo.getSelectedItem().toString();
-				cargarEquipos(torneo);
-
+				if(cmbTorneo.getSelectedItem()!=null) {
+					String torneo=cmbTorneo.getSelectedItem().toString();
+					cargarEquipos(torneo);
+				}
 			}
 		});
 

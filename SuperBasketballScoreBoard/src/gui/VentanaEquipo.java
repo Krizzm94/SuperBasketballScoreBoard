@@ -195,8 +195,10 @@ public class VentanaEquipo {
 			
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				String t=torneo.getSelectedItem().toString();
-				cargarEquipos(t);
+				if(torneo.getSelectedItem()!=null) {
+					String t=torneo.getSelectedItem().toString();
+					cargarEquipos(t);
+				}
 			}
 		});
 		
