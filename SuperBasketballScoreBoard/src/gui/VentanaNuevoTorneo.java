@@ -20,6 +20,8 @@ import javax.swing.JRootPane;
 import javax.swing.JTextField;
 import javax.swing.DefaultComboBoxModel;
 
+import Estilos.FormaBoton;
+
 import logica.Torneo;
 
 /**
@@ -64,7 +66,7 @@ public class VentanaNuevoTorneo {
 			lblJugador.setFont(new Font("Varsity Playbook", Font.PLAIN, 60));
 			lblJugador.setBounds(110, 11, 383, 90);
 			frame.getContentPane().add(lblJugador);
-			crear = new JButton("CREAR TORNEO");
+			crear = new FormaBoton("CREAR TORNEO");
 			
 			crear.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {

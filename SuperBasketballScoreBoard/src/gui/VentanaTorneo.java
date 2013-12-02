@@ -26,6 +26,8 @@ import javax.swing.JScrollBar;
 import javax.swing.border.EtchedBorder;
 import javax.swing.ListSelectionModel;
 
+import Estilos.FormaBoton;
+
 /**
  * @author Wolfran Pinzon
  * 
@@ -70,7 +72,7 @@ public class VentanaTorneo {
 		lblJugador.setFont(new Font("Varsity Playbook", Font.PLAIN, 60));
 		frame.getContentPane().add(lblJugador);
 
-		JButton btnNewButton = new JButton("NUEVO");
+		JButton btnNewButton = new FormaBoton("NUEVO");
 		btnNewButton.setBounds(10, 278, 150, 58);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -82,7 +84,7 @@ public class VentanaTorneo {
 		btnNewButton.setFont(new Font("Varsity Playbook", Font.PLAIN, 35));
 		frame.getContentPane().add(btnNewButton);
 
-		JButton btnEliminar = new JButton("ELIMINAR");
+		JButton btnEliminar = new FormaBoton("ELIMINAR");
 		btnEliminar.setBounds(398, 278, 168, 58);
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -146,7 +148,7 @@ public class VentanaTorneo {
 		btnHome.setBounds(514, 17, 50, 50);
 		frame.getContentPane().add(btnHome);
 
-		JButton btnIrAlTorneo = new JButton("IR AL TORNEO");
+		JButton btnIrAlTorneo = new FormaBoton("IR AL TORNEO");
 		btnIrAlTorneo.setBounds(170, 278, 220, 58);
 		btnIrAlTorneo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

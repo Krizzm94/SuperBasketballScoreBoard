@@ -28,6 +28,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.SwingConstants;
 
+import Estilos.FormaBoton;
+
 import logica.Torneo;
 
 //import logica.Torneo;
@@ -126,7 +128,7 @@ public class VentanaIrTorneo {
 		frame.getContentPane().add(btnRegresar);
 
 
-		JButton btnIrAlPartido = new JButton("Ir al Partido");
+		JButton btnIrAlPartido = new FormaBoton("Ir al Partido");
 		btnIrAlPartido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(table.getSelectedRow()>=0){
@@ -172,7 +174,7 @@ public class VentanaIrTorneo {
 		frame.getContentPane().add(jScrollPane);
 
 
-		JButton btnExportar = new JButton("Exportar");
+		JButton btnExportar = new FormaBoton("Exportar");
 		btnExportar.setBounds(310, 281, 248, 58);
 		btnExportar.addActionListener(new ActionListener() {
 

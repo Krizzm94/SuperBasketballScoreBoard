@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+
+import Estilos.FormaBoton;
 import Estilos.FormaBotonCircular;
 import java.awt.Color;
 
@@ -198,13 +200,13 @@ public class VentanaMarcador  implements Runnable {
 		jugadoresTeam1.setBounds(50, 246, 103, 36);
 		frame.getContentPane().add(jugadoresTeam1);
 
-		this.btnFalta1 = new JButton("FALTA");
+		this.btnFalta1 = new FormaBoton("FALTA");
 		btnFalta1.setFont(new Font("Dafunk2", Font.PLAIN, 17));
 		btnFalta1.setEnabled(false);
 		btnFalta1.setBounds(166, 246, 103, 36);
 		frame.getContentPane().add(btnFalta1);
 
-		this.btnPuntoTeam1 = new JButton("1 PUNTO");
+		this.btnPuntoTeam1 = new FormaBoton("1 PUNTO");
 		btnPuntoTeam1.setFont(new Font("Dafunk2", Font.PLAIN, 15));
 		btnPuntoTeam1.setEnabled(false);
 		btnPuntoTeam1.addActionListener(new ActionListener() {
@@ -218,7 +220,7 @@ public class VentanaMarcador  implements Runnable {
 		btnPuntoTeam1.setBounds(50, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam1);
 
-		this.btnPuntoTeam_1 = new JButton("-1 PUNTO");
+		this.btnPuntoTeam_1 = new FormaBoton("-1 PUNTO");
 		btnPuntoTeam_1.setFont(new Font("Dafunk2", Font.PLAIN, 13));
 		btnPuntoTeam_1.setEnabled(false);
 		btnPuntoTeam_1.addActionListener(new ActionListener() {
@@ -232,7 +234,7 @@ public class VentanaMarcador  implements Runnable {
 		btnPuntoTeam_1.setBounds(166, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam_1);
 
-		this.btnFalta2 = new JButton("FALTA");
+		this.btnFalta2 = new FormaBoton("FALTA");
 		btnFalta2.setFont(new Font("Dafunk2",Font.PLAIN, 17));
 		btnFalta2.setEnabled(false);
 		btnFalta2.setBounds(326, 246, 103, 36);
@@ -242,7 +244,7 @@ public class VentanaMarcador  implements Runnable {
 		jugadoresTeam2.setBounds(442, 246, 103, 36);
 		frame.getContentPane().add(jugadoresTeam2);
 
-		this.btnPuntoTeam2 = new JButton("-1 PUNTO");
+		this.btnPuntoTeam2 = new FormaBoton("-1 PUNTO");
 		btnPuntoTeam2.setFont(new Font("Dafunk2", Font.PLAIN, 13));
 		btnPuntoTeam2.setEnabled(false);
 		btnPuntoTeam2.addActionListener(new ActionListener() {
@@ -256,7 +258,7 @@ public class VentanaMarcador  implements Runnable {
 		btnPuntoTeam2.setBounds(442, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam2);
 
-		this.btnPuntoTeam_2 = new JButton("1 PUNTO");
+		this.btnPuntoTeam_2 = new FormaBoton("1 PUNTO");
 		btnPuntoTeam_2.setFont(new Font("Dafunk2", Font.PLAIN, 15));
 		btnPuntoTeam_2.setEnabled(false);
 		btnPuntoTeam_2.addActionListener(new ActionListener() {
