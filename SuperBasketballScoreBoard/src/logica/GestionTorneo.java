@@ -37,6 +37,7 @@ public class GestionTorneo {
 		cargarTorneos();
 		cargarEquipos();
 		cargarJugadores();
+//		cargarPartidosSql();
 		cargarPartidos();
 	}
 
@@ -158,6 +159,7 @@ public class GestionTorneo {
 		ResultSet consulta=partidoDao.ConsultarPartidos();
 		try {
 			while(consulta.next()){
+				int id=Integer.parseInt(consulta.getString("id"));
 				String local=consulta.getString("local");
 				String visitante=consulta.getString("visitante");
 				String fecha=consulta.getString("fecha");
@@ -166,7 +168,7 @@ public class GestionTorneo {
 				Torneo tor=buscarTorneo(torneo);
 				Equipo l=tor.buscarEquipos(local);
 				Equipo v=tor.buscarEquipos(visitante);
-				Partido partido=new Partido(l, v, fecha, hora); 
+				Partido partido=new Partido(id,l, v, fecha, hora); 
 				tor.agregarPartido(partido);
 			}
 		} catch (SQLException e) {

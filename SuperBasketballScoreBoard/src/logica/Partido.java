@@ -9,6 +9,7 @@ package logica;
  */
 public class Partido {
 
+	private int id;
 	private Equipo equipoLocal;
 	private Equipo equipoVisitante;
 	private String fecha;
@@ -18,9 +19,10 @@ public class Partido {
 	/**
 	 * Constructor de la clase
 	 */
-	public Partido(Equipo equipoLocal, Equipo equipoVisitante, String fecha,
+	public Partido(int id,Equipo equipoLocal, Equipo equipoVisitante, String fecha,
 			String hora) {
 		super();
+		this.id=id;
 		this.equipoLocal = equipoLocal;
 		this.equipoVisitante = equipoVisitante;
 		this.fecha = fecha;
@@ -92,14 +94,34 @@ public class Partido {
 	}
 
 
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Partido [equipoLocal=" + equipoLocal + ", equipoVisitante="
-				+ equipoVisitante + ", fecha=" + fecha + ", hora=" + hora + "]";
+		return "Partido [id=" + id + ", equipoLocal=" + equipoLocal
+				+ ", equipoVisitante=" + equipoVisitante + ", fecha=" + fecha
+				+ ", hora=" + hora + "]";
 	}
+
+
+	
 	
 	
 	

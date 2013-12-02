@@ -92,9 +92,9 @@ public class Test {
 		gestion.getTorneos().get(2).getEquipos()[1].agregarJugador(jugador8);
 		
 		/*crear partidos*/
-		Partido partido1=new Partido(equipo2, equipo5, "20 dic", "20:00");
-		Partido partido2=new Partido(equipo1, equipo, "20 dic", "20:00");
-		Partido partido3=new Partido(equipo4, equipo3, "20 dic", "20:00");
+		Partido partido1=new Partido(0,equipo2, equipo5, "20 dic", "20:00");
+		Partido partido2=new Partido(1,equipo1, equipo, "20 dic", "20:00");
+		Partido partido3=new Partido(2,equipo4, equipo3, "20 dic", "20:00");
 		
 		/*agregar partidos*/
 		gestion.getTorneos().get(2).agregarPartido(partido1);
