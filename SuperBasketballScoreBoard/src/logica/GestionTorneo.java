@@ -37,7 +37,7 @@ public class GestionTorneo {
 		cargarTorneos();
 		cargarEquipos();
 		cargarJugadores();
-//		cargarPartidosSql();
+		cargarPartidosSql();
 		cargarPartidos();
 	}
 
@@ -174,6 +174,27 @@ public class GestionTorneo {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	
+	public void cargarPartidosSql() {
+		String local="";
+		String vis="";
+		for(int i=0;i<torneos.size();i++) {
+			if(torneos.get(i).contarEquipos()==torneos.get(i).getNumEquipos()){
+				for(int c=0;c<torneos.get(i).getEquipos().length;c++) {
+					if(local.equals("") && vis.equals("")) {
+					local=torneos.get(i).getEquipos()[c].getNombre();
+					vis=torneos.get(i).getEquipos()[c+1].getNombre();
+					partidoDao.insertarPartido(local, vis, (c+1)+"/dic/2013", (c+14)+":00", torneos.get(i).getNombre());
+					c=c+2;
+					local="";
+					vis="";
+					}
+					
+				}
+			}
 		}
 	}
 	

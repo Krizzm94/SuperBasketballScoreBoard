@@ -23,12 +23,9 @@ public PartidoDao(){
 	
 }
 
-public int insertarPartido(Partido partido, String local, String vis, String torneo){
+public int insertarPartido( String local, String vis,String fecha, String hora, String torneo){
 	conexion.conectarBD();
 	try{
-		String fecha=partido.getFecha();
-		String hora=partido.getHora();
-
 		Statement sentencia=conexion.getConexion().createStatement();
 		return sentencia.executeUpdate(partidoSql.insertarPartido(local, vis, fecha, hora, torneo));
 
