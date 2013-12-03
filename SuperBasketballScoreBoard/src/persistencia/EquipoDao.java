@@ -45,11 +45,11 @@ public int insertarEquipo(Equipo equipo, String torneo){
 
 
 
-public int eliminarEquipo(String nombre){
+public int eliminarEquipo(String nombre, String torneo){
 	conexion.conectarBD();
 	try{
 		Statement sentencia=conexion.getConexion().createStatement();
-		return sentencia.executeUpdate(equipoSql.eliminarEquipo(nombre));
+		return sentencia.executeUpdate(equipoSql.eliminarEquipo(nombre, torneo));
 	}
 	catch (SQLException e) {
 		System.out.println(e.getMessage());

@@ -59,37 +59,37 @@ public class Test {
 		gestion.getTorneos().get(2).agregarEquipo(equipo5);
 
 		/*agregar jugadores*/
-		gestion.getTorneos().get(0).getEquipos()[0].agregarJugador(jugador1);
-		gestion.getTorneos().get(0).getEquipos()[0].agregarJugador(jugador2);
-		gestion.getTorneos().get(0).getEquipos()[0].agregarJugador(jugador3);
-		gestion.getTorneos().get(0).getEquipos()[0].agregarJugador(jugador4);
-		gestion.getTorneos().get(0).getEquipos()[0].agregarJugador(jugador5);
-		gestion.getTorneos().get(0).getEquipos()[0].agregarJugador(jugador6);
+		gestion.getTorneos().get(0).getEquipos().get(0).agregarJugador(jugador1);
+		gestion.getTorneos().get(0).getEquipos().get(0).agregarJugador(jugador2);
+		gestion.getTorneos().get(0).getEquipos().get(0).agregarJugador(jugador3);
+		gestion.getTorneos().get(0).getEquipos().get(0).agregarJugador(jugador4);
+		gestion.getTorneos().get(0).getEquipos().get(0).agregarJugador(jugador5);
+		gestion.getTorneos().get(0).getEquipos().get(0).agregarJugador(jugador6);
 		
-		gestion.getTorneos().get(0).getEquipos()[1].agregarJugador(jugador1);
-		gestion.getTorneos().get(0).getEquipos()[1].agregarJugador(jugador2);
-		gestion.getTorneos().get(0).getEquipos()[1].agregarJugador(jugador3);
-		gestion.getTorneos().get(0).getEquipos()[1].agregarJugador(jugador4);
-		gestion.getTorneos().get(0).getEquipos()[1].agregarJugador(jugador5);
-		gestion.getTorneos().get(0).getEquipos()[1].agregarJugador(jugador6);
-		gestion.getTorneos().get(0).getEquipos()[1].agregarJugador(jugador7);
-		gestion.getTorneos().get(0).getEquipos()[1].agregarJugador(jugador8);
+		gestion.getTorneos().get(0).getEquipos().get(1).agregarJugador(jugador1);
+		gestion.getTorneos().get(0).getEquipos().get(1).agregarJugador(jugador2);
+		gestion.getTorneos().get(0).getEquipos().get(1).agregarJugador(jugador3);
+		gestion.getTorneos().get(0).getEquipos().get(1).agregarJugador(jugador4);
+		gestion.getTorneos().get(0).getEquipos().get(1).agregarJugador(jugador5);
+		gestion.getTorneos().get(0).getEquipos().get(1).agregarJugador(jugador6);
+		gestion.getTorneos().get(0).getEquipos().get(1).agregarJugador(jugador7);
+		gestion.getTorneos().get(0).getEquipos().get(1).agregarJugador(jugador8);
 		
-		gestion.getTorneos().get(1).getEquipos()[0].agregarJugador(jugador1);
-		gestion.getTorneos().get(1).getEquipos()[0].agregarJugador(jugador2);
-		gestion.getTorneos().get(1).getEquipos()[0].agregarJugador(jugador3);
-		gestion.getTorneos().get(1).getEquipos()[0].agregarJugador(jugador4);
-		gestion.getTorneos().get(1).getEquipos()[0].agregarJugador(jugador5);
-		gestion.getTorneos().get(1).getEquipos()[0].agregarJugador(jugador6);
+		gestion.getTorneos().get(1).getEquipos().get(0).agregarJugador(jugador1);
+		gestion.getTorneos().get(1).getEquipos().get(0).agregarJugador(jugador2);
+		gestion.getTorneos().get(1).getEquipos().get(0).agregarJugador(jugador3);
+		gestion.getTorneos().get(1).getEquipos().get(0).agregarJugador(jugador4);
+		gestion.getTorneos().get(1).getEquipos().get(0).agregarJugador(jugador5);
+		gestion.getTorneos().get(1).getEquipos().get(0).agregarJugador(jugador6);
 		
-		gestion.getTorneos().get(2).getEquipos()[1].agregarJugador(jugador1);
-		gestion.getTorneos().get(2).getEquipos()[1].agregarJugador(jugador2);
-		gestion.getTorneos().get(2).getEquipos()[1].agregarJugador(jugador3);
-		gestion.getTorneos().get(2).getEquipos()[1].agregarJugador(jugador4);
-		gestion.getTorneos().get(2).getEquipos()[1].agregarJugador(jugador5);
-		gestion.getTorneos().get(2).getEquipos()[1].agregarJugador(jugador6);
-		gestion.getTorneos().get(2).getEquipos()[1].agregarJugador(jugador7);
-		gestion.getTorneos().get(2).getEquipos()[1].agregarJugador(jugador8);
+		gestion.getTorneos().get(2).getEquipos().get(1).agregarJugador(jugador1);
+		gestion.getTorneos().get(2).getEquipos().get(1).agregarJugador(jugador2);
+		gestion.getTorneos().get(2).getEquipos().get(1).agregarJugador(jugador3);
+		gestion.getTorneos().get(2).getEquipos().get(1).agregarJugador(jugador4);
+		gestion.getTorneos().get(2).getEquipos().get(1).agregarJugador(jugador5);
+		gestion.getTorneos().get(2).getEquipos().get(1).agregarJugador(jugador6);
+		gestion.getTorneos().get(2).getEquipos().get(1).agregarJugador(jugador7);
+		gestion.getTorneos().get(2).getEquipos().get(1).agregarJugador(jugador8);
 		
 		/*crear partidos*/
 		Partido partido1=new Partido(0,equipo2, equipo5, "20 dic", "20:00");

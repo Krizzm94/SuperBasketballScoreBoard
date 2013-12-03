@@ -25,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Dimension;
 import javax.swing.JComboBox;
 
+import logica.Equipo;
 import logica.Torneo;
 
 import Estilos.FormaBoton;
@@ -81,8 +82,9 @@ public class VentanaEquipo {
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaEquipo.setVisible(false);
-				ventanaPrincipal.getVentanaIngresarEquipo().getFrame().setVisible(true);
 				ventanaPrincipal.getVentanaIngresarEquipo().getFrame().setLocationRelativeTo(null);
+				ventanaPrincipal.getVentanaIngresarEquipo().getFrame().setVisible(true);
+				
 
 
 			}
@@ -108,8 +110,9 @@ public class VentanaEquipo {
 															"Advertencia!",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic1);
 					if(opcion==0){
 						String nombretorneo=torneo.getSelectedItem().toString();
-						ventanaPrincipal.getGestion().buscarTorneo(nombretorneo).eliminarEquipo(nombre);
-						
+						 ventanaPrincipal.getGestion().buscarTorneo(nombretorneo).eliminarEquipo(nombre);
+						ventanaPrincipal.getGestion().eliminarEquipoSql(nombre,nombretorneo);
+
 					cargarEquipos(nombretorneo);
 //						ventanaPrincipal.getVentanaJugador().cargarTorneos();
 //						ventanaPrincipal.getVentanaEquipo().cargarTorneos();
@@ -225,12 +228,12 @@ public class VentanaEquipo {
 	private void cargarEquipos(String t) {
 		while(dtm.getRowCount()>0)dtm.removeRow(0);
 		Torneo tor=ventanaPrincipal.getGestion().buscarTorneo(t);
-		for(int i=0;i<tor.getEquipos().length;i++){
-			if(tor.getEquipos()[i]!=null){
-				String nombre=String.valueOf(tor.getEquipos()[i].getNombre());
-				int jug=tor.getEquipos()[i].getNumJugadores();
+		for(int i=0;i<tor.getEquipos().size();i++){
+			if(tor.getEquipos().get(i)!=null){
+				String nombre=String.valueOf(tor.getEquipos().get(i).getNombre());
+				int jug=tor.getEquipos().get(i).getNumJugadores();
 				String jugadores=String.valueOf(jug);
-				String lugar=String.valueOf(tor.getEquipos()[i].getLugar());
+				String lugar=String.valueOf(tor.getEquipos().get(i).getLugar());
 				String [] filas={nombre,jugadores,lugar};
 				dtm.addRow(filas);
 			}

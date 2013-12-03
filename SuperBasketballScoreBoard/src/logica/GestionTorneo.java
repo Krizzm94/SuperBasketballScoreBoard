@@ -134,10 +134,14 @@ public class GestionTorneo {
 	public void agregarEquipoSql(Equipo equipo,String torneo){
 		equipoDao.insertarEquipo(equipo, torneo);
 	}
-	public void eliminarEquipo(String nombre){
+	
+	
+	public void eliminarEquipoSql(String nombre,String torneo){
 		
-		equipoDao.eliminarEquipo(nombre);
+		equipoDao.eliminarEquipo(nombre,torneo);
 	}
+	
+	
 	public void cargarJugadores(){
 		ResultSet consulta=jugadorDao.ConsultarJugador();
 		try {
@@ -147,7 +151,7 @@ public class GestionTorneo {
 				String nomEquipo=consulta.getString("nombre_equipo");
 				String nomTorneo=consulta.getString("nombre_torneo");
 				Jugador jugador=new Jugador( numero);
-				Equipo equi=buscarTorneo(nomTorneo).buscarEquipos(nomEquipo);
+				Equipo equi=buscarTorneo(nomTorneo).buscarEquipo(nomEquipo);
 				equi.agregarJugador(jugador);
 				
 			}
@@ -169,8 +173,8 @@ public class GestionTorneo {
 				String hora=consulta.getString("hora");
 				String torneo=consulta.getString("nombre_torneo");
 				Torneo tor=buscarTorneo(torneo);
-				Equipo l=tor.buscarEquipos(local);
-				Equipo v=tor.buscarEquipos(visitante);
+				Equipo l=tor.buscarEquipo(local);
+				Equipo v=tor.buscarEquipo(visitante);
 				Partido partido=new Partido(id,l, v, fecha, hora); 
 				tor.agregarPartido(partido);
 			}
@@ -186,10 +190,10 @@ public class GestionTorneo {
 		String vis="";
 		for(int i=0;i<torneos.size();i++) {
 			if(torneos.get(i).contarEquipos()==torneos.get(i).getNumEquipos()){
-				for(int c=0;c<torneos.get(i).getEquipos().length;c++) {
+				for(int c=0;c<torneos.get(i).getEquipos().size();c++) {
 					if(local.equals("") && vis.equals("")) {
-					local=torneos.get(i).getEquipos()[c].getNombre();
-					vis=torneos.get(i).getEquipos()[c+1].getNombre();
+					local=torneos.get(i).getEquipos().get(c).getNombre();
+					vis=torneos.get(i).getEquipos().get(c+1).getNombre();
 					partidoDao.insertarPartido(local, vis, (c+1)+"/dic/2013", (c+14)+":00", torneos.get(i).getNombre());
 					c=c+2;
 					local="";
@@ -210,6 +214,13 @@ public class GestionTorneo {
 		return false;
 	}
 
+	
+	public boolean validarEquipo(String torneo,String equipo){
+		if(buscarTorneo(torneo).buscarEquipo(equipo)!=null){
+			return true;
+		}
+		return false;
+	}
 
 	public TorneoDao getTorneoDao() {
 		return torneoDao;

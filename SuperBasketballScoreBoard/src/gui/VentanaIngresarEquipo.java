@@ -16,7 +16,9 @@ import javax.swing.Box;
 import javax.swing.ComboBoxEditor;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.GroupLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -140,11 +142,21 @@ public class VentanaIngresarEquipo  {
 				int numJugador=Integer.parseInt(numJugadores.getSelectedItem().toString());
 				String color=colores.getSelectedItem().toString();
 				String lugar=txtLugar.getText();
-				Equipo equipo=new Equipo(nombre, numJugador, color, lugar);
-				ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).agregarEquipo(equipo);
-				System.out.println(ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).toString());
-				ventanaPrincipal.getGestion().agregarEquipoSql(equipo, nombreTorneo);
-				
+				if(nombre.length()!=0 && lugar.length()!=0){
+					if(ventanaPrincipal.getGestion().validarEquipo(nombreTorneo,nombre)==false){
+						Equipo equipo=new Equipo(nombre, numJugador, color, lugar);
+						ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).agregarEquipo(equipo);
+						ventanaPrincipal.getGestion().agregarEquipoSql(equipo, nombreTorneo);
+
+					}
+					else{
+						final Icon ic2  =  new ImageIcon("imagenes/denied.png");
+						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> El Equipo ya existe!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic2);
+					}
+				}else{
+					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
+					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>  Campos Vacios!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
+				}
 
 			}
 		});

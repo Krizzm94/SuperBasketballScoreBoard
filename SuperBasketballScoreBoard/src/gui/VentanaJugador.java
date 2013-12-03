@@ -119,7 +119,7 @@ public class VentanaJugador {
 					String nombreEquipo = cmbEquipo.getSelectedItem().toString();
 					String numero = txtNumero.getText();
 					Jugador jugador = new Jugador(Integer.parseInt(numero));
-					Equipo equi = ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).buscarEquipos(nombreEquipo);
+					Equipo equi = ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).buscarEquipo(nombreEquipo);
 					Jugador j=equi.buscarJugador(Integer.parseInt(numero));
 					System.out.println(equi);
 					if(equi.buscarJugador(Integer.parseInt(numero))!= null){
@@ -230,9 +230,9 @@ public class VentanaJugador {
 	public void cargarEquipos(String torneo){
 		cmbEquipo.removeAllItems();
 		Torneo tor= ventanaPrincipal.getGestion().buscarTorneo(torneo);
-		for(int i=0;i<tor.getEquipos().length;i++){
-			if(tor.getEquipos()[i]!=null){
-				cmbEquipo.addItem(tor.getEquipos()[i].getNombre());				
+		for(int i=0;i<tor.getEquipos().size();i++){
+			if(tor.getEquipos().get(i)!=null){
+				cmbEquipo.addItem(tor.getEquipos().get(i).getNombre());				
 
 			}
 		}

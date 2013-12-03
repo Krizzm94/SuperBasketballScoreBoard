@@ -13,8 +13,8 @@ public class EquipoSql {
 	}
 	
 		
-	public String eliminarEquipo(String nombre){
-		String consulta="DELETE FROM equipo WHERE nombre="+q+nombre+q;
+	public String eliminarEquipo(String nombre, String torneo){
+		String consulta="DELETE FROM equipo WHERE nombre="+q+nombre+q+"and nombre_torneo="+q+torneo+q;
 		return consulta;
 	}
 	

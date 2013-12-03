@@ -14,65 +14,52 @@ public class Torneo {
 
 	private String nombre;
 	private int numEquipos;
-	private Equipo[] equipos;
+	private ArrayList<Equipo> equipos;
 	private ArrayList<Partido> partidos;
 	
 
 	/**
 	 * Constructor de la clase
 	 */
-	public Torneo(String nombre, int numEquipos, Equipo[] equipos,
+	public Torneo(String nombre, int numEquipos, ArrayList<Equipo> equipos,
 			ArrayList<Partido> partidos) {
 		super();
 		this.nombre = nombre;
 		this.numEquipos = numEquipos;
 		this.partidos = new ArrayList();
-		this.equipos=new Equipo[12];
+		this.equipos=new ArrayList<>();
 	}
 
 	
 	/**
 	 * metodo agrega equipos al torneo
 	 */
-	public int agregarEquipo(Equipo equi){
-		int secuencia=0;
-		for(int i=0;i<equipos.length;i++){
-			if(equipos[i]==null){
-				equipos[i]=equi;
-				secuencia=i;
-				i=12;	
-			}
-		}
-		return secuencia;
+	public void agregarEquipo(Equipo equi){
+		this.equipos.add(equi);
 	}
 	
 	
 	/**
 	 * metodo busca equipos
 	 */
-	public Equipo buscarEquipos(String nombre){
-		for (int i=0;i<equipos.length;i++) {
-			if (equipos[i].getNombre().equals(nombre)) {
-				return equipos[i];
+	public Equipo buscarEquipo(String nombre) {
+		for (Equipo equi : this.equipos) {
+			if (equi.getNombre().equals(nombre)) {
+				return equi;
 			}
 		}
 		return null;
-		
 	}
-	public void eliminarEquipo(String nombre){
-	Equipo equipo1=buscarEquipos(nombre);
-				Equipo equipo2=null;
-				equipo1=equipo2;
-			
-		
-		
-		
+	
+	
+	public void eliminarEquipo(String equipo){
+			this.equipos.remove(buscarEquipo(equipo));
 	}
 	
 	public int contarEquipos(){
 		int contador=0;
-		for(int i=0;i<equipos.length;i++){
-			if(equipos[i]!=null){
+		for(int i=0;i<equipos.size();i++){
+			if(equipos.get(i)!=null){
 				contador++;
 			}
 		}
@@ -140,10 +127,13 @@ public class Torneo {
 	}
 
 
+
+	
+
 	/**
 	 * @return the equipos
 	 */
-	public Equipo[] getEquipos() {
+	public ArrayList<Equipo> getEquipos() {
 		return equipos;
 	}
 
@@ -151,7 +141,7 @@ public class Torneo {
 	/**
 	 * @param equipos the equipos to set
 	 */
-	public void setEquipos(Equipo[] equipos) {
+	public void setEquipos(ArrayList<Equipo> equipos) {
 		this.equipos = equipos;
 	}
 
@@ -172,16 +162,17 @@ public class Torneo {
 	}
 
 
-	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Torneo [nombre=" + nombre + ", numEquipos=" + numEquipos
-				+ ", equipos=" + Arrays.toString(equipos) + ", partidos="
-				+ partidos + "]";
+				+ ", equipos=" + equipos + ", partidos=" + partidos + "]";
 	}
+
+
+	
 
 
 	
