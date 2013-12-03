@@ -12,7 +12,7 @@ public class hiloTransportador extends Thread {
  
  Informacion p;
  boolean sw=true;
- int y=800;
+ int y=1000;
  
  public hiloTransportador(Informacion prin){
   p=prin;
@@ -52,19 +52,19 @@ public class hiloTransportador extends Thread {
  public void run(){
   while(true){
    if(sw){
-    p.getTxtInfo().setLocation(20, y);
-    if(y>-100){
+    p.getTxtInfo().setLocation(40, y);
+    if(y>-1000){
      y-=5;
     }else{
-     y=500;
+     y=1000;
     }
     try {
-     Thread.sleep(100);
+     Thread.sleep(200);
     } catch (InterruptedException e) {
      // TODO Auto-generated catch block
      e.printStackTrace();
     }
-    p.repaint();
+  p.repaint();
    }
   }
  }
