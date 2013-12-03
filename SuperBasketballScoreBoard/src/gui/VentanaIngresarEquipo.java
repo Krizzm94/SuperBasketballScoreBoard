@@ -147,7 +147,10 @@ public class VentanaIngresarEquipo  {
 						Equipo equipo=new Equipo(nombre, numJugador, color, lugar);
 						ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).agregarEquipo(equipo);
 						ventanaPrincipal.getGestion().agregarEquipoSql(equipo, nombreTorneo);
-
+						final Icon ic  =  new ImageIcon("imagenes/check.png");
+						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Equipo creado <p>Correctamente!</p></font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic);
+						txtNombre.setText("");
+						txtLugar.setText("");
 					}
 					else{
 						final Icon ic2  =  new ImageIcon("imagenes/denied.png");

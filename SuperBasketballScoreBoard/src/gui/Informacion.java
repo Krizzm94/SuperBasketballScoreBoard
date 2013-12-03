@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.HeadlessException;
 import java.awt.Window;
 
 import javax.swing.ImageIcon;
@@ -119,4 +120,9 @@ public class Informacion extends JFrame{
 	public JLabel getTxtInfo() {
 		return txtInfo;
 	}
+	public Informacion() throws HeadlessException {
+		super();
+	}
+	
+	
 }

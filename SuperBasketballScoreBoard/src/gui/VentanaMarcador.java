@@ -1,6 +1,9 @@
 package gui;
 
 import java.awt.EventQueue;
+
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,7 +46,7 @@ public class VentanaMarcador  implements Runnable {
 	private Thread thread;
 	private long speed;
 
-	
+
 	public long getSpeed() {
 		return this.speed;
 	}
@@ -82,16 +85,17 @@ public class VentanaMarcador  implements Runnable {
 							nuMin=59;//minutos comienzan en 59
 							nuSeg=59;//segundos comienzan en 59
 						}else{  
-
+							getLblNroCuarto().setText("2");
+							lblTiempo.setText("10:00");
+						
+							//----------------------------------------
 							break;//seacabo el tiempo fin hilo  
-
 
 						}
 
 					}
 				}   
 				getLblTiempo().setText("0"+nuMin+":"+nuSeg);
-				//			
 				try {
 					Thread.sleep(speed);
 				} catch (Exception e) {
@@ -108,11 +112,11 @@ public class VentanaMarcador  implements Runnable {
 						}
 					if (stop)
 
-
 						break;
 				}
 			}
 		}
+
 	}
 
 	public void start() {
@@ -122,11 +126,9 @@ public class VentanaMarcador  implements Runnable {
 	synchronized void stop() {
 		stop = true;
 		pause = false;
-		JOptionPane.showMessageDialog(null,"FINALIZO ESTE CUARTO", "Fin del conteo", JOptionPane.INFORMATION_MESSAGE);
-		getLblNroCuarto().setText("2");
 		getLblTiempo().setText("0"+nuMin+":"+"0"+nuSeg);
-
 		notify();
+
 	}
 
 
@@ -163,7 +165,7 @@ public class VentanaMarcador  implements Runnable {
 		this.lblPuntosT1 = new JLabel(Integer.toString(puntaje1));
 		lblPuntosT1.setFont(new Font("DIGITAL-7", Font.BOLD, 70));
 		lblPuntosT1.setForeground(Color.white);
-		lblPuntosT1.setBounds(21, 142, 116, 89);
+		lblPuntosT1.setBounds(21, 142, 116, 70);
 		frame.getContentPane().add(lblPuntosT1);
 
 		this.lblPuntosT2 = new JLabel(Integer.toString(puntaje2));
@@ -181,7 +183,7 @@ public class VentanaMarcador  implements Runnable {
 		JLabel lblTeam = new JLabel(ventanaPrincipal.getLocal());
 		lblTeam.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblTeam.setForeground(Color.white);
-		lblTeam.setBounds(50, 217, 52, 14);
+		lblTeam.setBounds(50, 217, 58, 14);
 		frame.getContentPane().add(lblTeam);
 
 		JLabel lblCuarto = new JLabel("TIEMPO");
@@ -276,6 +278,16 @@ public class VentanaMarcador  implements Runnable {
 		ImageIcon icnReg = new ImageIcon("imagenes/back1.png");
 		btnRegresar.setIcon(icnReg);
 		btnRegresar.setBounds(57, 0, 50, 50);
+		btnRegresar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				ventanaPrincipal.getVentanaMarcador().getFrame().setVisible(false);
+				ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
+				
+			}
+		});
+		
 		frame.getContentPane().add(btnRegresar);
 
 		JButton btnHome = new JButton();
@@ -287,7 +299,7 @@ public class VentanaMarcador  implements Runnable {
 				if (salir == JOptionPane.YES_OPTION)
 				{
 					getFrame().setVisible(false);
-//					getVentanaPrincipal().getVentanaPrincipal().setVisible(true);
+					getVentanaPrincipal().getVentanaPrincipal().setVisible(true);
 				}
 			}
 		});
@@ -304,6 +316,7 @@ public class VentanaMarcador  implements Runnable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+
 				start();
 				btnPuntoTeam1.setEnabled(true);
 				btnPuntoTeam_2.setEnabled(true); 
@@ -311,8 +324,7 @@ public class VentanaMarcador  implements Runnable {
 				btnPuntoTeam_1.setEnabled(true);
 				btnFalta1.setEnabled(true);
 				btnFalta2.setEnabled(true);
-
-			}
+			}				
 		});
 
 		btnStart.setBounds(279, 243, 30, 30);

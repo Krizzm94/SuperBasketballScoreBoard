@@ -95,7 +95,8 @@ public class VentanaPrincipal {
 		btnInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrincipal.setVisible(false);
-				informacion.getFrame().setVisible(true);	
+				informacion.getFrame().setLocationRelativeTo(null);
+				informacion.getFrame().setVisible(true);
 			}
 		});
 		ImageIcon icnInfo = new ImageIcon("imagenes/infoF.png");
@@ -297,8 +298,8 @@ public class VentanaPrincipal {
 	public void setVisitante(String visitante) {
 		this.visitante = visitante;
 	}
-	
-	
+
+
 
 	public Informacion getInformacion() {
 		return informacion;
@@ -307,8 +308,8 @@ public class VentanaPrincipal {
 	public void setInformacion(Informacion informacion) {
 		this.informacion = informacion;
 	}
-	
-	
+
+
 
 	/**
 	 * @return the ventanaIngresarEquipo
