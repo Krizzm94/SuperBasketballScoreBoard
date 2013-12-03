@@ -77,10 +77,8 @@ public class VentanaNuevoTorneo {
 							Torneo torneo=new Torneo(nombreTorneo, numEquipos, null, null);
 							ventanaPrincipal.getGestion().agregarTorneo(torneo);
 							ventanaPrincipal.getGestion().agregarTorneoSql(torneo);
-//							getVentanaJugador().getCmbTorneo().addItem(nombreTorneo);
 							final Icon ic1 =  new ImageIcon("imagenes/check.png");
-							JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>torneo creado<p>exitosamente!</font></center></html>",nombreTorneo,JOptionPane.PLAIN_MESSAGE,ic1);
-//							JTextNombreTorneo.setText("");
+							JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Torneo creado<p>exitosamente.</font></center></html>",nombreTorneo,JOptionPane.PLAIN_MESSAGE,ic1);
 							frame.setVisible(false);
 							ventanaPrincipal.getVentanaTorneo().cargarTorneos();
 							ventanaPrincipal.getVentanaEquipo().cargarTorneos();
@@ -89,11 +87,11 @@ public class VentanaNuevoTorneo {
 						}
 						else{
 							final Icon ic2  =  new ImageIcon("imagenes/denied.png");
-							JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> El torneo ya existe!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic2);
+							JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>El torneo ya existe.</font></center></html>","Ojo.",JOptionPane.PLAIN_MESSAGE,ic2);
 						}
 					}else{
 						final Icon ic3  =  new ImageIcon("imagenes/denied.png");
-						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>  Campos Vacios!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
+						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Campos Vacios.</font></center></html>","Error.",JOptionPane.PLAIN_MESSAGE,ic3);
 					}
 				}
 			});
@@ -147,8 +145,8 @@ public class VentanaNuevoTorneo {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					final Icon ic2 =  new ImageIcon("imagenes/menu.png");
-					int salir = JOptionPane.showConfirmDialog(null,"<html><center><font SIZE='5' face='Verdana' color=black>¿SEGURO QUE DESEA <P>IR AL MENU PRINCIPAL?</font></center></html>"
-															, "Ir al menu principal", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic2);
+					int salir = JOptionPane.showConfirmDialog(null,"<html><center><font SIZE='5' face='Verdana' color=black>¿Seguro que desea<P>ir al menu principal?</font></center></html>"
+															, "Ir al menu principal.", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic2);
 					if (salir == JOptionPane.YES_OPTION)
 					{
 						getFrame().setVisible(false);

@@ -111,7 +111,7 @@ public class VentanaJugador {
 
 				if((cmbEquipo.getSelectedItem())== null || cmbTorneo.getSelectedItem() == null || getTxtNumero().getText().length()==0){				
 					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
-					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>  Complete el Formulario!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
+					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Complete el Formulario.</font></center></html>","Ojo.",JOptionPane.PLAIN_MESSAGE,ic3);
 				}
 				else
 				{
@@ -124,14 +124,14 @@ public class VentanaJugador {
 					System.out.println(equi);
 					if(equi.buscarJugador(Integer.parseInt(numero))!= null){
 						final Icon ic2  =  new ImageIcon("imagenes/denied.png");
-						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> El Jugador ya existe</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic2);
+						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>El Jugador ya existe.</font></center></html>","Error.",JOptionPane.PLAIN_MESSAGE,ic2);
 					
 					}
 					else{
 						equi.agregarJugador(jugador);
 						ventanaPrincipal.getGestion().getJugadorDao().insertarJugador(jugador, nombreEquipo, nombreTorneo);
 						final Icon ic1 =  new ImageIcon("imagenes/check.png");
-						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Jugador creado<p>Exitosamente</font></center></html>",nombreTorneo,JOptionPane.PLAIN_MESSAGE,ic1);
+						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Jugador creado<p>exitosamente.</font></center></html>",numero,JOptionPane.PLAIN_MESSAGE,ic1);
 						txtNumero.setText("");
 						
 					}
@@ -174,7 +174,7 @@ public class VentanaJugador {
 				{
 					e.consume();
 					final Icon ic1 =  new ImageIcon("imagenes/caution.png");
-					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Ingrese Unicamente<p>Numeros</font></center></html>","No permitido",JOptionPane.PLAIN_MESSAGE,ic1);
+					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Ingrese unicamente<p>caracteres numericos.</font></center></html>","No permitido.",JOptionPane.PLAIN_MESSAGE,ic1);
 					
 				}
 				if (txtNumero.getText().length() >= 2) {

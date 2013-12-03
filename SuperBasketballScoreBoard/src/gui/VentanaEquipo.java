@@ -106,20 +106,18 @@ public class VentanaEquipo {
 					int fila=table.getSelectedRow();
 					String nombre=(String) table.getValueAt(fila, 0);
 					final Icon ic1  =  new ImageIcon("imagenes/caution.png");
-					int opcion=JOptionPane.showConfirmDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Esta seguro que desea<p>eliminar el torneo <p>'"+nombre+"'</font></center></html>",
-															"Advertencia!",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic1);
+					int opcion=JOptionPane.showConfirmDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> ¿Esta seguro que desea<p>eliminar el torneo?. <p>'"+nombre+"'</font></center></html>",
+															"Advertencia.",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic1);
 					if(opcion==0){
 						String nombretorneo=torneo.getSelectedItem().toString();
 						 ventanaPrincipal.getGestion().buscarTorneo(nombretorneo).eliminarEquipo(nombre);
 						ventanaPrincipal.getGestion().eliminarEquipoSql(nombre,nombretorneo);
 
 					cargarEquipos(nombretorneo);
-//						ventanaPrincipal.getVentanaJugador().cargarTorneos();
-//						ventanaPrincipal.getVentanaEquipo().cargarTorneos();
 					}
 				}else{
 					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
-					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Por favor seleccione <p>un torneo!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
+					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Por favor seleccione <p>un torneo.</font></center></html>","Error.",JOptionPane.PLAIN_MESSAGE,ic3);
 				}}}
 			);
 		

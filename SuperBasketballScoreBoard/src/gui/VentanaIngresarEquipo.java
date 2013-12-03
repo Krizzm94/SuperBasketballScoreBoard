@@ -148,17 +148,17 @@ public class VentanaIngresarEquipo  {
 						ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).agregarEquipo(equipo);
 						ventanaPrincipal.getGestion().agregarEquipoSql(equipo, nombreTorneo);
 						final Icon ic  =  new ImageIcon("imagenes/check.png");
-						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Equipo creado <p>Correctamente!</p></font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic);
+						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Equipo creado <p>correctamente.</p></font></center></html>","Exito.",JOptionPane.PLAIN_MESSAGE,ic);
 						txtNombre.setText("");
 						txtLugar.setText("");
 					}
 					else{
 						final Icon ic2  =  new ImageIcon("imagenes/denied.png");
-						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> El Equipo ya existe!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic2);
+						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> El equipo ya existe.</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic2);
 					}
 				}else{
 					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
-					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>  Campos Vacios!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
+					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Campos vacios</font></center></html>","Error",JOptionPane.PLAIN_MESSAGE,ic3);
 				}
 
 			}
