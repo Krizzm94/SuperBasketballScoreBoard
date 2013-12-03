@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `equipo` (
   `nombre` varchar(15) COLLATE latin1_spanish_ci NOT NULL,
   `num_jugadores` int(1) NOT NULL,
-  `color` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
+  `color` varchar(30) COLLATE latin1_spanish_ci NOT NULL,
   `lugar` varchar(30) COLLATE latin1_spanish_ci DEFAULT NULL,
   `nombre_torneo` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY (`nombre`),

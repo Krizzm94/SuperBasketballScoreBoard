@@ -23,12 +23,12 @@ public EquipoDao(){
 	
 }
 
-public int insertarTorneo(Equipo equipo, String torneo){
+public int insertarEquipo(Equipo equipo, String torneo){
 	conexion.conectarBD();
 	try{
 		String nombre=equipo.getNombre();
 		String numJugadores=String.valueOf(equipo.getNumJugadores());
-		String color=equipo.getLugar();
+		String color=equipo.getColor();
 		String lugar=equipo.getLugar();
 	
 		

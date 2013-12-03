@@ -59,7 +59,15 @@ public class Torneo {
 		return null;
 		
 	}
-	
+	public void eliminarEquipo(String nombre){
+	Equipo equipo1=buscarEquipos(nombre);
+				Equipo equipo2=null;
+				equipo1=equipo2;
+			
+		
+		
+		
+	}
 	
 	public int contarEquipos(){
 		int contador=0;

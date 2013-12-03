@@ -142,7 +142,9 @@ public class VentanaIngresarEquipo  {
 				String lugar=txtLugar.getText();
 				Equipo equipo=new Equipo(nombre, numJugador, color, lugar);
 				ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).agregarEquipo(equipo);
-//				ventanaPrincipal.getGestion().agregarEquipoSql(equipo, nombreTorneo);
+				System.out.println(ventanaPrincipal.getGestion().buscarTorneo(nombreTorneo).toString());
+				ventanaPrincipal.getGestion().agregarEquipoSql(equipo, nombreTorneo);
+				
 
 			}
 		});

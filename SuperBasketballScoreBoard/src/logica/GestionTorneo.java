@@ -37,7 +37,7 @@ public class GestionTorneo {
 		cargarTorneos();
 		cargarEquipos();
 		cargarJugadores();
-		cargarPartidosSql();
+//		cargarPartidosSql();
 		cargarPartidos();
 	}
 
@@ -132,9 +132,12 @@ public class GestionTorneo {
 		}
 	}
 	public void agregarEquipoSql(Equipo equipo,String torneo){
-		equipoDao.insertarTorneo(equipo, torneo);
+		equipoDao.insertarEquipo(equipo, torneo);
 	}
-	
+	public void eliminarEquipo(String nombre){
+		
+		equipoDao.eliminarEquipo(nombre);
+	}
 	public void cargarJugadores(){
 		ResultSet consulta=jugadorDao.ConsultarJugador();
 		try {

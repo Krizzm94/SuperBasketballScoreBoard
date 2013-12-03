@@ -107,8 +107,10 @@ public class VentanaEquipo {
 					int opcion=JOptionPane.showConfirmDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Esta seguro que desea<p>eliminar el torneo <p>'"+nombre+"'</font></center></html>",
 															"Advertencia!",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic1);
 					if(opcion==0){
-//						ventanaPrincipal.getGestion().eliminarTorneo(nombre);
-//						cargarTorneos();
+						String nombretorneo=torneo.getSelectedItem().toString();
+						ventanaPrincipal.getGestion().buscarTorneo(nombretorneo).eliminarEquipo(nombre);
+						
+					cargarEquipos(nombretorneo);
 //						ventanaPrincipal.getVentanaJugador().cargarTorneos();
 //						ventanaPrincipal.getVentanaEquipo().cargarTorneos();
 					}
