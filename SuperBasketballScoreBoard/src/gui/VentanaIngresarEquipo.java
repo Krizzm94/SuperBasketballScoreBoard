@@ -169,9 +169,8 @@ public class VentanaIngresarEquipo  {
 		btnAtras.setToolTipText("Devuelve al menu anterior");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frame.setVisible(false);
-				ventanaEquipo = new VentanaEquipo(ventanaPrincipal);
-				ventanaEquipo.getVentanaEquipo().setVisible(true);
+				ventanaPrincipal.getVentanaIngresarEquipo().getFrame().setVisible(false);
+				ventanaPrincipal.getVentanaEquipo().getVentanaEquipo().setVisible(true);
 			}
 		});
 		btnAtras.setBounds(30, 11, 75, 75);

@@ -81,7 +81,7 @@ public class VentanaEquipo {
 		btnNuevo.setForeground(Color.DARK_GRAY);
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaEquipo.setVisible(false);
+				ventanaPrincipal.getVentanaEquipo().getVentanaEquipo().setVisible(false);
 				ventanaPrincipal.getVentanaIngresarEquipo().getFrame().setLocationRelativeTo(null);
 				ventanaPrincipal.getVentanaIngresarEquipo().getFrame().setVisible(true);
 				

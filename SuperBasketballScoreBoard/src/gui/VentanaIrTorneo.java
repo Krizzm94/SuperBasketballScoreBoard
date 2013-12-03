@@ -97,7 +97,7 @@ public class VentanaIrTorneo {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				final Icon ic2 =  new ImageIcon("imagenes/menu.png");
-				int salir = JOptionPane.showConfirmDialog(null,"<html><center><font SIZE='5' face='Verdana' color=black>¿SEGURO QUE DESEA <P>IR AL MENU PRINCIPAL?</font></center></html>"
+				int salir = JOptionPane.showConfirmDialog(null,"<html><center><font SIZE='5' face='Verdana' color=black>¿Seguro que desea <P>ir al menu principal?</font></center></html>"
 						, "Ir al menu principal", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic2);
 				if (salir == JOptionPane.YES_OPTION)
 				{
@@ -158,7 +158,7 @@ public class VentanaIrTorneo {
 		table = new JTable (dtm);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBackground(Color.white);
-		table.setFont(new Font("Varsity Playbook", Font.PLAIN, 28));
+		table.setFont(new Font("Dafunk2", Font.PLAIN, 20));
 
 		table.setRowHeight(30);
 		int[] anchos = {100,100, 100, 40};
@@ -183,7 +183,7 @@ public class VentanaIrTorneo {
 				// TODO Auto-generated method stub
 				saveToImage(table, table.getTableHeader()); 
 				final Icon ic1 =  new ImageIcon("imagenes/check.png");
-				JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Tabla Exportada<p>Exitosamente</font></center></html>","",JOptionPane.PLAIN_MESSAGE,ic1);
+				JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Tabla Exportada<p>exitosamente.</font></center></html>","Exportar.",JOptionPane.PLAIN_MESSAGE,ic1);
 				
 			}
 		});

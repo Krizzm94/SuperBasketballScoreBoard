@@ -135,8 +135,8 @@ public class VentanaPrincipal {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				int salir = JOptionPane.showConfirmDialog(null,
-						"<html><center><font SIZE='5' face='Verdana' color=black> ¿SEGURO QUE DESEA <p>SALIR DE LA APP?</font></center></html>",
-						"SALIR!!!", 
+						"<html><center><font SIZE='5' face='Verdana' color=black> ¿Seguro que desea <p>salir de la app?</font></center></html>",
+						"¡Salir!", 
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,icono);
 				if (salir == JOptionPane.YES_OPTION)
 				{
