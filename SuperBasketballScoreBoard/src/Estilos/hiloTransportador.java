@@ -59,7 +59,7 @@ public class hiloTransportador extends Thread {
      y=2000;
     }
     try {
-     Thread.sleep(700);
+     Thread.sleep(800);
     } catch (InterruptedException e) {
      // TODO Auto-generated catch block
      e.printStackTrace();
