@@ -133,8 +133,10 @@ public class VentanaEquipo {
 				ventanaPrincipal.getVentanaPrincipal().setVisible(true);
 			}
 		});
-		btnAtras.setBounds(32, 10, 75, 75);
-		btnAtras.setIcon(new ImageIcon("imagenes/botonAtras2.png"));
+		ImageIcon icnReg = new ImageIcon("imagenes/backF.png");
+		btnAtras.setIcon(icnReg);
+		btnAtras.setBounds(10, 11, 50, 50);
+		
 		btnAtras.setPreferredSize(new Dimension(65, 65));
 		btnAtras.setMinimumSize(new Dimension(65, 23));
 		btnAtras.setMaximumSize(new Dimension(65, 30));
@@ -193,6 +195,7 @@ public class VentanaEquipo {
 
 		torneo = new JComboBox();
 		torneo.setBounds(255, 71, 267, 33);
+		torneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 20));
 		VentanaEquipo.getContentPane().add(torneo);
 		torneo.addItemListener(new ItemListener() {
 			

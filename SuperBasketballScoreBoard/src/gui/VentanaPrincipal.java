@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
+
+import Estilos.FormaBotonCircular;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -118,17 +121,16 @@ public class VentanaPrincipal {
 		VentanaPrincipal.getContentPane().add(btnEquipo);
 
 		JLabel lblSuperBasketballScoreboard = new JLabel("Super BasketBallScoreBoard");
-		lblSuperBasketballScoreboard.setBorder(BorderFactory.createLineBorder(Color.white));
-		lblSuperBasketballScoreboard.setFont(new Font("Dafunk2", Font.PLAIN, 26));
+		lblSuperBasketballScoreboard.setFont(new Font("Varsity Playbook", Font.PLAIN, 48));
 		lblSuperBasketballScoreboard.setForeground(Color.white);
 		lblSuperBasketballScoreboard.setBounds(10, 11, 505, 50);
 		VentanaPrincipal.getContentPane().add(lblSuperBasketballScoreboard);
 
 		final Icon icono  =  new ImageIcon("imagenes/power.png");
-		JButton btnClose = new JButton();
-		btnClose.setIcon(new ImageIcon("imagenes/close.png"));
+		JButton btnClose = new FormaBotonCircular("");
+		btnClose.setIcon(new ImageIcon("imagenes/powerVP.png"));
 		btnClose.setToolTipText("SALIR");
-		btnClose.setBounds(543, 5, 30, 30);
+		btnClose.setBounds(522, 5, 50, 50);
 		btnClose.addActionListener(new ActionListener() {
 
 			@Override

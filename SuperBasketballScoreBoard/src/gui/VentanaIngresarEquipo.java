@@ -95,6 +95,7 @@ public class VentanaIngresarEquipo  {
 		txtNombre = new JTextField();
 		txtNombre.setBounds(181, 135, 185, 34);
 		txtNombre.setColumns(10);
+		txtNombre.setFont(new Font("Varsity Playbook", Font.PLAIN, 20));
 
 		final JComboBox numJugadores = new JComboBox();
 		numJugadores.setBounds(281, 186, 49, 34);
@@ -111,9 +112,13 @@ public class VentanaIngresarEquipo  {
 		Color color = (Color) colores.getSelectedItem();
 		ComboBoxEditor editor = new ColorComboBoxEditor(color);
 		colores.setEditor(editor);
+		
+		
 		txtLugar = new JTextField();
 		txtLugar.setBounds(201, 280, 185, 34);
 		txtLugar.setColumns(10);
+		txtLugar.setFont(new Font("Varsity Playbook", Font.PLAIN, 20));
+		
 		JLabel lblTorneo = new JLabel("TORNEO");
 		lblTorneo.setForeground(Color.WHITE);
 		lblTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
@@ -121,8 +126,8 @@ public class VentanaIngresarEquipo  {
 		contentPane.add(lblTorneo);
 
 		cmbtorneo = new JComboBox();
-		cmbtorneo.setBounds(147, 100, 219, 24);
-
+		cmbtorneo.setBounds(147, 100, 219, 29);
+		cmbtorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 20));
 		contentPane.add(cmbtorneo);
 
 
@@ -173,8 +178,9 @@ public class VentanaIngresarEquipo  {
 				ventanaPrincipal.getVentanaEquipo().getVentanaEquipo().setVisible(true);
 			}
 		});
-		btnAtras.setBounds(30, 11, 75, 75);
-		btnAtras.setIcon(new ImageIcon("imagenes/botonAtras2.png"));
+		ImageIcon icnReg = new ImageIcon("imagenes/backF.png");
+		btnAtras.setIcon(icnReg);
+		btnAtras.setBounds(10, 11, 50, 50);
 		btnAtras.setPreferredSize(new Dimension(65, 65));
 		btnAtras.setMinimumSize(new Dimension(65, 23));
 		btnAtras.setMaximumSize(new Dimension(65, 30));
@@ -191,10 +197,10 @@ public class VentanaIngresarEquipo  {
 
 
 
-		JLabel lblNuevoEquipo = new JLabel("NUEVO EQUIPO");
+		JLabel lblNuevoEquipo = new JLabel("NUEVO  EQUIPO");
 		lblNuevoEquipo.setForeground(Color.WHITE);
-		lblNuevoEquipo.setFont(new Font("LMS I Love This Game", Font.PLAIN, 30));
-		lblNuevoEquipo.setBounds(115, 11, 331, 37);
+		lblNuevoEquipo.setFont(new Font("Varsity Playbook", Font.PLAIN, 60));
+		lblNuevoEquipo.setBounds(115, 10, 340, 66);
 		contentPane.add(lblNuevoEquipo);
 
 		JLabel lblNewLabel = new JLabel("New label");

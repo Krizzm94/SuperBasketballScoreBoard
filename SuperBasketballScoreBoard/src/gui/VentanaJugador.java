@@ -21,6 +21,7 @@ import javax.swing.JRootPane;
 import javax.swing.JTextField;
 
 import Estilos.FormaBoton;
+import Estilos.FormaBotonCircular;
 
 import java.awt.Color;
 import java.beans.PropertyChangeEvent;
@@ -125,7 +126,7 @@ public class VentanaJugador {
 					if(equi.buscarJugador(Integer.parseInt(numero))!= null){
 						final Icon ic2  =  new ImageIcon("imagenes/denied.png");
 						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>El Jugador ya existe.</font></center></html>","Error.",JOptionPane.PLAIN_MESSAGE,ic2);
-					
+						txtNumero.setText("");
 					}
 					else{
 						equi.agregarJugador(jugador);
@@ -198,7 +199,7 @@ public class VentanaJugador {
 		frame.getContentPane().add(txtNumero);
 		txtNumero.setColumns(10);
 
-		JButton btnRegresar = new JButton();
+		JButton btnRegresar = new FormaBotonCircular("");
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
@@ -206,9 +207,9 @@ public class VentanaJugador {
 
 			}
 		});
-		ImageIcon icnReg = new ImageIcon("imagenes/back1.png");
+		ImageIcon icnReg = new ImageIcon("imagenes/backF.png");
 		btnRegresar.setIcon(icnReg);
-		btnRegresar.setBounds(10, 11, 45, 45);
+		btnRegresar.setBounds(10, 11, 50, 50);
 		frame.getContentPane().add(btnRegresar);
 
 		JLabel lblNewLabel = new JLabel("New label");
