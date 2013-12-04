@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 02-12-2013 a las 18:00:51
+-- Tiempo de generación: 04-12-2013 a las 05:17:18
 -- Versión del servidor: 5.5.25a
 -- Versión de PHP: 5.4.4
 
@@ -36,6 +36,10 @@ CREATE TABLE IF NOT EXISTS `equipo` (
   KEY `nombre_torneo` (`nombre_torneo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `equipo`
+--
+
 
 -- --------------------------------------------------------
 
@@ -53,6 +57,9 @@ CREATE TABLE IF NOT EXISTS `jugador` (
   KEY `nombre_torneo` (`nombre_torneo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=7 ;
 
+--
+-- Volcado de datos para la tabla `jugador`
+--
 
 -- --------------------------------------------------------
 
@@ -71,7 +78,12 @@ CREATE TABLE IF NOT EXISTS `partido` (
   KEY `nombre_torneo` (`nombre_torneo`),
   KEY `visitante` (`visitante`),
   KEY `local` (`local`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `partido`
+--
+
 
 -- --------------------------------------------------------
 
@@ -84,7 +96,9 @@ CREATE TABLE IF NOT EXISTS `resultado` (
   `pun_local` int(3) NOT NULL,
   `pun_vist` int(3) NOT NULL,
   `id_partido` int(10) NOT NULL,
-  UNIQUE KEY `id_partido` (`id_partido`)
+  `nombre_torneo` varchar(30) COLLATE latin1_spanish_ci NOT NULL,
+  UNIQUE KEY `id_partido` (`id_partido`),
+  KEY `nombre_torneo` (`nombre_torneo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- --------------------------------------------------------
@@ -99,8 +113,10 @@ CREATE TABLE IF NOT EXISTS `torneo` (
   PRIMARY KEY (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
-
 --
+-- Volcado de datos para la tabla `torneo`
+--
+
 -- Restricciones para tablas volcadas
 --
 
@@ -129,6 +145,7 @@ ALTER TABLE `partido`
 -- Filtros para la tabla `resultado`
 --
 ALTER TABLE `resultado`
+  ADD CONSTRAINT `resultado_ibfk_2` FOREIGN KEY (`nombre_torneo`) REFERENCES `torneo` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `resultado_ibfk_1` FOREIGN KEY (`id_partido`) REFERENCES `partido` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
