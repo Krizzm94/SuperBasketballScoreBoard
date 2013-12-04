@@ -62,27 +62,19 @@ public class Informacion extends JFrame{
 		frame.setBounds(100, 100, 580, 350);
 		frame.getContentPane().setLayout(null);
 		txtInfo = new JLabel();
-    	//txtInfo .setIcon(new ImageIcon("imagenes/fondoInfo.png"));
-    	txtInfo .setBounds(1, -128, 433, 467);
-		txtInfo.setFont(new Font("Virtual DJ", Font.PLAIN, 11));
+    	
+		txtInfo.setFont(new Font("Varsity Playbook", Font.PLAIN, 18));
 		txtInfo.setForeground(Color.WHITE);
 		txtInfo.setBackground(Color.BLACK);
-		txtInfo.setBounds(1, -128, 433, 350);
-		txtInfo.setText("<html>Si eres fan del baloncesto y te gusta<br>nseguir los partidos al detalle y llevando<br> tu propio marcador, esta es tu aplicaci\u00F3n. <br>El marcador m\u00E1s sencillo para poder llevar<br> el tiempo, la anotaci\u00F3n, faltas y dem\u00E1s <br>elementos b\u00E1sicos cuando no te quieres<br> perder nada de la acci\u00F3n en la pista. <br>Sin complejas estad\u00EDsticas ni miles de botones<br> que te quitan tiempo de lo verdaderamente<br> interesante, el juego. <br>Puedes llevar el control de multitud de<br> aspectos del partido: <br>- Tiempo total por periodo. <br>- Anotaci\u00F3n de cada uno de los equipos. <br>- Control de faltas realizadas, a nivel<br> individual <br>                   INTRUCCIONES <br>. presione la opcion NUEVO TORNEO para crear un<br>nuevo evento.<br>.Ingrese los datos del torneo:\"nombre, numero de quipos ,etc\" <br>.luego agregue los equipos participantes en la opcion equipo.<br>.Ingrese los datos requeridos, es necesario tener encuenta el <br>nombre de el toneo ya que a este sera el q se le asigne este equipo<br>.Ahora ingrese a la opcion jugador y creelo ingresando los datos <br>.En la opcion partido <html> ");
+		txtInfo.setBounds(1, 1000, 500, 700);
+		
+		txtInfo.setText("<html>Si eres fan del baloncesto y te gusta<br>nseguir los partidos al detalle y llevando<br> tu propio marcador, esta es tu aplicaci\u00F3n. <br>El marcador m\u00E1s sencillo para poder llevar<br> el tiempo, la anotaci\u00F3n, faltas y dem\u00E1s <br>elementos b\u00E1sicos cuando no te quieres<br> perder nada de la acci\u00F3n en la pista. <br>Sin complejas estad\u00EDsticas ni miles de botones<br> que te quitan tiempo de lo verdaderamente<br> interesante, el juego. <br>Puedes llevar el control de multitud de<br> aspectos del partido: <br>- Tiempo total por periodo. <br>- Anotaci\u00F3n de cada uno de los equipos. <br>- Control de faltas realizadas, a nivel<br> individual <br>                   INTRUCCIONES <br>. presione la opcion NUEVO TORNEO para crear un<br>nuevo evento.<br>.Ingrese los datos del torneo:\"nombre, numero de quipos ,etc\" <br>.luego agregue los equipos participantes en la opcion equipo.<br>.Ingrese los datos requeridos, es necesario tener encuenta el <br>nombre de el toneo ya que a este sera el q se le asigne este equipo<br>.Ahora ingrese a la opcion jugador y creelo ingresando los datos <br>.En la opcion partido puedes crar los partidos que desees <br> en el torneo que prefieras.<br>En la opcion juagador ingresa tus jugadores sin mayor dificulad,<br> solo selecciona el torneo donde se encuenatra el equipo, <br> tambien selecciona el equipo al que el jugador pertenecera,<br>  ten en cuenta el numero de juagadores.<br> Y asi ya puedes realizar el torneo que haz estado soñando el <br> programa te organizara los encuentros y en la opcion Torneo <br> visualizaras los datos de tu torneo e ingresaras para iniciar el encuentro <html> ");
 		 ht=new hiloTransportador(this);
 		  ht.start();
 		txtInfo.setHorizontalAlignment( SwingConstants.CENTER );
 		frame.getContentPane().setLayout(null);
 	   
-//		JScrollPane jScrollPane = new JScrollPane(txtInfo);
-//		jScrollPane.setForeground(Color.BLACK);
-//		//		txtInfo .setBounds(0, 0, 580, 350);
-//		jScrollPane.setForeground(Color.BLACK);
-//		jScrollPane.setBackground(Color.BLACK);
-//		jScrollPane.setBounds(66, 82, 452, 184);
-//		getContentPane().add(jScrollPane);
-		
-		
+	
 		
 		JButton btnVolver = new FormaBotonCircular("");
 		btnVolver.setToolTipText("Devuelve al menu anterior");
@@ -93,11 +85,9 @@ public class Informacion extends JFrame{
 				
 			}
 		});
-		btnVolver.setBounds(28, 11, 75, 75);
-		btnVolver.setIcon(new ImageIcon("imagenes/botonAtras2.png"));
-		btnVolver.setPreferredSize(new Dimension(65, 65));
-		btnVolver.setMinimumSize(new Dimension(65, 23));
-		btnVolver.setMaximumSize(new Dimension(65, 30));
+		ImageIcon icnReg = new ImageIcon("imagenes/backF.png");
+		btnVolver.setIcon(icnReg);
+		btnVolver.setBounds(10, 11, 50, 50);
 		frame.getContentPane().add(btnVolver);
 	   JLabel informacion = new JLabel("");
 	   informacion.setBounds(1, 0, 579, 80);
