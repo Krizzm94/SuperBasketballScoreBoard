@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.DefaultComboBoxModel;
 
 import Estilos.FormaBoton;
+import Estilos.FormaBotonCircular;
 
 import logica.Torneo;
 
@@ -125,7 +126,7 @@ public class VentanaNuevoTorneo {
 			frame.getContentPane().add(JTextNombreTorneo);
 			
 
-			JButton btnRegresar = new JButton();
+			JButton btnRegresar = new FormaBotonCircular("");
 			btnRegresar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					frame.setVisible(false);
@@ -134,12 +135,12 @@ public class VentanaNuevoTorneo {
 
 				}
 			});
-			ImageIcon icnReg = new ImageIcon("imagenes/back1.png");
+			ImageIcon icnReg = new ImageIcon("imagenes/backF.png");
 			btnRegresar.setIcon(icnReg);
-			btnRegresar.setBounds(10, 11, 45, 45);
+			btnRegresar.setBounds(10, 11, 50, 50);
 			frame.getContentPane().add(btnRegresar);
 
-			JButton btnHome = new JButton();
+			JButton btnHome = new FormaBotonCircular("");
 			btnHome.addActionListener(new ActionListener() {
 
 				@Override
@@ -157,9 +158,9 @@ public class VentanaNuevoTorneo {
 
 				}
 			});
-			ImageIcon icnHome = new ImageIcon("imagenes/home.png");
+			ImageIcon icnHome = new ImageIcon("imagenes/homeF.png");
 			btnHome.setIcon(icnHome);
-			btnHome.setBounds(514, 17, 50, 50);
+			btnHome.setBounds(514, 11, 50, 50);
 			frame.getContentPane().add(btnHome);
 			
 			

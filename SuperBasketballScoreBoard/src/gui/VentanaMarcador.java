@@ -95,16 +95,16 @@ public class VentanaMarcador  implements Runnable {
 						}else{  
 							numeroCuarto++;
 							if(numeroCuarto<=4) {
-							getLblNroCuarto().setText(String.valueOf(numeroCuarto));
-							
-							lblTiempo.setText("10:00");
-							nuMin = 00; 
-							nuSeg = 5;
-							nuHora = 0;
-							final Icon ic1 =  new ImageIcon("imagenes/cuarto.png");
-							JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>¡Fin del "+(numeroCuarto-1)+" cuarto!</font></center></html>","¡Finalizado!",JOptionPane.PLAIN_MESSAGE,ic1);
+								getLblNroCuarto().setText(String.valueOf(numeroCuarto));
+
+								lblTiempo.setText("10:00");
+								nuMin = 00; 
+								nuSeg = 5;
+								nuHora = 0;
+								final Icon ic1 =  new ImageIcon("imagenes/cuarto.png");
+								JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>¡Fin del "+(numeroCuarto-1)+" cuarto!</font></center></html>","¡Finalizado!",JOptionPane.PLAIN_MESSAGE,ic1);
 							}
-							
+
 							if(numeroCuarto==5) {
 								stop();
 								final Icon ic1 =  new ImageIcon("imagenes/cuarto.png");
@@ -124,7 +124,7 @@ public class VentanaMarcador  implements Runnable {
 								ventanaPrincipal.getGestion().getResultadoDao().insertarResultado(ventanaPrincipal.getTorneo(),resultado);
 								frame.setVisible(false);
 								ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
-								
+
 							}
 							//----------------------------------------
 							//seacabo el tiempo fin hilo  
@@ -318,27 +318,27 @@ public class VentanaMarcador  implements Runnable {
 		btnPuntoTeam_2.setBounds(318, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam_2);
 
-		JButton btnRegresar = new JButton();
-		ImageIcon icnReg = new ImageIcon("imagenes/back1.png");
+		JButton btnRegresar = new FormaBotonCircular("");
+		ImageIcon icnReg = new ImageIcon("imagenes/backF.png");
 		btnRegresar.setIcon(icnReg);
-		btnRegresar.setBounds(57, 0, 50, 50);
+		btnRegresar.setBounds(57, 10, 50, 50);
 		btnRegresar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				final Icon ic1  =  new ImageIcon("imagenes/caution.png");
 				int opcion=JOptionPane.showConfirmDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>¿Esta seguro que desea<p>Regresar?.<p>¡El sistema no guardara<p>el resultado!</font></center></html>",
-														"Regresar.",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic1);
+						"Regresar.",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic1);
 				if(opcion==0){
-				frame.setVisible(false);
-				ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
+					frame.setVisible(false);
+					ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
 				}
 			}
 		});
 
 		frame.getContentPane().add(btnRegresar);
 
-		JButton btnHome = new JButton();
+		JButton btnHome = new FormaBotonCircular("");
 		btnHome.addActionListener(new ActionListener() {
 
 			@Override
@@ -353,13 +353,13 @@ public class VentanaMarcador  implements Runnable {
 				}
 			}
 		});
-		ImageIcon icnHome = new ImageIcon("imagenes/home.png");
+		ImageIcon icnHome = new ImageIcon("imagenes/homeF.png");
 		btnHome.setIcon(icnHome);
-		btnHome.setBounds(469, 0, 50, 50);
+		btnHome.setBounds(469, 10, 50, 50);
 		frame.getContentPane().add(btnHome);
 
-		JButton btnStart = new JButton();
-		ImageIcon icnStart = new ImageIcon("imagenes/inicio.png");
+		JButton btnStart = new FormaBotonCircular("");
+		ImageIcon icnStart = new ImageIcon("imagenes/startF.png");
 		btnStart.setIcon(icnStart);
 		btnStart.addActionListener(new ActionListener() {
 
@@ -377,7 +377,7 @@ public class VentanaMarcador  implements Runnable {
 			}				
 		});
 
-		btnStart.setBounds(279, 243, 30, 30);
+		btnStart.setBounds(279, 243, 35, 35);
 		frame.getContentPane().add(btnStart);
 
 		JButton btnStop = new JButton();
@@ -436,13 +436,13 @@ public class VentanaMarcador  implements Runnable {
 				jugadoresTeam1.addItem(equipo.getJugador()[i].getNumber());
 			}
 		}
-		
+
 		for(int i=0;i<equipo2.getJugador().length;i++) {
 			if(equipo2.getJugador()[i]!=null) {
 				jugadoresTeam2.addItem(equipo2.getJugador()[i].getNumber());
 			}
 		}
-		
+
 	}
 
 

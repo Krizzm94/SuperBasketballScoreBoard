@@ -28,6 +28,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.ListSelectionModel;
 
 import Estilos.FormaBoton;
+import Estilos.FormaBotonCircular;
 
 /**
  * @author Wolfran Pinzon
@@ -78,8 +79,8 @@ public class VentanaTorneo {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
-				 ventanaNuevoTorneo = new VentanaNuevoTorneo(ventanaPrincipal);
-				 ventanaNuevoTorneo.getFrame().setVisible(true);
+				ventanaNuevoTorneo = new VentanaNuevoTorneo(ventanaPrincipal);
+				ventanaNuevoTorneo.getFrame().setVisible(true);
 			}
 		});
 		btnNewButton.setFont(new Font("Varsity Playbook", Font.PLAIN, 35));
@@ -94,7 +95,7 @@ public class VentanaTorneo {
 					String nombre=(String) table.getValueAt(fila, 0);
 					final Icon ic1  =  new ImageIcon("imagenes/caution.png");
 					int opcion=JOptionPane.showConfirmDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>¿Esta seguro que desea<p>eliminar el torneo?.<p>'"+nombre+"'</font></center></html>",
-															"Eliminar.",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic1);
+							"Eliminar.",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic1);
 					if(opcion==0){
 						ventanaPrincipal.getGestion().eliminarTorneo(nombre);
 						cargarTorneos();
@@ -111,8 +112,8 @@ public class VentanaTorneo {
 		btnEliminar.setFont(new Font("Varsity Playbook", Font.PLAIN, 35));
 		frame.getContentPane().add(btnEliminar);
 
-		JButton btnRegresar = new JButton();
-		btnRegresar.setBounds(10, 11, 45, 45);
+		JButton btnRegresar = new FormaBotonCircular("");
+		btnRegresar.setBounds(10, 11, 50, 50);
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
@@ -121,46 +122,24 @@ public class VentanaTorneo {
 			}
 		});
 
-		ImageIcon icnReg = new ImageIcon("imagenes/back1.png");
+		ImageIcon icnReg = new ImageIcon("imagenes/backF.png");
 		btnRegresar.setIcon(icnReg);
 		frame.getContentPane().add(btnRegresar);
 
-		
-		JButton btnHome = new JButton();
-		btnHome.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				final Icon ic2 =  new ImageIcon("imagenes/menu.png");
-				int salir = JOptionPane.showConfirmDialog(null,"<html><center><font SIZE='5' face='Verdana' color=black>¿Seguro que desea<P>ir al menu principal?</font></center></html>"
-														, "Ir al menu principal", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic2);
-				if (salir == JOptionPane.YES_OPTION)
-				{
-					getFrame().setVisible(false);
-					ventanaPrincipal.getVentanaPrincipal().setVisible(true);
-				}
-
-
-
-			}
-		});
-		ImageIcon icnHome = new ImageIcon("imagenes/home.png");
-		btnHome.setIcon(icnHome);
-		btnHome.setBounds(514, 17, 50, 50);
-		frame.getContentPane().add(btnHome);
 
 		JButton btnIrAlTorneo = new FormaBoton("IR AL TORNEO");
 		btnIrAlTorneo.setBounds(170, 278, 220, 58);
 		btnIrAlTorneo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(table.getSelectedRow()>=0){
-				frame.setVisible(false);
-				int fila=table.getSelectedRow();
-				String nombre=(String) table.getValueAt(fila, 0);
-				ventanaPrincipal.setTorneo(nombre);
-				 ventanaIrTorneo = new VentanaIrTorneo(ventanaPrincipal);
-				 ventanaIrTorneo.cargarPartidos();
-				 ventanaIrTorneo.getFrame().setVisible(true);
+					frame.setVisible(false);
+					int fila=table.getSelectedRow();
+					String nombre=(String) table.getValueAt(fila, 0);
+					ventanaPrincipal.setTorneo(nombre);
+					ventanaIrTorneo = new VentanaIrTorneo(ventanaPrincipal);
+					ventanaIrTorneo.cargarPartidos();
+					ventanaIrTorneo.getFrame().setVisible(true);
 				}else{
 					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
 					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Por favor seleccione <p>un torneo.</font></center></html>","Ojo.",JOptionPane.PLAIN_MESSAGE,ic3);
@@ -172,19 +151,24 @@ public class VentanaTorneo {
 
 
 
-		
 
-		
-		
+
+
+
 		String[] columnNames = {"Nombre", "Equipos", "Cupos"};
 
-		dtm = new DefaultTableModel (columnNames,3);
+		dtm = new DefaultTableModel (columnNames,3){
+			public boolean isCellEditable(int row, int column){
+				return false;
+			}
+		};
 		table = new JTable (dtm);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBackground(Color.white);
 		table.setFont(new Font("Varsity Playbook", Font.PLAIN, 28));
 		table.setRowHeight(30);
-		
+		table.getTableHeader().setReorderingAllowed(false);
+
 		int[] anchos = {200, 30, 30};
 
 		for(int i = 0; i < dtm.getColumnCount(); i++) {
@@ -192,7 +176,7 @@ public class VentanaTorneo {
 
 		}
 
-		
+
 		JScrollPane jScrollPane = new JScrollPane(table);
 		jScrollPane.setBounds(68, 68, 452, 182);
 		frame.getContentPane().add(jScrollPane);
