@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import persistencia.EquipoDao;
 import persistencia.JugadorDao;
 import persistencia.PartidoDao;
+import persistencia.ResultadoDao;
+import persistencia.ResultadoSql;
 import persistencia.TorneoDao;
 
 /**
@@ -23,7 +25,7 @@ public class GestionTorneo {
 	private EquipoDao equipoDao;
 	private PartidoDao partidoDao;
 	private JugadorDao jugadorDao;
-	
+	private ResultadoDao resultadoDao;
 	
 	/**
 	 * Constructor de la clase
@@ -33,12 +35,14 @@ public class GestionTorneo {
 		equipoDao=new EquipoDao();
 		partidoDao=new PartidoDao();
 		jugadorDao=new JugadorDao();
+		resultadoDao=new ResultadoDao();
 		this.torneos = new ArrayList<Torneo>();
 		cargarTorneos();
 		cargarEquipos();
 		cargarJugadores();
 //		cargarPartidosSql();
 		cargarPartidos();
+		cargarResultados();
 	}
 
 	
@@ -131,6 +135,30 @@ public class GestionTorneo {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	public void cargarResultados(){
+		ResultSet consulta=resultadoDao.Consultar();
+		try {
+			while(consulta.next()){
+				String ganador=consulta.getString("ganador");
+				int pLocal=Integer.parseInt(consulta.getString("pun_local"));
+				int pVist=Integer.parseInt(consulta.getString("pun_vist"));
+				int idPartido=Integer.parseInt(consulta.getString("id_partido"));
+				String torneo=consulta.getString("nombre_torneo");
+				Torneo tor=buscarTorneo(torneo);
+				Resultado resultado=new Resultado(ganador, pLocal, pVist, idPartido);
+				tor.agregarResultado(resultado);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public void agregarEquipoSql(Equipo equipo,String torneo){
 		equipoDao.insertarEquipo(equipo, torneo);
 	}
@@ -221,6 +249,25 @@ public class GestionTorneo {
 		}
 		return false;
 	}
+	
+	
+	
+
+	/**
+	 * @return the resultadoDao
+	 */
+	public ResultadoDao getResultadoDao() {
+		return resultadoDao;
+	}
+
+
+	/**
+	 * @param resultadoDao the resultadoDao to set
+	 */
+	public void setResultadoDao(ResultadoDao resultadoDao) {
+		this.resultadoDao = resultadoDao;
+	}
+
 
 	public TorneoDao getTorneoDao() {
 		return torneoDao;

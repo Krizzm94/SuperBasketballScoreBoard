@@ -14,12 +14,12 @@ public class ResultadoSql {
 	
 		
 	public String eliminarResultado(String partido){
-		String consulta="DELETE FROM torneo WHERE nombre="+q+partido+q;
+		String consulta="DELETE FROM resultado WHERE nombre="+q+partido+q;
 		return consulta;
 	}
 	
-	public String insertarResultado(String ganador, String local, String vist,String partido){
-		String consulta="INSERT INTO torneo VALUES("+q+ganador+q+","+q+local+q+","+q+vist+q+","+q+partido+q+")";
+	public String insertarResultado(String ganador, String local, String vist,String partido,String torneo){
+		String consulta="INSERT INTO resultado VALUES("+q+ganador+q+","+q+local+q+","+q+vist+q+","+q+partido+q+","+q+torneo+q+")";
 	return consulta;
 	
 	}

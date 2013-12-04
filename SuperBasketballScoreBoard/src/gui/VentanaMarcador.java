@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
+import javax.swing.SwingConstants;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,10 @@ import javax.swing.JButton;
 import Estilos.FormaBoton;
 import Estilos.FormaBotonCircular;
 import java.awt.Color;
+
+import logica.Equipo;
+import logica.Resultado;
+import logica.Torneo;
 
 public class VentanaMarcador  implements Runnable {
 
@@ -35,16 +40,19 @@ public class VentanaMarcador  implements Runnable {
 	private JButton btnPuntoTeam_2;
 	private JButton btnFalta1;
 	private JButton btnFalta2;
-	private static int nuMin = 10; 
-	private static int nuSeg = 0;
+	private static int nuMin = 00; 
+	private static int nuSeg = 5;
 	private static int nuHora = 0;
 	private static int puntaje1 = 0;
 	private static int puntaje2 = 0;
+	private int numeroCuarto=1;
 	private VentanaPrincipal ventanaPrincipal;
 	private boolean pause;
 	private boolean stop;
 	private Thread thread;
 	private long speed;
+	private JLabel lblTeam1;
+	private JLabel lblTeam2;
 
 
 	public long getSpeed() {
@@ -60,12 +68,12 @@ public class VentanaMarcador  implements Runnable {
 	/**
 	 * Create the application.
 	 */
-	public VentanaMarcador(VentanaPrincipal ventanaPrincipal) {
+	public VentanaMarcador(VentanaPrincipal ventanaP) {
+		this.ventanaPrincipal=ventanaP;
 		pause = false;
 		stop = false;
 		thread = new Thread(this);
 		speed = 998;
-		this.ventanaPrincipal=ventanaPrincipal;
 		initialize();
 	}
 
@@ -85,11 +93,41 @@ public class VentanaMarcador  implements Runnable {
 							nuMin=59;//minutos comienzan en 59
 							nuSeg=59;//segundos comienzan en 59
 						}else{  
-							getLblNroCuarto().setText("2");
+							numeroCuarto++;
+							if(numeroCuarto<=4) {
+							getLblNroCuarto().setText(String.valueOf(numeroCuarto));
+							
 							lblTiempo.setText("10:00");
-						
+							nuMin = 00; 
+							nuSeg = 5;
+							nuHora = 0;
+							final Icon ic1 =  new ImageIcon("imagenes/cuarto.png");
+							JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>¡Fin del "+(numeroCuarto-1)+" cuarto!</font></center></html>","¡Finalizado!",JOptionPane.PLAIN_MESSAGE,ic1);
+							}
+							
+							if(numeroCuarto==5) {
+								stop();
+								final Icon ic1 =  new ImageIcon("imagenes/cuarto.png");
+								JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>¡Ha finalizado el Partido!</font></center></html>","¡Finalizado!",JOptionPane.PLAIN_MESSAGE,ic1);
+								int Pl=Integer.parseInt(getLblPuntosT1().getText());
+								int PV=Integer.parseInt(getLblPuntosT2().getText());
+								int id=ventanaPrincipal.getIdPartido();
+								String ganador="";
+								if(Pl>PV) {
+									ganador=ventanaPrincipal.getLocal();
+								}else {
+									ganador=ventanaPrincipal.getVisitante();	
+								}
+								Resultado resultado=new Resultado(ganador, Pl, PV, id);
+								Torneo tor=ventanaPrincipal.getGestion().buscarTorneo(ventanaPrincipal.getTorneo());
+								tor.agregarResultado(resultado);
+								ventanaPrincipal.getGestion().getResultadoDao().insertarResultado(ventanaPrincipal.getTorneo(),resultado);
+								frame.setVisible(false);
+								ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
+								
+							}
 							//----------------------------------------
-							break;//seacabo el tiempo fin hilo  
+							//seacabo el tiempo fin hilo  
 
 						}
 
@@ -158,54 +196,60 @@ public class VentanaMarcador  implements Runnable {
 		this.lblTiempo = new JLabel("10:00");
 		lblTiempo.setFont(new Font("DIGITAL-7", Font.BOLD, 100));
 		lblTiempo.setForeground(Color.white);
-		lblTiempo.setBounds(150, 11, 290, 89);
+		lblTiempo.setBounds(165, 11, 290, 89);
 		frame.getContentPane().add(lblTiempo);
 
 
 		this.lblPuntosT1 = new JLabel(Integer.toString(puntaje1));
+		lblPuntosT1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPuntosT1.setFont(new Font("DIGITAL-7", Font.BOLD, 70));
 		lblPuntosT1.setForeground(Color.white);
-		lblPuntosT1.setBounds(21, 142, 116, 70);
+		lblPuntosT1.setBounds(110, 125, 130, 89);
 		frame.getContentPane().add(lblPuntosT1);
 
 		this.lblPuntosT2 = new JLabel(Integer.toString(puntaje2));
+		lblPuntosT2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPuntosT2.setFont(new Font("DIGITAL-7", Font.BOLD, 70));
 		lblPuntosT2.setForeground(Color.white);
-		lblPuntosT2.setBounds(448, 142, 116, 89);
+		lblPuntosT2.setBounds(342, 125, 130, 89);
 		frame.getContentPane().add(lblPuntosT2);
 
 		this.lblNroCuarto = new JLabel("1");
+		lblNroCuarto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNroCuarto.setFont(new Font("DIGITAL-7", Font.BOLD, 60));
 		lblNroCuarto.setForeground(Color.white);
 		lblNroCuarto.setBounds(266, 125, 50, 74);
 		frame.getContentPane().add(lblNroCuarto);
 
-		JLabel lblTeam = new JLabel(ventanaPrincipal.getLocal());
-		lblTeam.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblTeam.setForeground(Color.white);
-		lblTeam.setBounds(50, 217, 58, 14);
-		frame.getContentPane().add(lblTeam);
+		lblTeam1 = new JLabel(ventanaPrincipal.getLocal());
+		lblTeam1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTeam1.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
+		lblTeam1.setForeground(Color.white);
+		lblTeam1.setBounds(52, 217, 187, 34);
+		frame.getContentPane().add(lblTeam1);
 
 		JLabel lblCuarto = new JLabel("TIEMPO");
+		lblCuarto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCuarto.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblCuarto.setForeground(Color.white);
 		lblCuarto.setBounds(266, 200, 60, 20);
 		frame.getContentPane().add(lblCuarto);
 
-		JLabel label_5 = new JLabel(ventanaPrincipal.getVisitante());
-		label_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_5.setForeground(Color.white);
-		label_5.setBounds(489, 217, 52, 14);
-		frame.getContentPane().add(label_5);
+		lblTeam2 = new JLabel(ventanaPrincipal.getVisitante());
+		lblTeam2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTeam2.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
+		lblTeam2.setForeground(Color.white);
+		lblTeam2.setBounds(342, 217, 187, 34);
+		frame.getContentPane().add(lblTeam2);
 
 		this.jugadoresTeam1 = new JComboBox();
-		jugadoresTeam1.setBounds(50, 246, 103, 36);
+		jugadoresTeam1.setBounds(40, 266, 70, 26);
 		frame.getContentPane().add(jugadoresTeam1);
 
 		this.btnFalta1 = new FormaBoton("FALTA");
-		btnFalta1.setFont(new Font("Dafunk2", Font.PLAIN, 17));
+		btnFalta1.setFont(new Font("Varsity Playbook", Font.PLAIN, 25));
 		btnFalta1.setEnabled(false);
-		btnFalta1.setBounds(166, 246, 103, 36);
+		btnFalta1.setBounds(120, 260, 103, 36);
 		frame.getContentPane().add(btnFalta1);
 
 		this.btnPuntoTeam1 = new FormaBoton("1 PUNTO");
@@ -237,13 +281,13 @@ public class VentanaMarcador  implements Runnable {
 		frame.getContentPane().add(btnPuntoTeam_1);
 
 		this.btnFalta2 = new FormaBoton("FALTA");
-		btnFalta2.setFont(new Font("Dafunk2",Font.PLAIN, 17));
+		btnFalta2.setFont(new Font("Varsity Playbook", Font.PLAIN, 25));
 		btnFalta2.setEnabled(false);
-		btnFalta2.setBounds(326, 246, 103, 36);
+		btnFalta2.setBounds(362, 260, 103, 36);
 		frame.getContentPane().add(btnFalta2);
 
 		this.jugadoresTeam2 = new JComboBox();
-		jugadoresTeam2.setBounds(442, 246, 103, 36);
+		jugadoresTeam2.setBounds(475, 266, 70, 26);
 		frame.getContentPane().add(jugadoresTeam2);
 
 		this.btnPuntoTeam2 = new FormaBoton("-1 PUNTO");
@@ -257,7 +301,7 @@ public class VentanaMarcador  implements Runnable {
 
 			}
 		});
-		btnPuntoTeam2.setBounds(442, 300, 103, 36);
+		btnPuntoTeam2.setBounds(434, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam2);
 
 		this.btnPuntoTeam_2 = new FormaBoton("1 PUNTO");
@@ -271,7 +315,7 @@ public class VentanaMarcador  implements Runnable {
 
 			}
 		});
-		btnPuntoTeam_2.setBounds(326, 300, 103, 36);
+		btnPuntoTeam_2.setBounds(318, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam_2);
 
 		JButton btnRegresar = new JButton();
@@ -279,15 +323,19 @@ public class VentanaMarcador  implements Runnable {
 		btnRegresar.setIcon(icnReg);
 		btnRegresar.setBounds(57, 0, 50, 50);
 		btnRegresar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				ventanaPrincipal.getVentanaMarcador().getFrame().setVisible(false);
+				final Icon ic1  =  new ImageIcon("imagenes/caution.png");
+				int opcion=JOptionPane.showConfirmDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>¿Esta seguro que desea<p>Regresar?.<p>¡El sistema no guardara<p>el resultado!</font></center></html>",
+														"Regresar.",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic1);
+				if(opcion==0){
+				frame.setVisible(false);
 				ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
-				
+				}
 			}
 		});
-		
+
 		frame.getContentPane().add(btnRegresar);
 
 		JButton btnHome = new JButton();
@@ -295,7 +343,9 @@ public class VentanaMarcador  implements Runnable {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				int salir = JOptionPane.showConfirmDialog(null,"¿SEGURO QUE QUIERES SALIR?", "El sistema no guardara informacion", JOptionPane.YES_NO_OPTION);
+				final Icon ic2 =  new ImageIcon("imagenes/menu.png");
+				int salir = JOptionPane.showConfirmDialog(null,"<html><center><font SIZE='5' face='Verdana' color=black>¿Seguro que desea <P>salir?<p>¡El sistema no guardara<p> resultados!</font></center></html>"
+						, "Ir al menu principal", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,ic2);
 				if (salir == JOptionPane.YES_OPTION)
 				{
 					getFrame().setVisible(false);
@@ -376,6 +426,52 @@ public class VentanaMarcador  implements Runnable {
 
 
 
+	}
+
+	public void cargarJugadores(){
+		Equipo equipo=ventanaPrincipal.getGestion().buscarTorneo(ventanaPrincipal.getTorneo()).buscarEquipo(ventanaPrincipal.getLocal());
+		Equipo equipo2=ventanaPrincipal.getGestion().buscarTorneo(ventanaPrincipal.getTorneo()).buscarEquipo(ventanaPrincipal.getVisitante());
+		for(int i=0;i<equipo.getJugador().length;i++) {
+			if(equipo.getJugador()[i]!=null) {
+				jugadoresTeam1.addItem(equipo.getJugador()[i].getNumber());
+			}
+		}
+		
+		for(int i=0;i<equipo2.getJugador().length;i++) {
+			if(equipo2.getJugador()[i]!=null) {
+				jugadoresTeam2.addItem(equipo2.getJugador()[i].getNumber());
+			}
+		}
+		
+	}
+
+
+	/**
+	 * @return the lblTeam1
+	 */
+	public JLabel getLblTeam1() {
+		return lblTeam1;
+	}
+
+	/**
+	 * @param lblTeam1 the lblTeam1 to set
+	 */
+	public void setLblTeam1(JLabel lblTeam1) {
+		this.lblTeam1 = lblTeam1;
+	}
+
+	/**
+	 * @return the lblTeam2
+	 */
+	public JLabel getLblTeam2() {
+		return lblTeam2;
+	}
+
+	/**
+	 * @param lblTeam2 the lblTeam2 to set
+	 */
+	public void setLblTeam2(JLabel lblTeam2) {
+		this.lblTeam2 = lblTeam2;
 	}
 
 	public JFrame getFrame() {

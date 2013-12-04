@@ -34,6 +34,7 @@ public class VentanaPrincipal {
 	private String torneo;
 	private String local;
 	private String visitante;
+	private int idPartido;
 	private Informacion informacion;
 
 	/**
@@ -325,6 +326,22 @@ public class VentanaPrincipal {
 	 */
 	public void setVentanaIngresarEquipo(VentanaIngresarEquipo ventanaIngresarEquipo) {
 		this.ventanaIngresarEquipo = ventanaIngresarEquipo;
+	}
+
+	
+	
+	/**
+	 * @return the idPartido
+	 */
+	public int getIdPartido() {
+		return idPartido;
+	}
+
+	/**
+	 * @param idPartido the idPartido to set
+	 */
+	public void setIdPartido(int idPartido) {
+		this.idPartido = idPartido;
 	}
 
 	/**

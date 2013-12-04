@@ -30,6 +30,7 @@ import javax.swing.SwingConstants;
 
 import Estilos.FormaBoton;
 
+import logica.Partido;
 import logica.Torneo;
 
 //import logica.Torneo;
@@ -45,7 +46,7 @@ public class VentanaIrTorneo {
 	private DefaultTableModel dtm; //De tipo DefaultTableModel, variable con el modelo de la tabla
 	private JScrollPane scrollPane; //De tipo JScrollPane, variable para agregarle scrollpane a la tabla
 	private VentanaPrincipal ventanaPrincipal;
-	private VentanaMarcador ventanaMarcador;
+	private VentanaMarcador vm;
 	private JFrame frame;
 
 
@@ -86,7 +87,7 @@ public class VentanaIrTorneo {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
 				ventanaPrincipal.getVentanaTorneo().getFrame().setVisible(true);
-
+				
 			}
 		});
 
@@ -132,15 +133,25 @@ public class VentanaIrTorneo {
 		btnIrAlPartido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(table.getSelectedRow()>=0){
-					frame.setVisible(false);
 					int fila=table.getSelectedRow();
 					String local=(String) table.getValueAt(fila, 0);
 					String visitante=(String) table.getValueAt(fila, 1);
-					ventanaPrincipal.setLocal(local);
-					ventanaPrincipal.setVisitante(visitante);
-					ventanaMarcador = new VentanaMarcador(ventanaPrincipal);
-					frame.setVisible(false);
-					ventanaMarcador.getFrame().setVisible(true);
+					Torneo t=ventanaPrincipal.getGestion().buscarTorneo(ventanaPrincipal.getTorneo());
+					Partido p=t.buscarPartido(local, visitante);
+					int id=p.getId();
+					if(t.buscarResultado(id)==null) {
+						frame.setVisible(false);
+						ventanaPrincipal.setLocal(local);
+						ventanaPrincipal.setVisitante(visitante);
+						ventanaPrincipal.setIdPartido(id);
+						vm = new VentanaMarcador(ventanaPrincipal);
+						 vm.cargarJugadores();
+						  frame.setVisible(false);
+						 vm.getFrame().setVisible(true);
+					}else {
+						final Icon ic3  =  new ImageIcon("imagenes/denied.png");
+						JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> El partido <p>ya tiene un resultado!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);
+					}
 				}else{
 					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
 					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black> Por favor seleccione <p>un Partido!</font></center></html>","Error!",JOptionPane.PLAIN_MESSAGE,ic3);

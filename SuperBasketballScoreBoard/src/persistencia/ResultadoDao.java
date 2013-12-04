@@ -23,7 +23,7 @@ public ResultadoDao(){
 	
 }
 
-public int insertarResultado(Resultado resul){
+public int insertarResultado(String torneo,Resultado resul){
 	conexion.conectarBD();
 	try{
 		String ganador=resul.getGanador();
@@ -33,7 +33,7 @@ public int insertarResultado(Resultado resul){
 	
 		
 		Statement sentencia=conexion.getConexion().createStatement();
-		return sentencia.executeUpdate(resultadoSql.insertarResultado(ganador, pLocal, pVist, partido));
+		return sentencia.executeUpdate(resultadoSql.insertarResultado(ganador, pLocal, pVist, partido,torneo));
 
 	}
 		catch (SQLException e) {
@@ -61,7 +61,7 @@ public int eliminarResultado(String partido){
 
 
 
-public ResultSet ConsultarTorneos(){
+public ResultSet Consultar(){
 	if (conexion.conectarBD()){
 		try{
 		Statement sentencia=conexion.getConexion().createStatement();

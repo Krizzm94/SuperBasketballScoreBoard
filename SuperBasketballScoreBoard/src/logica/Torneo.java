@@ -16,6 +16,7 @@ public class Torneo {
 	private int numEquipos;
 	private ArrayList<Equipo> equipos;
 	private ArrayList<Partido> partidos;
+	private ArrayList<Resultado> resultados;
 	
 
 	/**
@@ -28,6 +29,7 @@ public class Torneo {
 		this.numEquipos = numEquipos;
 		this.partidos = new ArrayList();
 		this.equipos=new ArrayList<>();
+		this.resultados=new ArrayList<>();
 	}
 
 	
@@ -74,13 +76,35 @@ public class Torneo {
 	}
 
 	
+	/**
+	 * metodo para agregar resultados a torneos
+	 */
+	public void agregarResultado(Resultado resultado) {
+		this.resultados.add(resultado);
+	}
+	
+	
+	
+	/**
+	 * metodo para buscar un resultado determinado
+	 */
+	public Resultado buscarResultado(int id) {
+		for (Resultado res : this.resultados) {
+			if (res.getIdPartido()==id) {
+				return res;
+			}
+		}
+		return null;
+	}
+
+	
 	
 	/**
 	 * metodo para buscar un partido determinado
 	 */
-	public Partido buscarNumero(String local, String vist) {
+	public Partido buscarPartido(String local, String vist) {
 		for (Partido par : this.partidos) {
-			if (par.getEquipoLocal().equals(local) && par.getEquipoVisitante().equals(vist)) {
+			if (par.getEquipoLocal().getNombre().equals(local) && par.getEquipoVisitante().getNombre().equals(vist)) {
 				return par;
 			}
 		}
@@ -162,13 +186,30 @@ public class Torneo {
 	}
 
 
+	/**
+	 * @return the resultados
+	 */
+	public ArrayList<Resultado> getResultados() {
+		return resultados;
+	}
+
+
+	/**
+	 * @param resultados the resultados to set
+	 */
+	public void setResultados(ArrayList<Resultado> resultados) {
+		this.resultados = resultados;
+	}
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Torneo [nombre=" + nombre + ", numEquipos=" + numEquipos
-				+ ", equipos=" + equipos + ", partidos=" + partidos + "]";
+				+ ", equipos=" + equipos + ", partidos=" + partidos
+				+ ", resultados=" + resultados + "]";
 	}
 
 
