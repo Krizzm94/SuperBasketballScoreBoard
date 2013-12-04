@@ -29,6 +29,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.SwingConstants;
 
 import Estilos.FormaBoton;
+import Estilos.FormaBotonCircular;
 
 import logica.Partido;
 import logica.Torneo;
@@ -81,8 +82,8 @@ public class VentanaIrTorneo {
 		lblTitulo.setFont(new Font("Varsity Playbook", Font.PLAIN, 60));
 		frame.getContentPane().add(lblTitulo);
 
-		JButton btnRegresar = new JButton();
-		btnRegresar.setBounds(10, 11, 45, 45);
+		JButton btnRegresar = new FormaBotonCircular("");
+		btnRegresar.setBounds(10, 11, 50, 50);
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
@@ -92,7 +93,7 @@ public class VentanaIrTorneo {
 		});
 
 
-		JButton btnHome = new JButton();
+		JButton btnHome = new FormaBotonCircular("");
 		btnHome.addActionListener(new ActionListener() {
 
 			@Override
@@ -110,14 +111,14 @@ public class VentanaIrTorneo {
 
 			}
 		});
-		ImageIcon icnHome = new ImageIcon("imagenes/home.png");
+		ImageIcon icnHome = new ImageIcon("imagenes/homeF.png");
 		btnHome.setIcon(icnHome);
-		btnHome.setBounds(514, 17, 50, 50);
+		btnHome.setBounds(514, 11, 50, 50);
 		frame.getContentPane().add(btnHome);
 
 
 
-		ImageIcon icnReg = new ImageIcon("imagenes/back1.png");
+		ImageIcon icnReg = new ImageIcon("imagenes/backF.png");
 
 		JLabel lblProgramacion = new JLabel();
 		lblProgramacion.setText("Programacion");
@@ -165,11 +166,16 @@ public class VentanaIrTorneo {
 
 		String[] columnNames = {"Local", "Visitante", "Fecha","Hora"};
 
-		dtm = new DefaultTableModel (null,columnNames); 
+		dtm = new DefaultTableModel (null,columnNames){
+			public boolean isCellEditable(int row, int column){
+				return false;
+			}
+		}; 
 		table = new JTable (dtm);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBackground(Color.white);
 		table.setFont(new Font("Dafunk2", Font.PLAIN, 20));
+		table.getTableHeader().setReorderingAllowed(false);
 
 		table.setRowHeight(30);
 		int[] anchos = {100,100, 100, 40};

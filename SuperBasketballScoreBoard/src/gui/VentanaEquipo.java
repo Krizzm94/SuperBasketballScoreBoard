@@ -165,7 +165,11 @@ public class VentanaEquipo {
 
 		String[] columnNames = {"Nombre", "#Jugadores","Lugar"};
 
-		dtm = new DefaultTableModel (null,columnNames);
+		dtm = new DefaultTableModel (null,columnNames){
+			public boolean isCellEditable(int row, int column){
+				return false;
+			}
+		};
 		table = new JTable(dtm);
 
 
@@ -173,6 +177,7 @@ public class VentanaEquipo {
 		table.setBackground(Color.white);
 		table.setFont(new Font("Varsity Playbook", Font.PLAIN, 28));
 		table.setRowHeight(30);
+		table.getTableHeader().setReorderingAllowed(false);
 
 		int[] anchos = {150, 30, 150};
 
