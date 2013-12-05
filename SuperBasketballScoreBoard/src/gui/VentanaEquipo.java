@@ -38,6 +38,7 @@ public class VentanaEquipo {
 
 	private JFrame VentanaEquipo;
 	private VentanaPrincipal ventanaPrincipal;
+	private VentanaVerEquipo ventanaVerEquipo;
 	private JTable table;
 	private DefaultTableModel dtm;
 	private JComboBox torneo;
@@ -146,6 +147,19 @@ public class VentanaEquipo {
 		JButton btnListar = new FormaBoton( "Boton" );
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(table.getSelectedRow()>=0){
+					ventanaPrincipal.setTorneo(torneo.getSelectedItem().toString());
+					int fila=table.getSelectedRow();
+					String equipo=(String) table.getValueAt(fila, 0);
+					ventanaPrincipal.setEquipo(equipo);
+					ventanaVerEquipo= new VentanaVerEquipo(ventanaPrincipal);
+					ventanaVerEquipo.cargarJugadores(equipo);
+					VentanaEquipo.setVisible(false);
+					ventanaVerEquipo.getFrame().setVisible(true);
+				}else{
+					final Icon ic3  =  new ImageIcon("imagenes/denied.png");
+					JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>Por favor seleccione <p>un equipo.</font></center></html>","Ojo.",JOptionPane.PLAIN_MESSAGE,ic3);
+				}
 			}
 		});
 		btnListar.setBackground(Color.WHITE);

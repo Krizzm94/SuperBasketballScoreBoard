@@ -30,12 +30,14 @@ public class VentanaPrincipal {
 	private VentanaIrTorneo ventanaIrTorneo;
 	private VentanaMarcador ventanaMarcador;
 	private VentanaIngresarEquipo ventanaIngresarEquipo;
+	private VentanaVerEquipo ventanaVerEquipo;
 	private GestionTorneo gestion;
 	private String torneo;
 	private String local;
 	private String visitante;
 	private int idPartido;
 	private Informacion informacion;
+	private String equipo;
 
 	/**
 	 * constructor
@@ -50,6 +52,7 @@ public class VentanaPrincipal {
 		ventanaIngresarEquipo=new VentanaIngresarEquipo(this);
 		ventanaJugador=new VentanaJugador(this);
 		informacion=new Informacion(this);
+		ventanaVerEquipo=new VentanaVerEquipo(this);
 		inicializar();
 	}
 
@@ -342,6 +345,40 @@ public class VentanaPrincipal {
 	 */
 	public void setIdPartido(int idPartido) {
 		this.idPartido = idPartido;
+	}
+
+	
+	
+	
+	/**
+	 * @return the equipo
+	 */
+	public String getEquipo() {
+		return equipo;
+	}
+
+	/**
+	 * @param equipo the equipo to set
+	 */
+	public void setEquipo(String equipo) {
+		this.equipo = equipo;
+	}
+
+	
+	
+	
+	/**
+	 * @return the ventanaVerEquipo
+	 */
+	public VentanaVerEquipo getVentanaVerEquipo() {
+		return ventanaVerEquipo;
+	}
+
+	/**
+	 * @param ventanaVerEquipo the ventanaVerEquipo to set
+	 */
+	public void setVentanaVerEquipo(VentanaVerEquipo ventanaVerEquipo) {
+		this.ventanaVerEquipo = ventanaVerEquipo;
 	}
 
 	/**
