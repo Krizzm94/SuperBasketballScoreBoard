@@ -40,8 +40,8 @@ public class VentanaMarcador  implements Runnable {
 	private JButton btnPuntoTeam_2;
 	private JButton btnFalta1;
 	private JButton btnFalta2;
-	private static int nuMin = 00; 
-	private static int nuSeg = 5;
+	private static int nuMin = 10; 
+	private static int nuSeg = 0;
 	private static int nuHora = 0;
 	private static int puntaje1 = 0;
 	private static int puntaje2 = 0;
@@ -98,8 +98,8 @@ public class VentanaMarcador  implements Runnable {
 								getLblNroCuarto().setText(String.valueOf(numeroCuarto));
 
 								lblTiempo.setText("10:00");
-								nuMin = 00; 
-								nuSeg = 5;
+								nuMin = 10; 
+								nuSeg = 00;
 								nuHora = 0;
 								final Icon ic1 =  new ImageIcon("imagenes/cuarto.png");
 								JOptionPane.showMessageDialog(null, "<html><center><font SIZE='5' face='Verdana' color=black>¡Fin del "+(numeroCuarto-1)+" cuarto!</font></center></html>","¡Finalizado!",JOptionPane.PLAIN_MESSAGE,ic1);
@@ -380,7 +380,7 @@ public class VentanaMarcador  implements Runnable {
 		btnStart.setBounds(279, 243, 35, 35);
 		frame.getContentPane().add(btnStart);
 
-		JButton btnStop = new JButton();
+		JButton btnStop = new FormaBotonCircular("");
 		ImageIcon icnStop = new ImageIcon("imagenes/pausa.png");
 		btnStop.setIcon(icnStop);
 		btnStop.addActionListener(new ActionListener() {
@@ -396,11 +396,11 @@ public class VentanaMarcador  implements Runnable {
 
 			}
 		});
-		btnStop.setBounds(279, 275, 30, 30);
+		btnStop.setBounds(279, 275, 35, 35);
 		frame.getContentPane().add(btnStop);
 
 
-		JButton btnReanudar = new JButton();
+		JButton btnReanudar = new FormaBotonCircular("");
 		ImageIcon icnResume = new ImageIcon("imagenes/reanudar.png");
 		btnReanudar.setIcon(icnResume);
 		btnReanudar.addActionListener(new ActionListener() {
@@ -416,7 +416,7 @@ public class VentanaMarcador  implements Runnable {
 				btnFalta2.setEnabled(true);
 			}
 		});
-		btnReanudar.setBounds(279, 307, 30, 30);
+		btnReanudar.setBounds(279, 307, 35, 35);
 		frame.getContentPane().add(btnReanudar);
 
 		JLabel lblNewLabel = new JLabel();
