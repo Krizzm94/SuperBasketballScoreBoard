@@ -6,8 +6,12 @@ package logica;
 import java.util.Arrays;
 
 /**
- * @author Wolfran Pinzon
- * 
+
+ * En esta clase se crea los atributos de los equipos 
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
  */
 public class Equipo {
 

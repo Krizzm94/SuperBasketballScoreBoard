@@ -8,7 +8,14 @@ import java.sql.Statement;
 import logica.Partido;
 import logica.Torneo;
 
+/**
 
+ * En esta clase gestiona  los datos de los partidos  en la base de datos
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 public class PartidoDao {
 	
 	private Conexion conexion;
@@ -22,7 +29,9 @@ public PartidoDao(){
  partidoSql=new  PartidoSql();
 	
 }
-
+/**
+ * metodo para ingreso de el partido a la base de datos 
+ */
 public int insertarPartido( String local, String vis,String fecha, String hora, String torneo){
 	conexion.conectarBD();
 	try{
@@ -36,7 +45,9 @@ public int insertarPartido( String local, String vis,String fecha, String hora, 
 	return -1;
 }
 
-
+/**
+ * metodo para la eliminaion de el partido a la base de datos 
+ */
 
 
 public int eliminarPartido(String local,String visitante,String torneo){
@@ -52,7 +63,9 @@ public int eliminarPartido(String local,String visitante,String torneo){
 }
 
 
-
+/**
+ * metodo para consultar los  partido a la base de datos 
+ */
 
 
 public ResultSet ConsultarPartidos(){

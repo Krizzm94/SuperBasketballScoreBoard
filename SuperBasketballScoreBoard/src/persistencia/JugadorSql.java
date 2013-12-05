@@ -1,5 +1,12 @@
 package persistencia;
+/**
 
+ * En esta clase se crea los metodos que administran informacion de los jugadores
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 public class JugadorSql {
 	private String q="\'";
 	

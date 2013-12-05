@@ -6,8 +6,12 @@ package logica;
 import java.util.Arrays;
 
 /**
- * @author Wolfran Pinzon
- * 
+
+ * En esta clase se crea los atributos de los jugadores 
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
  */
 public class Jugador {
 	
@@ -24,22 +28,30 @@ public class Jugador {
 		
 	}
 
-
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
 
-
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
+	/**
+	 * @return the number
+	 */
 	public int getNumber() {
 		return number;
 	}
 
-
+	/**
+	 * @param number the number to set
+	 */
 	public void setNumber(int number) {
 		this.number = number;
 	}

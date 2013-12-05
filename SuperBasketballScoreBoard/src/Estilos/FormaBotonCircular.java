@@ -5,6 +5,14 @@ import java.awt.event.*;
 import java.awt.geom.*;
 import javax.swing.*;
 
+/**
+
+ * Esta clase permite cambiar la apariencia de los botones de una manera circular  
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
+
 public class FormaBotonCircular extends JButton {
 
   // Constructor del Botón Redondo

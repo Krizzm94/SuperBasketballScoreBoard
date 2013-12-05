@@ -26,8 +26,13 @@ import Estilos.FormaBotonCircular;
 import logica.Torneo;
 
 /**
- * @author Wolfran Pinzon
- * 
+
+* Esta clase permite visualizar la ventana Nuevo torneo,  agregar los torneos ingresando el nombre 
+* y el numero de equipos que perteneceran ".
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
  */
 public class VentanaNuevoTorneo {
 
@@ -68,7 +73,9 @@ public class VentanaNuevoTorneo {
 			lblJugador.setBounds(110, 11, 383, 90);
 			frame.getContentPane().add(lblJugador);
 			crear = new FormaBoton("CREAR TORNEO");
-			
+			/**
+			 * funcion del boton para agregar un torneo
+			 */
 			crear.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(JTextNombreTorneo.getText().length()!=0){
@@ -125,7 +132,9 @@ public class VentanaNuevoTorneo {
 			JTextNombreTorneo.setFont(new Font("Varsity Playbook", Font.PLAIN, 40));
 			frame.getContentPane().add(JTextNombreTorneo);
 			
-
+			/**
+			 * funcion del boton para retornar a la ventana  Torneo 
+			 */
 			JButton btnRegresar = new FormaBotonCircular("");
 			btnRegresar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -139,7 +148,9 @@ public class VentanaNuevoTorneo {
 			btnRegresar.setIcon(icnReg);
 			btnRegresar.setBounds(10, 11, 50, 50);
 			frame.getContentPane().add(btnRegresar);
-
+			/**
+			 * funcion del boton para retornar a la ventana  principal 
+			 */
 			JButton btnHome = new FormaBotonCircular("");
 			btnHome.addActionListener(new ActionListener() {
 
@@ -163,7 +174,9 @@ public class VentanaNuevoTorneo {
 			btnHome.setBounds(514, 11, 50, 50);
 			frame.getContentPane().add(btnHome);
 			
-			
+			/**
+			 * Establece el fondo de la ventana 
+			 */
 			JLabel lblNewLabel = new JLabel("New label");
 			lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
 			lblNewLabel.setBounds(0, 0, 574, 347);
@@ -232,11 +245,15 @@ public class VentanaNuevoTorneo {
 			this.crear = crear;
 		}
 
-		
+		/**
+		 * @return the ventanaJugador
+		 */
 	public VentanaJugador getVentanaJugador() {
 			return ventanaJugador;
 		}
-
+	/**
+	 * @param ventanaJugador the ventanaJugador to set
+	 */
 		public void setVentanaJugador(VentanaJugador ventanaJugador) {
 			this.ventanaJugador = ventanaJugador;
 		}

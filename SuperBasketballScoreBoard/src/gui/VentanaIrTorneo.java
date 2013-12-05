@@ -37,8 +37,13 @@ import logica.Torneo;
 //import logica.Torneo;
 
 /**
- * @author Wolfran Pinzon
- * 
+
+* Esta clase permite visualizar la ventana ir al Torneo  y  conocer la programacion de el torneo seleccionado y exportar en un archivo esta programacion
+ *  ademas de comunicar con otras interfaces entre ellas esta el  iniciar  un encuentro   .
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
  */
 public class VentanaIrTorneo {
 
@@ -62,7 +67,7 @@ public class VentanaIrTorneo {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * inicializa el contenido de la ventana de la  progarmacion de un torneo y la la funcion de  sus botones  .
 	 */
 	private void initialize() {
 		frame = new JFrame();
@@ -81,6 +86,10 @@ public class VentanaIrTorneo {
 		lblTitulo.setForeground(new Color(255, 255, 255));
 		lblTitulo.setFont(new Font("Varsity Playbook", Font.PLAIN, 60));
 		frame.getContentPane().add(lblTitulo);
+		
+		/**
+		 * funcion del boton para retornar a la ventana  Torneo
+		 */
 
 		JButton btnRegresar = new FormaBotonCircular("");
 		btnRegresar.setBounds(10, 11, 50, 50);
@@ -92,6 +101,9 @@ public class VentanaIrTorneo {
 			}
 		});
 
+		/**
+		 * funcion del boton para retornar a la ventana  principal 
+		 */
 
 		JButton btnHome = new FormaBotonCircular("");
 		btnHome.addActionListener(new ActionListener() {
@@ -129,7 +141,9 @@ public class VentanaIrTorneo {
 		btnRegresar.setIcon(icnReg);
 		frame.getContentPane().add(btnRegresar);
 
-
+		/**
+		 * funcion del boton para ingresar  a la ventana  del marcador e iniciar un  encuentro 
+		 */
 		JButton btnIrAlPartido = new FormaBoton("Ir al Partido");
 		btnIrAlPartido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -190,7 +204,9 @@ public class VentanaIrTorneo {
 		jScrollPane.setBounds(22, 83, 535, 184);
 		frame.getContentPane().add(jScrollPane);
 
-
+		/**
+		 * funcion del boton para exportar como una imagen png la programacion de un torneo especifico 
+		 */
 		JButton btnExportar = new FormaBoton("Exportar");
 		btnExportar.setBounds(310, 281, 248, 58);
 		btnExportar.addActionListener(new ActionListener() {
@@ -207,6 +223,9 @@ public class VentanaIrTorneo {
 		btnExportar.setFont(new Font("Varsity Playbook", Font.PLAIN, 35));
 		frame.getContentPane().add(btnExportar);
 
+		/**
+		 * Establece el fondo de la ventana 
+		 */
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
@@ -214,7 +233,9 @@ public class VentanaIrTorneo {
 
 	}
 
-
+	/**
+	 * carga los encuentros de baloncesto que se van a realizar en un torneo especifico 
+	 */
 	public void cargarPartidos(){
 		while(dtm.getRowCount()>0)dtm.removeRow(0);
 		Torneo tor=ventanaPrincipal.getGestion().buscarTorneo(ventanaPrincipal.getTorneo());
@@ -228,7 +249,9 @@ public class VentanaIrTorneo {
 		}
 	}
 
-
+	/**
+	 * guarda y espesifica la exportacion de la imagen 
+	 */
 	private static void saveToImage(JTable table, JTableHeader header)  
 	{  
 		int w = Math.max(table.getWidth(), header.getWidth());  

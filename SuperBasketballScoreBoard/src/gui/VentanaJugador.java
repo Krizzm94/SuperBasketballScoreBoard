@@ -30,7 +30,13 @@ import java.beans.PropertyChangeListener;
 import logica.Equipo;
 import logica.Torneo;
 import logica.Jugador;
+/**
 
+* Esta clase permite visualizar la ventana jugador e insertar los datos de un jugador en un torneo y  equipo especifico
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 
 public class VentanaJugador {
 
@@ -106,6 +112,10 @@ public class VentanaJugador {
 
 		JButton btnAgregar = new FormaBoton( "AGREGAR" );;
 		btnAgregar.addActionListener(new ActionListener() {
+			
+			/**
+			 * funcion del boton para agregar un jugador 
+			 */
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -198,7 +208,9 @@ public class VentanaJugador {
 		txtNumero.setFont(new Font("Varsity Playbook", Font.PLAIN, 20));
 		frame.getContentPane().add(txtNumero);
 		txtNumero.setColumns(10);
-
+		/**
+		 * funcion del boton para retornar a la ventana  principal 
+		 */
 		JButton btnRegresar = new FormaBotonCircular("");
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -211,6 +223,10 @@ public class VentanaJugador {
 		btnRegresar.setIcon(icnReg);
 		btnRegresar.setBounds(10, 11, 50, 50);
 		frame.getContentPane().add(btnRegresar);
+		
+		/**
+		 * Establece el fondo de la ventana 
+		 */
 
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
@@ -220,14 +236,20 @@ public class VentanaJugador {
 		cargarTorneos();
 		//		cargarEquipos();
 	}
-
+	/**
+	 * se cargan los torneos exixtentes en el jcombobox torneo   .
+	 * 
+	 */
 	public void cargarTorneos(){
 		cmbTorneo.removeAllItems();
 		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
 			cmbTorneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
 		}
 	}
-
+	/**
+	 * se cargan los equipos  exixtentes en el jcombobox equipo   .
+	 * 
+	 */
 	public void cargarEquipos(String torneo){
 		cmbEquipo.removeAllItems();
 		Torneo tor= ventanaPrincipal.getGestion().buscarTorneo(torneo);

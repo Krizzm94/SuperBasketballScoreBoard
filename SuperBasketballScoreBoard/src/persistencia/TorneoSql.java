@@ -1,5 +1,12 @@
 package persistencia;
+/**
 
+ * En esta clase se crea los metodos que administran informacion de los torneos
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 public class TorneoSql {
 	private String q="\'";
 	

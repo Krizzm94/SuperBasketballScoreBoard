@@ -6,14 +6,21 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.security.Principal;
 
-//import sun.awt.windows.ThemeReader;
+/**
+
+ * Esta clase permite generar el movimiento del texto de la ventana informacion  
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 
 public class hiloTransportador extends Thread {
  
  Informacion p;
  boolean sw=true;
  int y=1200;
- 
+ /**Se inicializan y se asigan las variables 
+ */
  public hiloTransportador(Informacion prin){
   p=prin;
   p.addMouseListener(new MouseListener(){
@@ -49,6 +56,8 @@ public class hiloTransportador extends Thread {
   });
  }
  
+ /**se asigna el tiempo y la ubicacion de donde se empezara el movimiento del texto 
+  * */
  public void run(){
   while(true){
    if(sw){

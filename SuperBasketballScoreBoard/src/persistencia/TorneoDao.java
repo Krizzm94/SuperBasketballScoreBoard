@@ -7,7 +7,14 @@ import java.sql.Statement;
 
 import logica.Torneo;
 
+/**
 
+ * En esta clase gestiona  los datos de los torneos  en la base de datos
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 public class TorneoDao {
 	
 	private Conexion conexion;
@@ -21,7 +28,9 @@ public TorneoDao(){
  torneoSql=new TorneoSql();
 	
 }
-
+/**
+ * metodo para ingreso de el torneo a la base de datos 
+ */
 public int insertarTorneo(Torneo torneo){
 	conexion.conectarBD();
 	try{
@@ -39,7 +48,9 @@ public int insertarTorneo(Torneo torneo){
 	return -1;
 }
 
-
+/**
+ * metodo para la eliminaion de el torneo  a la base de datos 
+ */
 
 
 public int eliminarTorneo(String nombre){
@@ -57,7 +68,9 @@ public int eliminarTorneo(String nombre){
 
 
 
-
+/**
+ * metodo para consultar los  torneo a la base de datos 
+ */
 public ResultSet ConsultarTorneos(){
 	if (conexion.conectarBD()){
 		try{

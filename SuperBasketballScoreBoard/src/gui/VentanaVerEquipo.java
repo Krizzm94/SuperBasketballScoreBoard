@@ -38,8 +38,11 @@ import logica.Torneo;
 //import logica.Torneo;
 
 /**
- * @author Wolfran Pinzon
- * 
+
+ * Esta clase permite visualizar la ventana Ver Equipo, visualizando los jugadores que contiene cada equipo con su
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
  */
 public class VentanaVerEquipo {
 

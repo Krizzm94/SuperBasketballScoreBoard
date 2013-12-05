@@ -15,8 +15,13 @@ import persistencia.ResultadoSql;
 import persistencia.TorneoDao;
 
 /**
- * @author Wolfran Pinzon
- * 
+
+ * Esta clase administra los metodos para el ingreso y modificacion de los datos de las clase de la logica 
+ * y comunica las intancial de esta a la interfaz
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
  */
 public class GestionTorneo {
 	
@@ -52,12 +57,16 @@ public class GestionTorneo {
 	public void agregarTorneo(Torneo torneo) {
 		this.torneos.add(torneo);
 	}
-
+	/**
+	 * metodo para eliminar torneos
+	 */
 	public void eliminarTorneo(String nombre){
 		this.torneos.remove(buscarTorneo(nombre));
 		torneoDao.eliminarTorneo(nombre);
 	}
-	
+	/**
+	 * metodo para agregar torneos a la tabla Torneo de la  base de datos
+	 */
 
 	public void agregarTorneoSql(Torneo torneo){
 		torneoDao.insertarTorneo(torneo);
@@ -157,13 +166,17 @@ public class GestionTorneo {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * metodo para agregar equipos a la tabla Equipo de la  base de datos
+	 */
 	
 	public void agregarEquipoSql(Equipo equipo,String torneo){
 		equipoDao.insertarEquipo(equipo, torneo);
 	}
 	
-	
+	/**
+	 * metodo para eliminar equipos a la tabla Equipo de la  base de datos
+	 */
 	public void eliminarEquipoSql(String nombre,String torneo){
 		
 		equipoDao.eliminarEquipo(nombre,torneo);
@@ -234,7 +247,9 @@ public class GestionTorneo {
 	}
 	
 	
-	
+	/**
+	 * metodo para validar el nombre de un torneo
+	 */
 	public boolean validarNombreTorneo(String nombre){
 		if(buscarTorneo(nombre)!=null){
 			return true;
@@ -242,7 +257,9 @@ public class GestionTorneo {
 		return false;
 	}
 
-	
+	/**
+	 * metodo para validar el nombre de un Equipo
+	 */
 	public boolean validarEquipo(String torneo,String equipo){
 		if(buscarTorneo(torneo).buscarEquipo(equipo)!=null){
 			return true;
@@ -268,42 +285,58 @@ public class GestionTorneo {
 		this.resultadoDao = resultadoDao;
 	}
 
-
+	/**
+	 * @return the torneoDao
+	 */
 	public TorneoDao getTorneoDao() {
 		return torneoDao;
 	}
 
-
+	/**
+	 * @param torneoDao the torneoDao to set
+	 */
 	public void setTorneoDao(TorneoDao torneoDao) {
 		this.torneoDao = torneoDao;
 	}
 
-
+	/**
+	 * @return the equipoDao
+	 */
 	public EquipoDao getEquipoDao() {
 		return equipoDao;
 	}
 
-
+	/**
+	 * @param equipoDao the equipoDao to set
+	 */
 	public void setEquipoDao(EquipoDao equipoDao) {
 		this.equipoDao = equipoDao;
 	}
 
-
+	/**
+	 * @return the partidoDao
+	 */
 	public PartidoDao getPartidoDao() {
 		return partidoDao;
 	}
 
-
+	/**
+	 * @param partidoDao the partidoDao to set
+	 */
 	public void setPartidoDao(PartidoDao partidoDao) {
 		this.partidoDao = partidoDao;
 	}
 
-
+	/**
+	 * @return the jugadorDao
+	 */
 	public JugadorDao getJugadorDao() {
 		return jugadorDao;
 	}
 
-
+	/**
+	 * @param jugadorDao the jugadorDao to set
+	 */
 	public void setJugadorDao(JugadorDao jugadorDao) {
 		this.jugadorDao = jugadorDao;
 	}

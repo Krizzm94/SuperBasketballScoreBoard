@@ -1,5 +1,12 @@
 package persistencia;
+/**
 
+ * En esta clase se crea los metodos que administran informacion de los equipos
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 public class EquipoSql {
 	private String q="\'";
 	

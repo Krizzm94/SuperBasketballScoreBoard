@@ -4,8 +4,12 @@
 package logica;
 
 /**
- * @author Wolfran Pinzon
- * 
+
+ * En esta clase se crea los atributos de los partidos 
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
  */
 public class Partido {
 

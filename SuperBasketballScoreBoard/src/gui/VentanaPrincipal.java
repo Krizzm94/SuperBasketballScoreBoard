@@ -19,7 +19,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import logica.GestionTorneo;
 
+/**
 
+* Esta clase permite visualizar la ventana Principal, permite  la comunicacion de las ventanas Torneo, Equipo, Jugador e Informacion 
+* y establece la comunicacion de la gestion de la logica y las ventanas   ".
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ * @version:1.0 
+ 
+ */
 public class VentanaPrincipal {
 
 	private JFrame VentanaPrincipal;
@@ -69,9 +78,12 @@ public class VentanaPrincipal {
 		VentanaPrincipal.setUndecorated(true);
 		VentanaPrincipal.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 		VentanaPrincipal.getContentPane().setLayout(null);
-
+		
 		JButton btnTorneo = new JButton();
 		btnTorneo.setToolTipText("Aqui puedes agregar, eliminar y consultar torneos.");
+		/**
+		 * funcion del boton para ingresar a la ventana Torneo.
+		 */
 		btnTorneo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrincipal.setVisible(false);
@@ -83,9 +95,12 @@ public class VentanaPrincipal {
 		btnTorneo.setBounds(10, 71, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnTorneo);
 
-
+		
 		JButton btnJugador = new JButton();
 		btnJugador.setToolTipText("Aqui puedes agregar y eliminar jugadores si tienes torneos y equipos creados.");
+		/**
+		 * funcion del boton para ingresar a la ventana Jugador.
+		 */
 		btnJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrincipal.setVisible(false);
@@ -99,6 +114,9 @@ public class VentanaPrincipal {
 		VentanaPrincipal.getContentPane().add(btnJugador);
 
 		JButton btnInfo = new JButton();
+		/**
+		 * funcion del boton para ingresar a la ventana Informacion.
+		 */
 		btnInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrincipal.setVisible(false);
@@ -113,6 +131,9 @@ public class VentanaPrincipal {
 
 		JButton btnEquipo = new JButton();
 		btnEquipo.setToolTipText("Aqui puedes agregar y eliminar equipos con torneos creados previamnte.");
+		/**
+		 * funcion del boton para ingresar a la ventana Equipo.
+		 */
 		btnEquipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrincipal.setVisible(false);
@@ -124,7 +145,7 @@ public class VentanaPrincipal {
 		btnEquipo.setBounds(295, 71, 273, 127);
 		VentanaPrincipal.getContentPane().add(btnEquipo);
 
-		JLabel lblSuperBasketballScoreboard = new JLabel("Super BasketBallScoreBoard");
+		JLabel lblSuperBasketballScoreboard = new JLabel("Super BasketBallScoreBoard");//Titulo de la ventana  
 		lblSuperBasketballScoreboard.setFont(new Font("Varsity Playbook", Font.PLAIN, 48));
 		lblSuperBasketballScoreboard.setForeground(Color.white);
 		lblSuperBasketballScoreboard.setBounds(10, 11, 505, 50);
@@ -135,6 +156,9 @@ public class VentanaPrincipal {
 		btnClose.setIcon(new ImageIcon("imagenes/powerVP.png"));
 		btnClose.setToolTipText("SALIR");
 		btnClose.setBounds(522, 5, 50, 50);
+		/**
+		 * funcion del boton cerrar la aplicacion.
+		 */
 		btnClose.addActionListener(new ActionListener() {
 
 			@Override
@@ -155,16 +179,23 @@ public class VentanaPrincipal {
 				);
 		VentanaPrincipal.getContentPane().add(btnClose);
 
+		/**
+		 * Establece el fondo de la ventana 
+		 */
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		VentanaPrincipal.getContentPane().add(lblNewLabel);
 	}
-
+	/**
+	 * @return the ventanaPrincipal
+	 */
 	public JFrame getVentanaPrincipal() {
 		return VentanaPrincipal;
 	}
-
+	/**
+	 * @param ventanaPrincipal the ventanaPrincipal to set
+	 */
 	public void setVentanaPrincipal(JFrame ventanaPrincipal) {
 		VentanaPrincipal = ventanaPrincipal;
 	}
@@ -196,11 +227,15 @@ public class VentanaPrincipal {
 	public void setGestion(GestionTorneo gestion) {
 		this.gestion = gestion;
 	}
-
+	/**
+	 * @return the ventanaEquipo
+	 */
 	public VentanaEquipo getVentanaEquipo() {
 		return ventanaEquipo;
 	}
-
+	/**
+	 * @param ventanaEquipo the ventanaEquipo to set
+	 */
 	public void setVentanaEquipo(VentanaEquipo ventanaEquipo) {
 		this.ventanaEquipo = ventanaEquipo;
 	}
@@ -306,11 +341,15 @@ public class VentanaPrincipal {
 	}
 
 
-
+	/**
+	 * @return the informacion
+	 */
 	public Informacion getInformacion() {
 		return informacion;
 	}
-
+	/**
+	 * @param informacion the informacion to set
+	 */
 	public void setInformacion(Informacion informacion) {
 		this.informacion = informacion;
 	}

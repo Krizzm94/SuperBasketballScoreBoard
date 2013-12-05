@@ -7,6 +7,14 @@ import java.sql.Statement;
 
 import javax.swing.JLabel;
 
+/**
+
+ * En esta clase se crea la conccion con la base de datos scoreboard
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 public class Conexion {
 	
 

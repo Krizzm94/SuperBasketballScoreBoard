@@ -25,6 +25,15 @@ import logica.Equipo;
 import logica.Resultado;
 import logica.Torneo;
 
+/**
+
+* Esta clase permite visualizar la ventana marcador,  agregar los putos marcados por cada equipo, cronometrar y manejar 
+* variaciones de el tiempo "star, stop y reanudar".
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 public class VentanaMarcador  implements Runnable {
 
 	private JFrame frame;
@@ -76,7 +85,9 @@ public class VentanaMarcador  implements Runnable {
 		speed = 998;
 		initialize();
 	}
-
+	/**
+	 * implementacion de los instantes de tiempo, manejados en el cronometro y  especificacion de la duracion de estos  .
+	 */
 	public void run() {
 		while (!stop) {
 
@@ -133,6 +144,9 @@ public class VentanaMarcador  implements Runnable {
 
 					}
 				}   
+				/**
+				 * evalua el estado del cronometro.
+				 */
 				getLblTiempo().setText("0"+nuMin+":"+nuSeg);
 				try {
 					Thread.sleep(speed);
@@ -156,11 +170,15 @@ public class VentanaMarcador  implements Runnable {
 		}
 
 	}
-
+	/**
+	 * inicia el tiempo del cronometro.
+	 */
 	public void start() {
 		thread.start();
 	}
-
+	/**
+	 * Restablece  el tiempo del cronometro.
+	 */
 	synchronized void stop() {
 		stop = true;
 		pause = false;
@@ -169,11 +187,16 @@ public class VentanaMarcador  implements Runnable {
 
 	}
 
-
+	/**
+	 * continua  el tiempo del cronometro desde donde se detuvo .
+	 */
 	synchronized void resume() {
 		pause = false;
 		notify();
 	}
+	/**
+	 * Detiene el tiempo del cronometro.
+	 */
 	synchronized void suspend() {
 		pause = true;
 
@@ -251,7 +274,9 @@ public class VentanaMarcador  implements Runnable {
 		btnFalta1.setEnabled(false);
 		btnFalta1.setBounds(120, 260, 103, 36);
 		frame.getContentPane().add(btnFalta1);
-
+		/**
+		 * Funcion del boton para ingresar los puntos realizados por el  equipo 1 .
+		 */
 		this.btnPuntoTeam1 = new FormaBoton("1 PUNTO");
 		btnPuntoTeam1.setFont(new Font("Dafunk2", Font.PLAIN, 15));
 		btnPuntoTeam1.setEnabled(false);
@@ -265,7 +290,9 @@ public class VentanaMarcador  implements Runnable {
 		});
 		btnPuntoTeam1.setBounds(50, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam1);
-
+		/**
+		 * Funcion del boton para eliminar  los puntos realizados por cada equipo.
+		 */
 		this.btnPuntoTeam_1 = new FormaBoton("-1 PUNTO");
 		btnPuntoTeam_1.setFont(new Font("Dafunk2", Font.PLAIN, 13));
 		btnPuntoTeam_1.setEnabled(false);
@@ -289,7 +316,9 @@ public class VentanaMarcador  implements Runnable {
 		this.jugadoresTeam2 = new JComboBox();
 		jugadoresTeam2.setBounds(475, 266, 70, 26);
 		frame.getContentPane().add(jugadoresTeam2);
-
+		/**
+		 * Funcion del boton para eliminar  los puntos realizados por cada equipo.
+		 */
 		this.btnPuntoTeam2 = new FormaBoton("-1 PUNTO");
 		btnPuntoTeam2.setFont(new Font("Dafunk2", Font.PLAIN, 13));
 		btnPuntoTeam2.setEnabled(false);
@@ -303,7 +332,9 @@ public class VentanaMarcador  implements Runnable {
 		});
 		btnPuntoTeam2.setBounds(434, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam2);
-
+		/**
+		 * Funcion del boton para ingresar los puntos realizados por el  equipo 1 .
+		 */
 		this.btnPuntoTeam_2 = new FormaBoton("1 PUNTO");
 		btnPuntoTeam_2.setFont(new Font("Dafunk2", Font.PLAIN, 15));
 		btnPuntoTeam_2.setEnabled(false);
@@ -318,12 +349,16 @@ public class VentanaMarcador  implements Runnable {
 		btnPuntoTeam_2.setBounds(318, 300, 103, 36);
 		frame.getContentPane().add(btnPuntoTeam_2);
 
+		
 		JButton btnRegresar = new FormaBotonCircular("");
 		ImageIcon icnReg = new ImageIcon("imagenes/backF.png");
 		btnRegresar.setIcon(icnReg);
 		btnRegresar.setBounds(57, 10, 50, 50);
 		btnRegresar.addActionListener(new ActionListener() {
 
+			/**
+			 * funcion del boton para retornar a la ventana  Torneo 
+			 */
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				final Icon ic1  =  new ImageIcon("imagenes/caution.png");
@@ -341,6 +376,9 @@ public class VentanaMarcador  implements Runnable {
 		JButton btnHome = new FormaBotonCircular("");
 		btnHome.addActionListener(new ActionListener() {
 
+			/**
+			 * funcion del boton para retornar a la ventana  principal 
+			 */
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				final Icon ic2 =  new ImageIcon("imagenes/menu.png");
@@ -361,8 +399,13 @@ public class VentanaMarcador  implements Runnable {
 		JButton btnStart = new FormaBotonCircular("");
 		ImageIcon icnStart = new ImageIcon("imagenes/startF.png");
 		btnStart.setIcon(icnStart);
+		
+		/**
+		 * funcion del boton para iniciar el tiempo de el cronometro
+		 */
 		btnStart.addActionListener(new ActionListener() {
 
+		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
@@ -379,12 +422,16 @@ public class VentanaMarcador  implements Runnable {
 
 		btnStart.setBounds(279, 243, 35, 35);
 		frame.getContentPane().add(btnStart);
-
+	
 		JButton btnStop = new FormaBotonCircular("");
 		ImageIcon icnStop = new ImageIcon("imagenes/pausa.png");
 		btnStop.setIcon(icnStop);
+		/**
+		 * funcion del boton para reiniciar  el tiempo de el cronometro
+		 */
 		btnStop.addActionListener(new ActionListener() {
 
+		
 			public void actionPerformed(ActionEvent e) {
 				suspend();
 				btnPuntoTeam1.setEnabled(false);
@@ -399,10 +446,13 @@ public class VentanaMarcador  implements Runnable {
 		btnStop.setBounds(279, 275, 35, 35);
 		frame.getContentPane().add(btnStop);
 
-
+	
 		JButton btnReanudar = new FormaBotonCircular("");
 		ImageIcon icnResume = new ImageIcon("imagenes/reanudar.png");
 		btnReanudar.setIcon(icnResume);
+		/**
+		 * funcion del boton para reanudar el tiempo de el cronometro
+		 */
 		btnReanudar.addActionListener(new ActionListener() {
 
 			@Override
@@ -418,6 +468,10 @@ public class VentanaMarcador  implements Runnable {
 		});
 		btnReanudar.setBounds(279, 307, 35, 35);
 		frame.getContentPane().add(btnReanudar);
+		
+		/**
+		 * Establece el fondo de la ventana 
+		 */
 
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondoMarcador.png"));
@@ -427,7 +481,10 @@ public class VentanaMarcador  implements Runnable {
 
 
 	}
-
+	/**
+	 * se cargan los jugadores   exixtentes en un equipo  .
+	 * 
+	 */
 	public void cargarJugadores(){
 		Equipo equipo=ventanaPrincipal.getGestion().buscarTorneo(ventanaPrincipal.getTorneo()).buscarEquipo(ventanaPrincipal.getLocal());
 		Equipo equipo2=ventanaPrincipal.getGestion().buscarTorneo(ventanaPrincipal.getTorneo()).buscarEquipo(ventanaPrincipal.getVisitante());
@@ -473,67 +530,99 @@ public class VentanaMarcador  implements Runnable {
 	public void setLblTeam2(JLabel lblTeam2) {
 		this.lblTeam2 = lblTeam2;
 	}
-
+	/**
+	 * @return the frame
+	 */
 	public JFrame getFrame() {
 		return frame;
 	}
-
+	/**
+	 * @param frame the frame to set
+	 */
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
-
+	/**
+	 * @return the puntaje1
+	 */
 	public int getPuntaje1() {
 		return puntaje1;
 	}
-
+	/**
+	 * @param Puntaje1 the setPuntaje1 to set
+	 */
 	public void setPuntaje1(int puntaje1) {
 		this.puntaje1 = puntaje1;
 	}
-
+	/**
+	 * @return the puntaje2
+	 */
 	public int getPuntaje2() {
 		return puntaje2;
 	}
-
+	/**
+	 * @param puntaje2 the puntaje2 to set
+	 */
 	public void setPuntaje2(int puntaje2) {
 		this.puntaje2 = puntaje2;
 	}
-
+	/**
+	 * @return the lblPuntosT1
+	 */
 	public JLabel getLblPuntosT1() {
 		return lblPuntosT1;
 	}
-
+	/**
+	 * @param lblPuntosT1 the lblPuntosT1 to set
+	 */
 	public void setLblPuntosT1(JLabel lblPuntosT1) {
 		this.lblPuntosT1 = lblPuntosT1;
 	}
-
+	/**
+	 * @return the lblPuntosT2
+	 */
 	public JLabel getLblPuntosT2() {
 		return lblPuntosT2;
 	}
-
+	/**
+	 * @param lblPuntosT2 the lblPuntosT2 to set
+	 */
 	public void setLblPuntosT2(JLabel lblPuntosT2) {
 		this.lblPuntosT2 = lblPuntosT2;
 	}
-
+	/**
+	 * @return the lblTiempo
+	 */
 	public JLabel getLblTiempo() {
 		return lblTiempo;
 	}
-
+	/**
+	 * @param lblTiempo the lblTiempo to set
+	 */
 	public void setLblTiempo(JLabel lblTiempo) {
 		this.lblTiempo = lblTiempo;
 	}
-
+	/**
+	 * @return the lblNroCuarto
+	 */
 	public JLabel getLblNroCuarto() {
 		return lblNroCuarto;
 	}
-
+	/**
+	 * @param lblNroCuarto the lblNroCuarto to set
+	 */
 	public void setLblNroCuarto(JLabel lblNroCuarto) {
 		this.lblNroCuarto = lblNroCuarto;
 	}
-
+	/**
+	 * @return the ventanaPrincipal
+	 */
 	public VentanaPrincipal getVentanaPrincipal() {
 		return ventanaPrincipal;
 	}
-
+	/**
+	 * @param ventanaPrincipal ventanaPrincipal to set
+	 */
 	public void setVentanaPrincipal(VentanaPrincipal ventanaPrincipal) {
 		this.ventanaPrincipal = ventanaPrincipal;
 	}

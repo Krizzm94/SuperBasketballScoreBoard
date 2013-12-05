@@ -33,6 +33,15 @@ import Estilos.FormaBotonCircular;
 
 
 
+/**
+
+ * Esta clase permite visualizar la ventana Equipo  que permite visualizar y eliminar un equipo
+ *  ademas de comunicar con otras interfaces como crear un equipo y listar los jugadores de este.
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 
 public class VentanaEquipo {
 
@@ -54,7 +63,7 @@ public class VentanaEquipo {
 	}
 
 	/**
-	 * Iicializamos los componentes
+	 * Incializamos los componentes y se añade la funcion de los botones nuevo, borrar y listar. 
 	 */
 	private void inicializar() {
 		VentanaEquipo = new JFrame();
@@ -70,16 +79,14 @@ public class VentanaEquipo {
 
 
 		JButton btnNuevo = new FormaBoton( "Boton" );
-		btnNuevo.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-
-			}
-		});
+		
 		btnNuevo.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
 		btnNuevo.setText("NUEVO");
 		btnNuevo.setBackground(new Color(255, 250, 250));
 		btnNuevo.setForeground(Color.DARK_GRAY);
+		/**
+		 * funcion del boton para agregar un Equipo 
+		 */
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ventanaPrincipal.getVentanaEquipo().getVentanaEquipo().setVisible(false);
@@ -101,9 +108,12 @@ public class VentanaEquipo {
 		btnBorrar.setText("BORRAR");
 		btnBorrar.setForeground(Color.DARK_GRAY);
 		btnBorrar.setFont(new Font("Varsity Playbook", Font.PLAIN, 30));
+		/**
+		 * funcion del boton para borrar un Equipo
+		 */
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(table.getSelectedRow()>=0){
+				if(table.getSelectedRow()>=0){//
 					int fila=table.getSelectedRow();
 					String nombre=(String) table.getValueAt(fila, 0);
 					final Icon ic1  =  new ImageIcon("imagenes/caution.png");
@@ -128,6 +138,9 @@ public class VentanaEquipo {
 
 		JButton btnAtras = new FormaBotonCircular("");
 		btnAtras.setToolTipText("Devuelve al menu anterior");
+		/**
+		 * funcion del boton para retornar a la ventana principal 
+		 */
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaEquipo.setVisible(false);
@@ -143,7 +156,9 @@ public class VentanaEquipo {
 		btnAtras.setMaximumSize(new Dimension(65, 30));
 		VentanaEquipo.getContentPane().add(btnAtras);
 		
-	
+		/**
+		 * funcion del boton para ingresar a la ventana donde se listan los juagadores de cada equipo 
+		 */
 		JButton btnListar = new FormaBoton( "Boton" );
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -169,7 +184,7 @@ public class VentanaEquipo {
 		btnListar.setBounds(200, 291, 160, 45);
 		VentanaEquipo.getContentPane().add(btnListar);
 
-		JLabel lblEquipo = new JLabel("EQUIPOS");
+		JLabel lblEquipo = new JLabel("EQUIPOS");//Titulo de la ventana
 		lblEquipo.setFont(new Font("Varsity Playbook", Font.PLAIN, 60));
 		lblEquipo.setBackground(new Color(255, 245, 238));
 		lblEquipo.setForeground(Color.WHITE);
@@ -177,7 +192,7 @@ public class VentanaEquipo {
 		VentanaEquipo.getContentPane().add(lblEquipo);
 
 
-		String[] columnNames = {"Nombre", "#Jugadores","Lugar"};
+		String[] columnNames = {"Nombre", "#Jugadores","Lugar"};//Nombre de los campos de la tabla 
 
 		dtm = new DefaultTableModel (null,columnNames){
 			public boolean isCellEditable(int row, int column){
@@ -219,6 +234,10 @@ public class VentanaEquipo {
 		torneo.addItemListener(new ItemListener() {
 			
 			@Override
+			/**
+			 * se agrega la funcion que permite extraer el nombre del torneoque se seleccione  en el componete jcombobox torneo  .
+			 * 
+			 */
 			public void itemStateChanged(ItemEvent e) {
 				if(torneo.getSelectedItem()!=null) {
 					String t=torneo.getSelectedItem().toString();
@@ -226,7 +245,9 @@ public class VentanaEquipo {
 				}
 			}
 		});
-		
+		/**
+		 * Establece el fondo de la ventana 
+		 */
 
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
@@ -236,30 +257,40 @@ public class VentanaEquipo {
 
 	}
 	
-	
+	/**
+	 * se cargan los torneos exixtentes en el jcombobox torneo   .
+	 * 
+	 */
 	public void cargarTorneos(){
 		torneo.removeAllItems();
-		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){
-			torneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());				
+		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){//se recorre el arrego torneo
+			torneo.addItem(ventanaPrincipal.getGestion().getTorneos().get(i).getNombre());	// se agrega el nombre de cada torneo existente en el arreglo			
 		}
 	}
 	
-	
+	/**
+	 * se cargan los datos de los equipos en la tabla  .
+	 * 
+	 */
 	private void cargarEquipos(String t) {
 		while(dtm.getRowCount()>0)dtm.removeRow(0);
-		Torneo tor=ventanaPrincipal.getGestion().buscarTorneo(t);
-		for(int i=0;i<tor.getEquipos().size();i++){
-			if(tor.getEquipos().get(i)!=null){
-				String nombre=String.valueOf(tor.getEquipos().get(i).getNombre());
-				int jug=tor.getEquipos().get(i).getNumJugadores();
+		Torneo tor=ventanaPrincipal.getGestion().buscarTorneo(t);//Obtiene el torneo 
+		for(int i=0;i<tor.getEquipos().size();i++){//recorre el arreglode los equipos 
+			if(tor.getEquipos().get(i)!=null){//verifica que los campos del arreglos de equipos no esten nulos
+				String nombre=String.valueOf(tor.getEquipos().get(i).getNombre());//obtiene el nombre del equipo
+				int jug=tor.getEquipos().get(i).getNumJugadores();//obtiene el numero de jugadores
 				String jugadores=String.valueOf(jug);
 				String lugar=String.valueOf(tor.getEquipos().get(i).getLugar());
-				String [] filas={nombre,jugadores,lugar};
-				dtm.addRow(filas);
+				String [] filas={nombre,jugadores,lugar};//datos del equipo
+				dtm.addRow(filas);//añade a la tabla 
 			}
 		}
 		
 	}
+	/**
+	 * Get y set de los atributos .
+	 * 
+	 */
 	public JFrame getVentanaPrincipal() {
 		return VentanaEquipo;
 	}

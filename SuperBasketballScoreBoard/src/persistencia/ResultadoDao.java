@@ -8,7 +8,14 @@ import java.sql.Statement;
 import logica.Resultado;
 import logica.Torneo;
 
+/**
 
+ * En esta clase gestiona  los datos de los resultados  en la base de datos
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 public class ResultadoDao {
 	
 	private Conexion conexion;
@@ -22,7 +29,9 @@ public ResultadoDao(){
  resultadoSql=new ResultadoSql();
 	
 }
-
+/**
+ * metodo para ingreso de el resultado a la base de datos 
+ */
 public int insertarResultado(String torneo,Resultado resul){
 	conexion.conectarBD();
 	try{
@@ -42,7 +51,9 @@ public int insertarResultado(String torneo,Resultado resul){
 	return -1;
 }
 
-
+/**
+ * metodo para la eliminaion de el resultado a la base de datos 
+ */
 
 
 public int eliminarResultado(String partido){
@@ -59,7 +70,9 @@ public int eliminarResultado(String partido){
 
 
 
-
+/**
+ * metodo para consultar los  resultados a la base de datos 
+ */
 
 public ResultSet Consultar(){
 	if (conexion.conectarBD()){

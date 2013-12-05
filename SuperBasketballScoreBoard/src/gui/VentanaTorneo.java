@@ -31,8 +31,12 @@ import Estilos.FormaBoton;
 import Estilos.FormaBotonCircular;
 
 /**
- * @author Wolfran Pinzon
- * 
+
+ * Esta clase permite visualizar la ventana Torneo  con todos sus componentes,
+ * permitiendo asi el acceso a otras funciones delimitadas en esta 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
  */
 public class VentanaTorneo {
 
@@ -181,6 +185,10 @@ public class VentanaTorneo {
 		jScrollPane.setBounds(68, 68, 452, 182);
 		frame.getContentPane().add(jScrollPane);
 
+		/**
+		 * Establece el fondo de la ventana 
+		 */
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(0, 0, 574, 347);
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));

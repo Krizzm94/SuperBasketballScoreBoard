@@ -8,7 +8,14 @@ import java.sql.Statement;
 import logica.Equipo;
 import logica.Torneo;
 
+/**
 
+ * En esta clase gestiona  los datos de los equipos  en la base de datos
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 public class EquipoDao {
 	
 	private Conexion conexion;
@@ -22,7 +29,9 @@ public EquipoDao(){
  equipoSql=new EquipoSql();
 	
 }
-
+/**
+ * metodo para ingreso de el equipo a la base de datos 
+ */
 public int insertarEquipo(Equipo equipo, String torneo){
 	conexion.conectarBD();
 	try{
@@ -44,7 +53,9 @@ public int insertarEquipo(Equipo equipo, String torneo){
 
 
 
-
+/**
+ * metodo para la eliminaion de el equipo a la base de datos 
+ */
 public int eliminarEquipo(String nombre, String torneo){
 	conexion.conectarBD();
 	try{
@@ -60,7 +71,9 @@ public int eliminarEquipo(String nombre, String torneo){
 
 
 
-
+/**
+ * metodo para consultar los  equipo a la base de datos 
+ */
 public ResultSet ConsultarEquipos(){
 	if (conexion.conectarBD()){
 		try{

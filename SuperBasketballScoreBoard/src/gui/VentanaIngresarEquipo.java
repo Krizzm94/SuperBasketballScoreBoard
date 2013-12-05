@@ -58,7 +58,17 @@ public class VentanaIngresarEquipo  {
 
 
 	/**
-	 * Create the frame.
+
+	 * Esta clase permite visualizar la ventana ingresar Equipo.
+	 * La cual permite crear un equipo en un determinado torneo
+	 
+
+	 * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+	 
+	 */
+	
+	/**
+	 * Incializamos los componentes y se añade la funcion de los botones . 
 	 */
 	public VentanaIngresarEquipo(final VentanaPrincipal ventanaPrincipal) {
 		this.ventanaPrincipal=ventanaPrincipal;
@@ -96,9 +106,16 @@ public class VentanaIngresarEquipo  {
 		txtNombre.setBounds(181, 135, 185, 34);
 		txtNombre.setColumns(10);
 		txtNombre.setFont(new Font("Varsity Playbook", Font.PLAIN, 20));
-
+		
+		
+		/**
+		 * se cargan la cantidad de jugadores  en el componente jcombobox numJugadores  . 
+		 */
 		final JComboBox numJugadores = new JComboBox();
 		numJugadores.setBounds(281, 186, 49, 34);
+		/**
+		 * se cargan los colores en el componente jcombobox colores  . 
+		 */
 		numJugadores.setModel(new DefaultComboBoxModel(new String[] {"6", "7", "8"}));
 		Color colors[] = { Color.black, Color.blue, Color.cyan, Color.darkGray,
 				Color.gray, Color.green, Color.lightGray, Color.magenta,
@@ -131,7 +148,10 @@ public class VentanaIngresarEquipo  {
 		contentPane.add(cmbtorneo);
 
 
-
+		/**
+		 * se configura la funcion del boton guardar, en la que se almacenan los datos en la base de datos y en la 
+		 * tabla de la ventana equipo deacuerdo al torneo que se seleccione previamente. 
+		 */
 		JButton btnGuardar = new FormaBotonCircular("GUARDAR");
 		btnGuardar.setToolTipText("Crea un nuevo equipo");
 		btnGuardar.setText("");
@@ -203,6 +223,9 @@ public class VentanaIngresarEquipo  {
 		lblNuevoEquipo.setBounds(115, 10, 340, 66);
 		contentPane.add(lblNuevoEquipo);
 
+		/**
+		 * Establece el fondo de la ventana 
+		 */
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("imagenes/fondo.png"));
 		lblNewLabel.setBounds(0, 0, 580, 350);
@@ -213,6 +236,10 @@ public class VentanaIngresarEquipo  {
 
 
 	}
+	
+	/**
+	 * se define las dimenciones y la informacion de los colores  . 
+	 */
 	static class ColorCellRenderer implements ListCellRenderer {
 		protected DefaultListCellRenderer defaultRenderer = new DefaultListCellRenderer();
 
@@ -231,7 +258,10 @@ public class VentanaIngresarEquipo  {
 			return renderer;
 		}
 	}
-
+	/**
+	 * se cargan los torneos exixtentes en el jcombobox torneo   .
+	 * 
+	 */
 	public void cargarTorneos(){
 		cmbtorneo.removeAllItems();
 		for(int i=0;i<ventanaPrincipal.getGestion().getTorneos().size();i++){

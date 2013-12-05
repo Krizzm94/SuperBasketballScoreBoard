@@ -7,8 +7,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * @author Wolfran Pinzon
- * 
+
+ * En esta clase se crea los atributos de los torneos y la administracion de algunos arreglos 
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
  */
 public class Torneo {
 

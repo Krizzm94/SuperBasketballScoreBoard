@@ -8,7 +8,14 @@ import java.sql.Statement;
 import logica.Jugador;
 import logica.Torneo;
 
+/**
 
+ * En esta clase gestiona  los datos de los jugadores  en la base de datos
+ 
+
+ * @author: Melissa Gutierrez, Cristian Medina, Wolfran Pinzon 
+ 
+ */
 public class JugadorDao {
 	
 	private Conexion conexion;
@@ -22,7 +29,9 @@ public JugadorDao(){
  jugadorSql=new JugadorSql();
 	
 }
-
+/**
+ * metodo para ingreso de el jugador a la base de datos 
+ */
 public int insertarJugador(Jugador jugador, String equipo,String torneo){
 	conexion.conectarBD();
 	try{
@@ -38,7 +47,9 @@ public int insertarJugador(Jugador jugador, String equipo,String torneo){
 }
 
 
-
+/**
+ * metodo para la eliminaion de el jugador a la base de datos 
+ */
 
 public int eliminarJugador(int id){
 	conexion.conectarBD();
@@ -54,7 +65,9 @@ public int eliminarJugador(int id){
 
 
 
-
+/**
+ * metodo para consultar los  jugador a la base de datos 
+ */
 
 public ResultSet ConsultarJugador(){
 	if (conexion.conectarBD()){
